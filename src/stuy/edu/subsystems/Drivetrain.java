@@ -9,7 +9,7 @@ package stuy.edu.subsystems;
 import edu.wpi.first.wpilibj.Gyro;
 /**
  *
- * @author EchoStrike
+ * @author abdullahfahad
  */
 public class Drivetrain {
     
