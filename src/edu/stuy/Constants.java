@@ -12,4 +12,8 @@ package edu.stuy;
  */
 public class Constants {
     
+    public static final int LEFT_MOTOR_CHANNEL = 1;
+    public static final int RIGHT_MOTOR_CHANNEL = 2;
+
+    
 }
