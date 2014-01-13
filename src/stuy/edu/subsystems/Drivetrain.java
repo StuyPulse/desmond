@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
-package stuy.edu.util;
+package stuy.edu.subsystems;
 
+import edu.wpi.first.wpilibj.Gyro;
 /**
  *
- * @author abdullahfahad
+ * @author EchoStrike
  */
-public class Gyro {
+public class Drivetrain {
     
 }
