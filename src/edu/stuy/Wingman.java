@@ -8,6 +8,10 @@
 package edu.stuy;
 
 
+import edu.stuy.subsystems.Acquirer;
+import edu.stuy.subsystems.Drivetrain;
+import edu.stuy.subsystems.Shooter;
+import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 /**
@@ -18,12 +22,27 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class Wingman extends IterativeRobot {
+    
+    /* SUBSYSTEMS */
+    Acquirer acquirer;
+    Drivetrain drivetrain;
+    Shooter shooter;
+    
+    /* CONTROLLERS */
+    Gamepad driverPad;
+    Gamepad operatorPad;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-
+        acquirer = Acquirer.getInstance();
+        drivetrain = Drivetrain.getInstance();
+        shooter = Shooter.getInstance();
+        
+        driverPad = new Gamepad(Constants.DRIVER_PAD_PORT);
+        operatorPad = new Gamepad(Constants.OPERATOR_PAD_PORT);
     }
 
     /**

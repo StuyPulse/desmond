@@ -11,5 +11,6 @@ package edu.stuy;
  * @author abdullahfahad
  */
 public class Constants {
-    
+    public static int DRIVER_PAD_PORT = 1;
+    public static int OPERATOR_PAD_PORT = 2;
 }
