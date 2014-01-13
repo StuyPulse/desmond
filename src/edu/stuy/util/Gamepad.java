@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package stuy.edu.subsystems;
+package edu.stuy.util;
 
 /**
  *
  * @author abdullahfahad
  */
-public class Acquirer {
+public class Gamepad {
     
 }

@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package stuy.edu;
+package edu.stuy;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;

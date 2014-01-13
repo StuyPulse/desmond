@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package stuy.edu.util;
+package edu.stuy.subsystems;
 
 /**
  *
  * @author abdullahfahad
  */
-public class NetworkIO {
+public class Acquirer {
     
 }

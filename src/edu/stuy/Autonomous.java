@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package stuy.edu.subsystems;
+package edu.stuy;
 
 /**
  *
  * @author abdullahfahad
  */
-public class Shooter {
+public class Autonomous {
     
 }

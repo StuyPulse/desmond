@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package stuy.edu.subsystems;
+package edu.stuy.subsystems;
 
 import edu.wpi.first.wpilibj.Gyro;
 /**

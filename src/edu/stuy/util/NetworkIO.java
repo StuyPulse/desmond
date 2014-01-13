@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package stuy.edu;
+package edu.stuy.util;
 
 /**
  *
  * @author abdullahfahad
  */
-public class Constants {
+public class NetworkIO {
     
 }

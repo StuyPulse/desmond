@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package stuy.edu;
+package edu.stuy;
 
 /**
  *
  * @author abdullahfahad
  */
-public class Autonomous {
+public class Constants {
     
 }
