@@ -8,7 +8,10 @@
 package edu.stuy;
 
 
+import edu.stuy.subsystems.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,12 +21,14 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class Wingman extends IterativeRobot {
+    Shooter shooter;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-
+        shooter = Shooter.getInstance();
     }
 
     /**
@@ -37,7 +42,8 @@ public class Wingman extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        SmartDashboard.putNumber("Angle", shooter.getAngle());
+        SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
     }
     
     /**
