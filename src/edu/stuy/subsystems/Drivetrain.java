@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
  * @author abdullahfahad
  */
 public class Drivetrain {
-    
+    private Gyro gyro;
     private static Drivetrain instance;
     private RobotDrive drivetrain;
     
@@ -38,7 +38,21 @@ public class Drivetrain {
     public void tankDrive(Gamepad gamepad) {
         tankDrive(gamepad.getLeftY(), gamepad.getRightY());
     }
-    
+    public void reset() {
+        tankDrive(0.0, 0.0);
+        gyroReset();
+    }
+
+    public double getAngle() {
+        return gyro.getAngle();
+    }
+
+    public void gyroReset() {
+        gyro.reset();
+    }
+    public double getRotationRate(){
+        return gyro.getRate();
+    }
     
     
     
