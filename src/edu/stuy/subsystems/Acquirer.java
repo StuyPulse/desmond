@@ -30,7 +30,7 @@ public class Acquirer {
         ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
     }
     
-    public Acquirer getInstance() {
+    public static Acquirer getInstance() {
         if (instance == null) {
             instance = new Acquirer();
         }
