@@ -68,5 +68,4 @@ public class Acquirer {
         return ballSensor.get();
     }
     
-    
 }

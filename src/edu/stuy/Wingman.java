@@ -22,6 +22,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Wingman extends IterativeRobot {
     Shooter shooter;
+    Drivetrain drivetrain;
+    Acquirer acquirer;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -29,8 +31,19 @@ public class Wingman extends IterativeRobot {
      */
     public void robotInit() {
         shooter = Shooter.getInstance();
+        drivetrain = Drivetrain.getInstance();
+        acquirer = Acquirer.getInstance();
+        resetAll();
     }
 
+    public void autonomousInit() {
+        resetAll();
+    }
+    
+    public void teleopInit() {
+        resetAll();
+    }
+    
     /**
      * This function is called periodically during autonomous
      */
@@ -51,6 +64,12 @@ public class Wingman extends IterativeRobot {
      */
     public void testPeriodic() {
     
+    }
+    
+    public void resetAll() {
+        shooter.reset();
+        drivetrain.reset();
+        acquirer.reset();
     }
     
 }

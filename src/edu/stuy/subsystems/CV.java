@@ -15,14 +15,14 @@ public class CV {
     private static CV instance;
     
     public static CV getInstance(){
-        if(instance == null){
+        if (instance == null) {
             instance = new CV();
         }
         return instance;
     }
     
     //TODO: implement
-    public boolean isGoalHot(){
+    public boolean isGoalHot() {
         return false;
     }
     

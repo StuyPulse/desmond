@@ -38,6 +38,7 @@ public class Drivetrain {
     public void tankDrive(Gamepad gamepad) {
         tankDrive(gamepad.getLeftY(), gamepad.getRightY());
     }
+    
     public void reset() {
         tankDrive(0.0, 0.0);
         gyroReset();
@@ -50,11 +51,8 @@ public class Drivetrain {
     public void gyroReset() {
         gyro.reset();
     }
-    public double getRotationRate(){
+    public double getRotationRate() {
         return gyro.getRate();
     }
-    
-    
-    
     
 }
