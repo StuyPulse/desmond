@@ -7,6 +7,7 @@
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
+import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -66,6 +67,21 @@ public class Acquirer {
     
     public boolean hasBall() {
         return ballSensor.get();
+    }
+    
+    public void manualGamepadControl(Gamepad gamepad) {
+        if (gamepad.getDPadLeft()) {
+            ejectBall();
+        }
+        else if (gamepad.getDPadRight()) {
+            intakeBall();
+        }
+        else if (gamepad.getDPadDown()) {
+            rotateDown();
+        }
+        else if (gamepad.getDPadUp()) {
+            rotateUp();
+        }
     }
     
 }

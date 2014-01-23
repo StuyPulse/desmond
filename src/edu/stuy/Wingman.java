@@ -9,6 +9,7 @@ package edu.stuy;
 
 
 import edu.stuy.subsystems.*;
+import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,6 +25,8 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
+    
+    Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     
     /**
      * This function is run when the robot is first started up and should be
@@ -57,6 +60,9 @@ public class Wingman extends IterativeRobot {
     public void teleopPeriodic() {
         SmartDashboard.putNumber("Angle", shooter.getAngle());
         SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
+        acquirer.manualGamepadControl(rightPad);
+        shooter.manualGamepadControl(rightPad);
+        drivetrain.tankDrive(rightPad);
     }
     
     /**

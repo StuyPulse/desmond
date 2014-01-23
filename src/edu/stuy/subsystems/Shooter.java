@@ -7,6 +7,7 @@
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
+import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -18,6 +19,7 @@ public class Shooter {
      private Talon shootingWinch;
      private Encoder winchEncoder;
      private static Shooter instance;
+     
      
      private Shooter() {
          shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
@@ -69,4 +71,18 @@ public class Shooter {
          return (angle < 340 && angle > 380-Constants.DEGREES_WINCH_RETRACT);
      }
 
+     public void manualGamepadControl(Gamepad gamepad) {
+         if (gamepad.getTopButton()) {
+             releaseWinch();
+         }
+         else if (gamepad.getBottomButton()) {
+             retractWinch();
+         }
+         else if (gamepad.getLeftButton()) {
+             
+         }
+         else if (gamepad.getRightButton()) {
+             
+         }
+     }
 }

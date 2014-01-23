@@ -32,4 +32,6 @@ public class Constants {
     public static final int DEGREES_WINCH_RETRACT = 240;
     public static final int DEGREES_WINCH_RELEASE = 360 - DEGREES_WINCH_RETRACT;
     
+    public static final int GAMEPAD_RIGHT_PORT = 1;
+    
 }
