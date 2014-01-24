@@ -8,20 +8,41 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
- * @author abdullahfahad
+ * @author abdullahfahad, r4, danny
  */
+
 public class Drivetrain {
+    
+    double driveStraightSpeed = 0; // TO BE CHANGED
+   
     private Gyro gyro;
     private static Drivetrain instance;
     private RobotDrive drivetrain;
+    PIDController forwardController;
+    PIDController backwardController;
+    private Encoder encoderRight;
+    private Encoder encoderLeft;
     
     private Drivetrain() {
+        
         drivetrain = new RobotDrive(Constants.LEFT_MOTOR_CHANNEL, Constants.RIGHT_MOTOR_CHANNEL);
         drivetrain.setSafetyEnabled(false);
+        gyro = new Gyro(Constants.GYRO_CHANNEL);
+        
+        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_A_LEFT, Constants.ENCODER_CHANNEL_B_LEFT);
+        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_A_RIGHT, Constants.ENCODER_CHANNEL_B_LEFT);
+        encoderLeft.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
+        encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
+        encoderLeft.start();
+        encoderRight.start();
     }
     
     public static Drivetrain getInstance() {
@@ -51,8 +72,35 @@ public class Drivetrain {
     public void gyroReset() {
         gyro.reset();
     }
-    public double getRotationRate() {
-        return gyro.getRate();
+    
+    public double getLeftEnc() {
+        return encoderLeft.getDistance();
+    }
+
+    public double getRightEnc() {
+        return encoderRight.getDistance();
     }
     
+    public void resetEncoders() {
+        encoderLeft.reset();
+        encoderRight.reset();
+    }
+
+    public double getAvgDistance() {
+        return getRightEnc();
+    }
+    
+    public void dashboardPIDUpdate() {
+        SmartDashboard.putNumber("Drivetrain P", Constants.PVAL_D);
+        SmartDashboard.putNumber("Drivetrain I", Constants.IVAL_D);
+        SmartDashboard.putNumber("Drivetrain D", Constants.DVAL_D);
+        
+        double tp,ti,td;
+        tp = SmartDashboard.getNumber("Drivetrain P");
+        ti = SmartDashboard.getNumber("Drivetrain I");
+        td = SmartDashboard.getNumber("Drivetrain D");
+        
+        forwardController.setPID(tp, ti, td);
+        backwardController.setPID(tp, ti, td);
+    }
 }
