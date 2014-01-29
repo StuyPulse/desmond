@@ -8,7 +8,6 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -22,13 +21,11 @@ public class Acquirer {
     private Solenoid thingDown;
     private Solenoid thingUp;
     private Talon roller;
-    private DigitalInput ballSensor;
  
     public Acquirer() {
         thingDown = new Solenoid(Constants.THING_DOWN_CHANNEL);
         thingUp = new Solenoid(Constants.THING_UP_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
-        ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
     }
     
     public static Acquirer getInstance() {
@@ -63,10 +60,6 @@ public class Acquirer {
     public void reset() {
         rotateUp();
         stopRoller();
-    }
-    
-    public boolean hasBall() {
-        return ballSensor.get();
     }
     
     public void manualGamepadControl(Gamepad gamepad) {

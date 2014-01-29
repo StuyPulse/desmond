@@ -8,6 +8,7 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -19,6 +20,7 @@ public class Shooter {
      private Talon shootingWinch;
      private Encoder winchEncoder;
      private static Shooter instance;
+     private DigitalInput ballSensor;
      
      
      private Shooter() {
@@ -26,6 +28,7 @@ public class Shooter {
          winchEncoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
          winchEncoder.start();
          winchEncoder.reset(); 
+         ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
      }
      
      public static Shooter getInstance() {
@@ -64,6 +67,10 @@ public class Shooter {
      public int getAngle() {
          return (int)((winchEncoder.get() % Constants.PULSES_PER_REVOLUTION)/
                Constants.PULSES_PER_REVOLUTION * 360);
+     }
+     
+     public boolean hasBall() {
+         return ballSensor.get();
      }
 
      public boolean readyToShoot() {

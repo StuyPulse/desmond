@@ -36,7 +36,7 @@ public class Autonomous {
     
     public void auton1(){
         //Bring acquisition forward, out of way of catapult
-        Acquirer.getInstance().rotateUp();
+        Acquirer.getInstance().rotateDown();
         //-If CV says the goal is hot we fire
         if(CV.getInstance().isGoalHot()) {
             Shooter.getInstance().releaseWinch();
@@ -45,19 +45,61 @@ public class Autonomous {
             Timer.delay(5.0);
             Shooter.getInstance().releaseWinch();
         }
+        Shooter.getInstance().retractWinch();
+        Acquirer.getInstance().rotateUp();
         //-Drive forward into scoring zone for 5 extra points while retracting the catapult.
         Drivetrain.getInstance().tankDrive(1, 1); //placeholder values
-        Timer.delay(2.0);
-        Shooter.getInstance().retractWinch();
+        Timer.delay(1.0);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
     public void auton2() {
-    
+        Acquirer.getInstance().rotateDown();
+        Acquirer.getInstance().intakeBall();
+        Timer.delay(1.0); // Delay should be tuned to ready next ball, but not load until first ball is fired
+        Acquirer.getInstance().stopRoller();
+        // There may not be enough time to check if the goal is hot AND shoot both balls
+        if (CV.getInstance().isGoalHot()) {
+            Shooter.getInstance().releaseWinch();
+        }
+        else {
+            Timer.delay(5.0)
+            Shooter.getInstance().releaseWinch();
+        }
+        Timer.delay(0.5);
+        Shooter.getInstance().retractWinch();
+        if (!Shooter.getInstance().hasBall()) {
+            Acquirer.getInstance().intakeBall();
+            Timer.delay(1.0);
+        }
+        Acquirer.getInstance().stopRoller();
+        Shooter.getInstance().releaseWinch();
+        Timer.delay(0.5);
+        Shooter.getInstance().retractWinch();
+        Drivetrain.getInstance().tankDrive(1, 1);
+        Timer.delay(1.0);
+        Drivetrain.getInstance().tankDrive(0, 0);
     }
     
     public void auton3() {
-        
+        Acquirer.getInstance().rotateDown();
+        Acquirer.getInstance().intakeBall();
+        Timer.delay(1.0); // Delay should be tuned to ready next ball, but not load until first ball is fired
+        Acquirer.getInstance().stopRoller();
+        Shooter.getInstance().releaseWinch();
+        Timer.delay(0.5);
+        Shooter.getInstance().retractWinch();
+        if (!Shooter.getInstance().hasBall()) {
+            Acquirer.getInstance().intakeBall();
+            Timer.delay(1.0);
+        }
+        Acquirer.getInstance().stopRoller();
+        Shooter.getInstance().releaseWinch();
+        Timer.delay(0.5);
+        Shooter.getInstance().retractWinch();
+        Drivetrain.getInstance().tankDrive(1, 1);
+        Timer.delay(1.0);
+        Drivetrain.getInstance().tankDrive(0, 0);
     }
     
     public void auton4() {
