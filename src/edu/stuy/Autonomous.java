@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Autonomous {
     
-    public void auton(int x){
+    public static void auton(int x){
         switch(x){
             case 0:
                 auton0();
@@ -34,7 +34,7 @@ public class Autonomous {
         }
     }
     
-    public void auton1(){
+    public static void auton1(){
         //Bring acquisition forward, out of way of catapult
         Acquirer.getInstance().rotateDown();
         //-If CV says the goal is hot we fire
@@ -53,7 +53,7 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
-    public void auton2() {
+    public static void auton2() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
         Timer.delay(1.0); // Delay should be tuned to ready next ball, but not load until first ball is fired
@@ -81,7 +81,7 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
-    public void auton3() {
+    public static void auton3() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
         Timer.delay(1.0); // Delay should be tuned to ready next ball, but not load until first ball is fired
@@ -102,11 +102,11 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
-    public void auton4() {
+    public static void auton4() {
         
     }
     
-    public void auton0() {
+    public static void auton0() {
         //do nothing
     }
     

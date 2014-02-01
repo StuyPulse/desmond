@@ -12,6 +12,7 @@ import edu.stuy.subsystems.*;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 
 /**
@@ -29,6 +30,8 @@ public class Wingman extends IterativeRobot {
     
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     
+    SendableChooser autonChooser;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -39,10 +42,20 @@ public class Wingman extends IterativeRobot {
         acquirer = Acquirer.getInstance();
         cv = CV.getInstance();
         resetAll();
+        
+        // SendableChooser for auton
+        autonChooser = new SendableChooser();
+        autonChooser.addDefault("1 - Wait for hot goal, shoot, and drive forward", Integer.valueOf(1));
+        autonChooser.addObject("2 - Wait for hot goal, shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(2));
+        autonChooser.addObject("3 - Shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(3));
+        autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));
+        SmartDashboard.putData("Autonomous routine", autonChooser);
     }
 
     public void autonomousInit() {
         resetAll();
+        Integer selection = (Integer) autonChooser.getSelected();
+        Autonomous.auton(selection.intValue());
     }
     
     public void teleopInit() {
@@ -53,7 +66,6 @@ public class Wingman extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-
     }
 
     /**
@@ -78,6 +90,7 @@ public class Wingman extends IterativeRobot {
         shooter.reset();
         drivetrain.reset();
         acquirer.reset();
+        // Note: CV does not have a reset() method
     }
     
 }
