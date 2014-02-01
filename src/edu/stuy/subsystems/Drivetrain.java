@@ -37,8 +37,8 @@ public class Drivetrain {
         drivetrain.setSafetyEnabled(false);
         gyro = new Gyro(Constants.GYRO_CHANNEL);
         
-        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_A_LEFT, Constants.ENCODER_CHANNEL_B_LEFT);
-        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_A_RIGHT, Constants.ENCODER_CHANNEL_B_LEFT);
+        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
+        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
         encoderLeft.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
         encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
         encoderLeft.start();

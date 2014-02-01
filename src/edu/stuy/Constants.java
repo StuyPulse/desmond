@@ -24,10 +24,8 @@ public class Constants {
 
     /* GPIO */
     public static final int BALL_SENSOR_CHANNEL = 1;
-    public static final int ENCODER_CHANNEL_A_LEFT = 2;
-    public static final int ENCODER_CHANNEL_B_LEFT = 3;
-    public static final int ENCODER_CHANNEL_A_RIGHT = 4;
-    public static final int ENCODER_CHANNEL_B_RIGHT = 5;
+    public static final int ENCODER_CHANNEL_A = 2;
+    public static final int ENCODER_CHANNEL_B = 5;
     
     /* ENCODER */
     public static final int PULSES_PER_REVOLUTION = 360;
