@@ -87,8 +87,17 @@ public class Autonomous {
     // Drive forward
     public static void driveForward() {
         Acquirer.getInstance().rotateUp();
+        // These numbers will require tuning
+        Drivetrain.getInstance().tankDrive(0.25, 0.25);
+        Timer.delay(0.25);
+        Drivetrain.getInstance().tankDrive(0.5, 0.5);
+        Timer.delay(0.25);
+        Drivetrain.getInstance().tankDrive(0.75, 0.75);
+        Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(1, 1);
-        Timer.delay(1.0);
+        Timer.delay(0.25);
+        Drivetrain.getInstance().tankDrive(0.5, 0.5);
+        Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
