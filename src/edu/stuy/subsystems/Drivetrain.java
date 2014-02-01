@@ -28,7 +28,8 @@ public class Drivetrain {
     private RobotDrive drivetrain;
     PIDController forwardController;
     PIDController backwardController;
-    private Encoder encoder;
+    private Encoder encoderRight;
+    private Encoder encoderLeft;
     
     private Drivetrain() {
         
@@ -36,9 +37,14 @@ public class Drivetrain {
         drivetrain.setSafetyEnabled(false);
         gyro = new Gyro(Constants.GYRO_CHANNEL);
         
-        encoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
-        encoder.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
-        encoder.start();
+        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_RIGHT_A, Constants.ENCODER_CHANNEL_RIGHT_B);
+        encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
+        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_LEFT_A, Constants.ENCODER_CHANNEL_LEFT_B);
+        encoderLeft.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
+        encoderRight.start();
+        encoderLeft.start();
+        encoderRight.reset();
+        encoderLeft.reset();
     }
     
     public static Drivetrain getInstance() {
@@ -53,7 +59,15 @@ public class Drivetrain {
     }
     
     public void tankDrive(Gamepad gamepad) {
-        tankDrive(gamepad.getLeftY(), gamepad.getRightY());
+        double right = gamepad.getRightY();
+        double left = gamepad.getLeftY();
+        if (gamepad.getRightBumper()) {
+            right *= 0.9;
+        }
+        if (gamepad.getLeftBumper()) {
+            left *= 0.9;
+        }
+        tankDrive(left, right);
     }
     
     public void reset() {
@@ -69,16 +83,21 @@ public class Drivetrain {
         gyro.reset();
     }
     
-    public double getEnc() {
-        return encoder.getDistance();
+    public double getLeftEnc() {
+        return encoderLeft.getDistance();
+    }
+    
+    public double getRightEnc() {
+        return encoderRight.getDistance();
     }
 
     public void resetEncoders() {
-        encoder.reset();
+        encoderRight.reset();
+        encoderLeft.reset();
     }
 
     public double getAvgDistance() {
-        return getEnc();
+        return (getLeftEnc() + getRightEnc()) / 2;
     }
     
     public void dashboardPIDUpdate() {
