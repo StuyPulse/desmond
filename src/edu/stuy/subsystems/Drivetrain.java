@@ -28,8 +28,7 @@ public class Drivetrain {
     private RobotDrive drivetrain;
     PIDController forwardController;
     PIDController backwardController;
-    private Encoder encoderRight;
-    private Encoder encoderLeft;
+    private Encoder encoder;
     
     private Drivetrain() {
         
@@ -37,12 +36,9 @@ public class Drivetrain {
         drivetrain.setSafetyEnabled(false);
         gyro = new Gyro(Constants.GYRO_CHANNEL);
         
-        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
-        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
-        encoderLeft.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
-        encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
-        encoderLeft.start();
-        encoderRight.start();
+        encoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
+        encoder.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
+        encoder.start();
     }
     
     public static Drivetrain getInstance() {
@@ -73,21 +69,16 @@ public class Drivetrain {
         gyro.reset();
     }
     
-    public double getLeftEnc() {
-        return encoderLeft.getDistance();
+    public double getEnc() {
+        return encoder.getDistance();
     }
 
-    public double getRightEnc() {
-        return encoderRight.getDistance();
-    }
-    
     public void resetEncoders() {
-        encoderLeft.reset();
-        encoderRight.reset();
+        encoder.reset();
     }
 
     public double getAvgDistance() {
-        return getRightEnc();
+        return getEnc();
     }
     
     public void dashboardPIDUpdate() {

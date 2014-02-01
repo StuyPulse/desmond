@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.Talon;
  * @author abdullahfahad
  */
 public class Shooter {
+    public static final double POSITION_ONE = 0.1;
+    public static final double POSITION_TWO = 0.0;
      private Talon shootingWinch;
      private Encoder winchEncoder;
      private static Shooter instance;
@@ -46,10 +48,10 @@ public class Shooter {
          if (readyToShoot()) {
             int angle = getAngle();
             if(angle <= (Constants.DEGREES_WINCH_RELEASE/2)) {
-               shootingWinch.set(0.1);
+               shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
             }
             else {
-               shootingWinch.set(0.0);
+               shootingWinch.set(Constants.SHOOTER_POSITON_TWO);
             }
          }
      }
@@ -57,10 +59,10 @@ public class Shooter {
      public void retractWinch() {
          int angle = getAngle();
          if (angle >= Constants.DEGREES_WINCH_RETRACT/2) {
-            shootingWinch.set(0.1);
+            shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
          }
          else {
-            shootingWinch.set(0.0);
+            shootingWinch.set(Constants.SHOOTER_POSITON_TWO);
          }
      }
      
