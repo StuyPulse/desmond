@@ -63,7 +63,7 @@ public class Autonomous {
             Shooter.getInstance().releaseWinch();
         }
         else {
-            Timer.delay(5.0)
+            Timer.delay(5.0);
             Shooter.getInstance().releaseWinch();
         }
         Timer.delay(0.5);
