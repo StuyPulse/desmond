@@ -75,9 +75,9 @@ public class Wingman extends IterativeRobot {
     public void teleopPeriodic() {
         SmartDashboard.putNumber("Angle", shooter.getAngle());
         SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
-        acquirer.manualGamepadControl(rightPad);
-        shooter.manualGamepadControl(rightPad);
-        drivetrain.tankDrive(leftPad);
+        acquirer.manualGamepadControl(leftPad);
+        shooter.manualGamepadControl(leftPad);
+        drivetrain.tankDrive(rightPad);
     }
     
     /**

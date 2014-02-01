@@ -59,7 +59,7 @@ public class Constants {
     public static final String CV_IP = "10.6.94.14";
     
     // SHOOTER constants
-    public static final double SHOOTER_POSITION_ONE = 0.1;
-    public static final double SHOOTER_POSITION_TWO = 0.0;
+    public static final double SHOOTER_WINCH_SPEED_ONE = 0.1;
+    public static final double SHOOTER_WINCH_SPEED_TWO = 0.0;
     
 }

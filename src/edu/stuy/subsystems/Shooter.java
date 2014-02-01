@@ -48,10 +48,10 @@ public class Shooter {
          if (readyToShoot()) {
             int angle = getAngle();
             if(angle <= (Constants.DEGREES_WINCH_RELEASE/2)) {
-               shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
+               shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
             }
             else {
-               shootingWinch.set(Constants.SHOOTER_POSITION_TWO);
+               shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
             }
          }
      }
@@ -59,10 +59,10 @@ public class Shooter {
      public void retractWinch() {
          int angle = getAngle();
          if (angle >= Constants.DEGREES_WINCH_RETRACT/2) {
-            shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
+            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
          }
          else {
-            shootingWinch.set(Constants.SHOOTER_POSITION_TWO);
+            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
          }
      }
      
