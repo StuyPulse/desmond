@@ -13,8 +13,8 @@ package edu.stuy;
 public class Constants {
     
     /* PWM */
-    public static final int LEFT_MOTOR_CHANNEL = 1;
-    public static final int RIGHT_MOTOR_CHANNEL = 2;
+    public static final int LEFT_MOTOR_CHANNEL = 2;
+    public static final int RIGHT_MOTOR_CHANNEL = 1;
     public static final int ACQUIRER_ROLLER_CHANNEL = 3;
     public static final int SHOOTER_CHANNEL = 4;
     
@@ -28,7 +28,7 @@ public class Constants {
     public static final int ENCODER_CHANNEL_B = 5;
     
     /* ENCODER */
-    public static final int PULSES_PER_REVOLUTION = 360;
+    public static final int PULSES_PER_REVOLUTION = 250; // TO BE CHANGED
     public static final int DEGREES_WINCH_RETRACT = 240;
     public static final int DEGREES_WINCH_RELEASE = 360 - DEGREES_WINCH_RETRACT;
     
