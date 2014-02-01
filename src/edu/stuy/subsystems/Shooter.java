@@ -51,7 +51,7 @@ public class Shooter {
                shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
             }
             else {
-               shootingWinch.set(Constants.SHOOTER_POSITON_TWO);
+               shootingWinch.set(Constants.SHOOTER_POSITION_TWO);
             }
          }
      }
@@ -62,7 +62,7 @@ public class Shooter {
             shootingWinch.set(Constants.SHOOTER_POSITION_ONE);
          }
          else {
-            shootingWinch.set(Constants.SHOOTER_POSITON_TWO);
+            shootingWinch.set(Constants.SHOOTER_POSITION_TWO);
          }
      }
      

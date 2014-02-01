@@ -33,10 +33,11 @@ public class Constants {
     public static final int DEGREES_WINCH_RELEASE = 360 - DEGREES_WINCH_RETRACT;
     
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
-    private static final double ENCODER_PULSE_PER_REV = 360.;
+    private static final double ENCODER_PULSE_PER_REV = 360.0;
     private static final double GEAR_RATIO = 42.0 / 39.0; // TO BE CHANGED
     private static final double WHEEL_RADIUS = 2.0; // TO BE CHANGED
-    public static final double ENCODER_DISTANCE_PER_PULSE = 1 / (ENCODER_PULSE_PER_REV * GEAR_RATIO / ( 2 * Math.PI * WHEEL_RADIUS));
+    private static final double CIRCUMFERENCE = 2 * Math.PI * WHEEL_RADIUS;
+    public static final double ENCODER_DISTANCE_PER_PULSE = CIRCUMFERENCE / (ENCODER_PULSE_PER_REV * GEAR_RATIO);
     
     /* GYRO DRIVE STRAIGHT PID VALUES */
     public static final double PVAL_D = .01; // TO BE CHANGED
@@ -58,6 +59,6 @@ public class Constants {
     
     // SHOOTER constants
     public static final double SHOOTER_POSITION_ONE = 0.1;
-    public static final double SHOOTER_POSITON_TWO = 0.0;
+    public static final double SHOOTER_POSITION_TWO = 0.0;
     
 }
