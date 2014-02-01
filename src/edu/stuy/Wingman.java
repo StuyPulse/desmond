@@ -29,6 +29,7 @@ public class Wingman extends IterativeRobot {
     CV cv;
     
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
+    Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
     
     SendableChooser autonChooser;
     

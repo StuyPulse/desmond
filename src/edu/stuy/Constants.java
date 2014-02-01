@@ -48,6 +48,7 @@ public class Constants {
     public static final int GYRO_CHANNEL = 1;
             
     public static final int GAMEPAD_RIGHT_PORT = 1;
+    public static final int GAMEPAD_LEFT_PORT = 1; 
     
     //CV constants
     public static final int CV_I_DONT_KNOW = 0;
