@@ -35,14 +35,14 @@ public class Autonomous {
     }
     
     public static void auton1(){
-        shooterLogic();
+        shootIfHot();
         driveForward();
     }
     
     public static void auton2() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
-        shooterLogic();
+        shootIfHot();
         finishLoadingNextBall();
         shoot();
         driveForward();
@@ -65,16 +65,14 @@ public class Autonomous {
     }
     
     // Wait for CV to say goal is hot and then shoot
-    public static void shooterLogic() {
+    public static void shootIfHot() {
         if (CV.getInstance().isGoalHot()) {
-            Shooter.getInstance().releaseWinch();
+            shoot();
         }
         else {
             Timer.delay(5.0);
-            Shooter.getInstance().releaseWinch();
+            shoot();
         }
-        Timer.delay(0.5);
-        Shooter.getInstance().retractWinch();
     }
     
     // Shoot without CV
