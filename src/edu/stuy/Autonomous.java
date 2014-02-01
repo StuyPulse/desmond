@@ -28,9 +28,6 @@ public class Autonomous {
             case 3:
                 auton3();
                 break;
-            case 4:
-                auton4();
-                break;
         }
     }
     
@@ -54,10 +51,6 @@ public class Autonomous {
         finishLoadingNextBall();
         shoot();
         driveForward();
-    }
-    
-    public static void auton4() {
-        
     }
     
     public static void auton0() {
