@@ -25,6 +25,7 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
+    CV cv;
     
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     
@@ -36,6 +37,7 @@ public class Wingman extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
+        cv = CV.getInstance();
         resetAll();
     }
 
