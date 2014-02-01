@@ -67,6 +67,7 @@ public class Shooter {
      }
      
      public int getAngle() {
+         // TODO: this code only returns 0, note that all the numbers are ints. Also note that the numerator is being multiplied by 360 (the constant) and divided by 360
          return (int)((winchEncoder.get() % Constants.PULSES_PER_REVOLUTION)/
                Constants.PULSES_PER_REVOLUTION * 360);
      }
@@ -86,12 +87,6 @@ public class Shooter {
          }
          else if (gamepad.getBottomButton()) {
              retractWinch();
-         }
-         else if (gamepad.getLeftButton()) {
-             
-         }
-         else if (gamepad.getRightButton()) {
-             
          }
      }
 }
