@@ -27,7 +27,7 @@ public class Shooter {
      
      private Shooter() {
          shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
-         winchEncoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
+         winchEncoder = new Encoder(Constants.ENCODER_WINCH_CHANNEL_A, Constants.ENCODER_WINCH_CHANNEL_B);
          winchEncoder.start();
          winchEncoder.reset(); 
          ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);

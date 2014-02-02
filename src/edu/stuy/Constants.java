@@ -28,6 +28,8 @@ public class Constants {
     public static final int ENCODER_CHANNEL_LEFT_B = 3;
     public static final int ENCODER_CHANNEL_RIGHT_A = 4;
     public static final int ENCODER_CHANNEL_RIGHT_B = 5;
+    public static final int ENCODER_WINCH_CHANNEL_A = 6;
+    public static final int ENCODER_WINCH_CHANNEL_B = 7;
     
     /* ENCODER */
     public static final int PULSES_PER_REVOLUTION = 250; // TO BE CHANGED
