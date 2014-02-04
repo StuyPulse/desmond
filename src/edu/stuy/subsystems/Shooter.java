@@ -7,6 +7,7 @@
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -19,13 +20,16 @@ import edu.wpi.first.wpilibj.Talon;
 public class Shooter {
     public static final double POSITION_ONE = 0.1;
     public static final double POSITION_TWO = 0.0;
-     private Talon shootingWinch;
-     private Encoder winchEncoder;
-     private static Shooter instance;
-     private DigitalInput ballSensor;
+    
+    private AnalogChannel goalSensor;
+    private Talon shootingWinch;
+    private Encoder winchEncoder;
+    private static Shooter instance;
+    private DigitalInput ballSensor;
      
      
      private Shooter() {
+         goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
          shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
          winchEncoder = new Encoder(Constants.ENCODER_WINCH_CHANNEL_A, Constants.ENCODER_WINCH_CHANNEL_B);
          winchEncoder.start();
@@ -81,6 +85,11 @@ public class Shooter {
          return (angle < 340 && angle > 380-Constants.DEGREES_WINCH_RETRACT);
      }
 
+     public boolean isGoalHot() {
+         double voltage = goalSensor.getAverageVoltage();
+         return (voltage >= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE);
+     }
+     
      public void manualGamepadControl(Gamepad gamepad) {
          if (gamepad.getTopButton()) {
              releaseWinch();
