@@ -45,7 +45,22 @@ public class Autonomous {
         driveForward();
     }
     
-    public static void auton3() {
+    // Auton sets for using Analog light sensor instead of CV
+    public static void auton3(){
+        shootIfHotAnalog();
+        driveForward();
+    }
+    
+    public static void auton4() {
+        readyNextBall();
+        // There may not be enough time to check if the goal is hot AND shoot both balls
+        shootIfHotAnalog();
+        finishLoadingNextBall();
+        shoot();
+        driveForward();
+    }
+    // Auton for dumb firing, without CV/light sensor
+    public static void auton5() {
         readyNextBall();
         shoot();
         finishLoadingNextBall();
