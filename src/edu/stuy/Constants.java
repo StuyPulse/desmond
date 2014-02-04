@@ -13,8 +13,8 @@ package edu.stuy;
 public class Constants {
     
     /* PWM */
-    public static final int LEFT_MOTOR_CHANNEL = 2;
     public static final int RIGHT_MOTOR_CHANNEL = 1;
+    public static final int LEFT_MOTOR_CHANNEL = 2;
     public static final int ACQUIRER_ROLLER_CHANNEL = 3;
     public static final int SHOOTER_CHANNEL = 4;
     
@@ -51,8 +51,9 @@ public class Constants {
     public static final double DVAL_D = .01; // TO BE CHANGED
     
     /* ANALOG INPUT */
+    // Temporary. Port assignments will be supplied by Dan later. 
     public static final int GYRO_CHANNEL = 1;
-            
+    public static final int GOAL_SENSOR_CHANNEL = 1;
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 1; 
     
@@ -67,5 +68,6 @@ public class Constants {
     // SHOOTER constants
     public static final double SHOOTER_WINCH_SPEED_ONE = 0.1;
     public static final double SHOOTER_WINCH_SPEED_TWO = 0.0;
+    public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // To be changed later
     
 }

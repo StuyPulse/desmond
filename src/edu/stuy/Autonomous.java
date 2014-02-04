@@ -17,35 +17,56 @@ public class Autonomous {
     public static void auton(int x){
         switch(x){
             case 0:
-                auton0();
+                auton0(); // Do nothing
                 break;
             case 1:
-                auton1();
+                auton1(); // CV
                 break;
             case 2:
-                auton2();
+                auton2(); // CV
                 break;
             case 3:
-                auton3();
+                auton3(); // Analog light sensor 
+                break;
+            case 4:
+                auton4(); // Analog light sensor 
+                break;
+            case 5:
+                auton5(); //  dumb fire
                 break;
         }
     }
     
     public static void auton1(){
-        shootIfHot();
+        shootIfHotCV();
         driveForward();
     }
     
     public static void auton2() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
-        shootIfHot();
+        shootIfHotCV();
         finishLoadingNextBall();
         shoot();
         driveForward();
     }
     
-    public static void auton3() {
+    // Auton sets for using Analog light sensor instead of CV
+    public static void auton3(){
+        shootIfHotAnalog();
+        driveForward();
+    }
+    
+    public static void auton4() {
+        readyNextBall();
+        // There may not be enough time to check if the goal is hot AND shoot both balls
+        shootIfHotAnalog();
+        finishLoadingNextBall();
+        shoot();
+        driveForward();
+    }
+    // Auton for dumb firing, without CV/light sensor
+    public static void auton5() {
         readyNextBall();
         shoot();
         finishLoadingNextBall();
@@ -58,12 +79,21 @@ public class Autonomous {
     }
     
     // Wait for CV to say goal is hot and then shoot
-    public static void shootIfHot() {
+    public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
             shoot();
         }
         else {
-            Timer.delay(5.0);
+            Timer.delay(5.5);
+            shoot();
+        }
+    }
+    
+    public static void shootIfHotAnalog() {
+        if (Shooter.getInstance().isGoalHot()) {
+            shoot();
+        } else {
+            Timer.delay(5.5);
             shoot();
         }
     }
