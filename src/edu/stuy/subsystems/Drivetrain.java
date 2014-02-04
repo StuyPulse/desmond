@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drivetrain {
     
-    double driveStraightSpeed = 0; // TO BE CHANGED
+    double driveStraightSpeed = 0; // TODO: TO BE CHANGED
    
     private Gyro gyro;
     private static Drivetrain instance;

@@ -18,13 +18,13 @@ import edu.wpi.first.wpilibj.Talon;
 public class Acquirer {
     
     private static Acquirer instance;
-    private Solenoid thingDown;
-    private Solenoid thingUp;
+    private Solenoid pistonExtend;
+    private Solenoid pistonRetract;
     private Talon roller;
  
     public Acquirer() {
-        thingDown = new Solenoid(Constants.THING_DOWN_CHANNEL);
-        thingUp = new Solenoid(Constants.THING_UP_CHANNEL);
+        pistonExtend = new Solenoid(Constants.THING_DOWN_CHANNEL);
+        pistonRetract = new Solenoid(Constants.THING_UP_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
     }
     
@@ -36,13 +36,13 @@ public class Acquirer {
     }
     
     public void rotateDown() {
-        thingDown.set(true);
-        thingUp.set(false);
+        pistonExtend.set(true);
+        pistonRetract.set(false);
     }
     
     public void rotateUp() {
-        thingDown.set(false);
-        thingUp.set(true);
+        pistonExtend.set(false);
+        pistonRetract.set(true);
     }
     
     public void intakeBall() {
