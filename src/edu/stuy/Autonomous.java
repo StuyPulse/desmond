@@ -32,14 +32,14 @@ public class Autonomous {
     }
     
     public static void auton1(){
-        shootIfHot();
+        shootIfHotCV();
         driveForward();
     }
     
     public static void auton2() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
-        shootIfHot();
+        shootIfHotCV();
         finishLoadingNextBall();
         shoot();
         driveForward();
@@ -58,12 +58,21 @@ public class Autonomous {
     }
     
     // Wait for CV to say goal is hot and then shoot
-    public static void shootIfHot() {
+    public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
             shoot();
         }
         else {
-            Timer.delay(5.0);
+            Timer.delay(5.5);
+            shoot();
+        }
+    }
+    
+    public static void shootIfHotAnalog() {
+        if (Shooter.getInstance().isGoalHot()) {
+            shoot();
+        } else {
+            Timer.delay(5.5);
             shoot();
         }
     }
