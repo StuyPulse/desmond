@@ -23,14 +23,16 @@ public class Shooter {
      private Encoder winchEncoder;
      private static Shooter instance;
      private DigitalInput ballSensor;
+     private DigitalInput ballSwitch;
      
      
      private Shooter() {
          shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
-         winchEncoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
+         winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
          winchEncoder.start();
          winchEncoder.reset(); 
          ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
+         ballSwitch = new DigitalInput(Constants.BALL_SWITCH_CHANNEL);
      }
      
      public static Shooter getInstance() {
@@ -74,6 +76,10 @@ public class Shooter {
      
      public boolean hasBall() {
          return ballSensor.get();
+     }
+     
+     public boolean isBallCentered() {
+         return ballSwitch.get();
      }
 
      public boolean readyToShoot() {
