@@ -17,16 +17,22 @@ public class Autonomous {
     public static void auton(int x){
         switch(x){
             case 0:
-                auton0();
+                auton0(); // Do nothing
                 break;
             case 1:
-                auton1();
+                auton1(); // CV
                 break;
             case 2:
-                auton2();
+                auton2(); // CV
                 break;
             case 3:
-                auton3();
+                auton3(); // Analog light sensor 
+                break;
+            case 4:
+                auton4(); // Analog light sensor 
+                break;
+            case 5:
+                auton5(); //  dumb fire
                 break;
         }
     }
