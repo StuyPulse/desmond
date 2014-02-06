@@ -21,21 +21,24 @@ public class Shooter {
     public static final double POSITION_ONE = 0.1;
     public static final double POSITION_TWO = 0.0;
     
-    private AnalogChannel goalSensor;
-    private Talon shootingWinch;
-    private Encoder winchEncoder;
-    private static Shooter instance;
-    private DigitalInput ballSensor;
-    private DigitalInput ballSwitch;
+     private AnalogChannel goalSensor;
+     private Talon shootingWinch;
+     //private Encoder winchEncoder;
+     private static Shooter instance;
+     private DigitalInput ballSensor;
+     private DigitalInput ballCenteredSwitch;
+     private DigitalInput catapultRetractedSwitch;
+
      
      private Shooter() {
          goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
          shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
-         winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
+         /*winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
          winchEncoder.start();
-         winchEncoder.reset(); 
+         winchEncoder.reset(); */
          ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
-         ballSwitch = new DigitalInput(Constants.BALL_SWITCH_CHANNEL);
+         ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
+         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
      }
      
      public static Shooter getInstance() {
@@ -51,43 +54,48 @@ public class Shooter {
      
      public void releaseWinch() {
          if (readyToShoot()) {
-            int angle = getAngle();
-            if(angle <= (Constants.DEGREES_WINCH_RELEASE/2)) {
-               shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
-            }
-            else {
-               shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
-            }
-         }
-     }
-     
-     public void retractWinch() {
-         int angle = getAngle();
-         if (angle >= Constants.DEGREES_WINCH_RETRACT/2) {
+            //int angle = getAngle();
+            //if(angle <= (Constants.DEGREES_WINCH_RELEASE/2)) {
             shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
-         }
-         else {
+         } else {
             shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
          }
      }
      
+     public void retractWinch() {
+         //int angle = getAngle();
+         //if (angle >= Constants.DEGREES_WINCH_RETRACT/2) {
+         if(isFullyRetracted()){
+            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
+         } else {
+            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
+         }
+     }
+     /*
      public int getAngle() {
          double pulses = winchEncoder.get() % Constants.PULSES_PER_REVOLUTION;
          double angle = pulses / Constants.PULSES_PER_REVOLUTION * 360;
          return (int) angle;
      }
+     */
      
      public boolean hasBall() {
          return ballSensor.get();
      }
      
      public boolean isBallCentered() {
-         return ballSwitch.get();
+         return !ballCenteredSwitch.get(); //closed switch is false
      }
 
+     public boolean isFullyRetracted() {
+         return !catapultRetractedSwitch.get(); //closed switch is false
+     }
+     
      public boolean readyToShoot() {
-         int angle = getAngle();
+         /*int angle = getAngle();
          return (angle < 340 && angle > 380-Constants.DEGREES_WINCH_RETRACT);
+         */
+         return isFullyRetracted();
      }
 
      public boolean isGoalHot() {

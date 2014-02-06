@@ -18,9 +18,10 @@ public class Constants {
     public static final int ENCODER_CHANNEL_LEFT_B = 3;
     public static final int ENCODER_CHANNEL_RIGHT_A = 4;
     public static final int ENCODER_CHANNEL_RIGHT_B = 5;
-    public static final int BALL_SWITCH_CHANNEL = 6;
-    public static final int WINCH_ENCODER_CHANNEL_A = 7;
-    public static final int WINCH_ENCODER_CHANNEL_B = 8;
+    public static final int BALL_CENTERED_SWITCH_CHANNEL = 6;
+    //public static final int WINCH_ENCODER_CHANNEL_A = 7;
+    //public static final int WINCH_ENCODER_CHANNEL_B = 8;
+    public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
     
     /* ENCODER */
     public static final int PULSES_PER_REVOLUTION = 250; // TO BE CHANGED
