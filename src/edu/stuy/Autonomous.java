@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package edu.stuy;
+
 import edu.stuy.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
 
-/**
- *
- * @author abdullahfahad
- */
 public class Autonomous {
     
-    public static void auton(int x){
-        switch(x){
+    public static void auton(int x) {
+        switch(x) {
             case 0:
                 auton0(); // Do nothing
                 break;
@@ -32,12 +23,18 @@ public class Autonomous {
                 auton4(); // Analog light sensor 
                 break;
             case 5:
-                auton5(); //  dumb fire
+                auton5(); // Dumb fire
                 break;
         }
     }
+
+    // Empty auton for testing purposes
+    public static void auton0() {
+        // Do nothing
+    }
     
-    public static void auton1(){
+    // Auton set that relies on CV
+    public static void auton1() {
         shootIfHotCV();
         driveForward();
     }
@@ -52,7 +49,7 @@ public class Autonomous {
     }
     
     // Auton sets for using Analog light sensor instead of CV
-    public static void auton3(){
+    public static void auton3() {
         shootIfHotAnalog();
         driveForward();
     }
@@ -65,6 +62,7 @@ public class Autonomous {
         shoot();
         driveForward();
     }
+
     // Auton for dumb firing, without CV/light sensor
     public static void auton5() {
         readyNextBall();
@@ -74,9 +72,6 @@ public class Autonomous {
         driveForward();
     }
     
-    public static void auton0() {
-        //do nothing
-    }
     
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
