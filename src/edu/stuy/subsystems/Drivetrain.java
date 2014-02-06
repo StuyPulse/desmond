@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
@@ -14,14 +8,10 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-/**
- *
- * @author abdullahfahad, r4, danny
- */
 
 public class Drivetrain {
     
-    double driveStraightSpeed = 0; // TODO: TO BE CHANGED
+    double driveStraightSpeed = 0; // TODO: To be implemented during driver tuning
    
     private Gyro gyro;
     private static Drivetrain instance;

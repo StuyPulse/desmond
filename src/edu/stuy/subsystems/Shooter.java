@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
@@ -13,10 +7,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 
-/**
- *
- * @author abdullahfahad
- */
 public class Shooter {
     public static final double POSITION_ONE = 0.1;
     public static final double POSITION_TWO = 0.0;

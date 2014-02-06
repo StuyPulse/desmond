@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.stuy.subsystems;
 
 import edu.stuy.util.NetworkIO;
 import edu.stuy.Constants;
 import edu.wpi.first.wpilibj.Timer;
 
-/**
- *
- * @author home
- */
 public class CV {
 
     private static CV instance;
@@ -35,7 +26,7 @@ public class CV {
         return instance;
     }
 
-    //TODO: implement
+    // TODO: Implement wrapper for Josh's CV code.
     public boolean isGoalHot() {
         int status = net.getCurrent();
         if (!(status == Constants.CV_I_DONT_KNOW)) {
@@ -43,6 +34,5 @@ public class CV {
             status = net.getCurrent();
         }
         return status==Constants.CV_TARGET_IS_HOT;
-
     }
 }
