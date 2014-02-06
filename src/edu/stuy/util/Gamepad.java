@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.stuy.util;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -12,8 +8,8 @@ import edu.wpi.first.wpilibj.Joystick;
  * for this class to work. This class probably also works with the Logitech
  * Wireless Gamepad F710 (untested, but it has the exact same layout as the
  * F310).
- * @author kevin
- */
+ **/
+
 public class Gamepad extends Joystick {
     public Gamepad(int port) {
         super(port);
