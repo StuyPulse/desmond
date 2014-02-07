@@ -22,21 +22,31 @@ public class NetworkIO {
     public NetworkIO() {
         mostRecentOut = Constants.CV_I_DONT_KNOW;
         try {
+            System.out.println("First thing, creating socket");
             SocketConnection requestSocket = (SocketConnection) Connector.open("socket://" + Constants.CV_IP + ":" + Constants.CV_SERVER_PORT);
+            System.out.println("Setting socket options.");
             requestSocket.setSocketOption(SocketConnection.LINGER, 5);
+            System.out.println("Opening input stream.");
             in = new DataInputStream(requestSocket.openInputStream());
+            System.out.println("Opening output stream.");
             out = new DataOutputStream(requestSocket.openOutputStream());
+            System.out.println("Flushing output stream.");
             out.flush();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void run() {
         try {
             if (in.available() > 0) {
+                System.out.println("Available: " + in.available());
                 mostRecentOut = in.readInt();
+                System.out.println("Out: " + mostRecentOut);
+                sendMessage("blerp");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

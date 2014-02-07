@@ -48,12 +48,13 @@ public class Constants {
     public static final int GAMEPAD_LEFT_PORT = 1; 
     
     //CV constants
+    //Robot and Pi are different endian, so these are the values flipped
     public static final int CV_I_DONT_KNOW = 0;
-    public static final int CV_TARGET_IS_HOT = 1;
-    public static final int CV_TARGET_ISNOT_HOT = 2;
+    public static final int CV_TARGET_IS_HOT = 16777216;
+    public static final int CV_TARGET_ISNOT_HOT = 33554432;
     public static final int CV_TIMEOUT = 3000;
-    public static final int CV_SERVER_PORT = 6940;
-    public static final String CV_IP = "10.6.94.14";
+    public static final int CV_SERVER_PORT = 12345;
+    public static final String CV_IP = "10.6.94.10";
     
     // SHOOTER constants
     public static final double SHOOTER_WINCH_SPEED_ONE = 0.1;

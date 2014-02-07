@@ -10,13 +10,17 @@ public class CV {
     private static NetworkIO net;
 
     public CV() {
+        System.out.println("CV constructor start");
 
-        Thread t = new Thread(new Runnable() {
-            public void run() {
+        //Thread t = new Thread(new Runnable() {
+         //   public void run() {
+                System.out.println("Instantiating net now!");
                 CV.net = new NetworkIO();
-            }
-        });
-        t.start();
+                System.out.println("I FINISHED INSTANTIATING NET!!");
+        //    }
+        //});
+        //t.start();
+        System.out.println("CV constructor end");
     }
 
     public static CV getInstance() {
@@ -28,6 +32,8 @@ public class CV {
 
     // TODO: Implement wrapper for Josh's CV code.
     public boolean isGoalHot() {
+        System.out.println("Start of isGoalHot");
+        while (net == null) { /*System.out.println("Net is null. :(");*/}
         int status = net.getCurrent();
         if (!(status == Constants.CV_I_DONT_KNOW)) {
             Timer.delay(0.5);
