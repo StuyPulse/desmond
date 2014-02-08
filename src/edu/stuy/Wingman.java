@@ -25,6 +25,7 @@ public class Wingman extends IterativeRobot {
         cv = CV.getInstance();
         resetAll();
         
+
         // SendableChooser for auton
         autonChooser = new SendableChooser();
         autonChooser.addDefault("1 - Wait for hot goal, shoot, and drive forward", Integer.valueOf(1));
@@ -46,7 +47,7 @@ public class Wingman extends IterativeRobot {
     
     // This function is called periodically during autonomous
     public void autonomousPeriodic() {
-        // To be added
+        SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
     }
 
     // This function is called periodically during operator control
