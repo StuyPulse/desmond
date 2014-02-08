@@ -12,10 +12,7 @@ install:
     sudo apt-get -qq install unzip
 
 before_script:
-    wget -q frc.justink.im/frc.zip
-    wget -q frc.justink.im/sunspotfrcsdk.zip
-    unzip frc.zip
-    unzip sunspotfrcsdk.zip
+    wget -q frc.justink.im/frc.zip; wget -q frc.justink.im/sunspotfrcsdk.zip; unzip frc.zip; unzip sunspotfrcsdk.zip
 
 script:
     ant deploy build
