@@ -10,8 +10,10 @@ public class Constants {
     public static final int SHOOTER_CHANNEL = -1;
 
     /* SOLENOID */
-    public static final int PISTON_EXTEND_CHANNEL = -1;
-    public static final int PISTON_RETRACT_CHANNEL = -1;
+    public static final int PISTON_EXTEND_CHANNEL = 2;
+    public static final int PISTON_RETRACT_CHANNEL = 3;
+    public static final int PRESSURE_SWITCH_CHANNEL = 5;
+    public static final int COMPRESSOR_RELAY_CHANNEL = 1;
 
     /* GPIO */
     public static final int BALL_SENSOR_CHANNEL = -1;
@@ -45,8 +47,8 @@ public class Constants {
     // Temporary. Port assignments will be supplied by Dan later. 
     public static final int GYRO_CHANNEL = -1;
     public static final int GOAL_SENSOR_CHANNEL = -1;
-    public static final int GAMEPAD_RIGHT_PORT = -1;
-    public static final int GAMEPAD_LEFT_PORT = -1;
+    public static final int GAMEPAD_RIGHT_PORT = 1;
+    public static final int GAMEPAD_LEFT_PORT = 2;
 
     //CV constants
     //Robot and Pi are different endian, so these are the values flipped

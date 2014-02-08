@@ -1,0 +1,31 @@
+[1mdiff --git a/nbproject/project.xml b/nbproject/project.xml[m
+[1mindex 34f254c..493e484 100644[m
+[1m--- a/nbproject/project.xml[m
+[1m+++ b/nbproject/project.xml[m
+[36m@@ -1,11 +1,10 @@[m
+[31m-<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8" standalone="no"?>[m
+ <!--[m
+ [m
+     This is a sample netbeans project file for a Sun Spot Application project.[m
+     You may edit it freely, it doesn't affect the ant-powered build.[m
+ [m
+[31m- -->[m
+[31m-<project xmlns="http://www.netbeans.org/ns/project/1">[m
+[32m+[m[32m --><project xmlns="http://www.netbeans.org/ns/project/1">[m
+     <type>org.netbeans.modules.ant.freeform</type>[m
+     <configuration>[m
+         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">[m
+[36m@@ -83,8 +82,8 @@[m
+         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">[m
+             <compilation-unit>[m
+                 <package-root>src</package-root>[m
+[31m-                <classpath mode="boot">${sunspot.home}/lib/squawk.jar</classpath>[m
+[31m-                <classpath mode="compile">${sunspot.home}/lib/wpilibj.jar:${sunspot.home}/lib/networktables-crio.jar</classpath>[m
+[32m+[m[32m                <classpath mode="boot">${sunspot.home}\lib\squawk.jar</classpath>[m
+[32m+[m[32m                <classpath mode="compile">${sunspot.home}\lib\wpilibj.jar;${sunspot.home}\lib\networktables-crio.jar</classpath>[m
+                 <built-to>build</built-to>[m
+                 <source-level>1.4</source-level>[m
+             </compilation-unit>[m
+warning: LF will be replaced by CRLF in nbproject/project.xml.
+The file will have its original line endings in your working directory.
