@@ -18,7 +18,7 @@ public class Acquirer {
         pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
         pistonRetract = new Solenoid(Constants.PISTON_RETRACT_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
-        compressor = new Compressor(Constants.PRESSURE_SWITCH_CHANNEL, Constants.COMPRESSOR_RELAY_CHANNEL)
+        compressor = new Compressor(Constants.PRESSURE_SWITCH_CHANNEL, Constants.COMPRESSOR_RELAY_CHANNEL);
     }
     
     public static Acquirer getInstance() {
@@ -69,17 +69,20 @@ public class Acquirer {
     }
     
     public void manualGamepadControl(Gamepad gamepad) {
-        if (gamepad.getDPadLeft()) {
+        if (gamepad.getDPadDown()) {
             ejectBall();
         }
-        else if (gamepad.getDPadRight()) {
+        else if (gamepad.getDPadUp()) {
             intakeBall();
         }
-        else if (gamepad.getDPadDown()) {
+        else if (gamepad.getTopButton()) {
             rotateDown();
         }
-        else if (gamepad.getDPadUp()) {
+        else if (gamepad.getLeftButton()) {
             rotateUp();
+        }
+        else {
+            stopRoller();
         }
     }
     

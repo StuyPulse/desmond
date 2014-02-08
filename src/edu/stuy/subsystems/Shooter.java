@@ -61,6 +61,9 @@ public class Shooter {
             shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
          }
      }
+     public void stopWinch() {
+         shootingWinch.set(0);
+     }
      /*
      public int getAngle() {
          double pulses = winchEncoder.get() % Constants.PULSES_PER_REVOLUTION;
@@ -94,10 +97,10 @@ public class Shooter {
      }
      
      public void manualGamepadControl(Gamepad gamepad) {
-         if (gamepad.getTopButton()) {
+         if (gamepad.getRightBumper()) {
              releaseWinch();
          }
-         else if (gamepad.getBottomButton()) {
+         else if (gamepad.getLeftBumper()) {
              retractWinch();
          }
      }
