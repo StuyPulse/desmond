@@ -53,10 +53,11 @@ public class Wingman extends IterativeRobot {
     // This function is called periodically during operator control
     public void teleopPeriodic() {
         //SmartDashboard.putNumber("Angle", shooter.getAngle());
-        SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
+        SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());  
         acquirer.manualGamepadControl(leftPad);
         acquirer.startCompressor();
         shooter.manualGamepadControl(leftPad);
+        shooter.testChooChoo(rightPad);
         drivetrain.tankDrive(rightPad);
     }
     
