@@ -55,6 +55,7 @@ public class Wingman extends IterativeRobot {
         //SmartDashboard.putNumber("Angle", shooter.getAngle());
         SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
         acquirer.manualGamepadControl(leftPad);
+        acquirer.startCompressor();
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
     }

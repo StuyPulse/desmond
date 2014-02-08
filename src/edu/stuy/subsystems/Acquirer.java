@@ -55,12 +55,12 @@ public class Acquirer {
         stopRoller();
     }
     
-    public boolean isEnoughPressure() {
+    public boolean hasEnoughPressure() {
         return compressor.getPressureSwitchValue();
     }
     
     public void startCompressor() {
-        if (isEnoughPressure()) {
+        if (hasEnoughPressure()) {
             compressor.stop();
         }
         else {
