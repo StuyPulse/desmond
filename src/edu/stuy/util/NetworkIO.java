@@ -40,7 +40,6 @@ public class NetworkIO {
             out.flush();
             setup = true;
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }
@@ -55,7 +54,6 @@ public class NetworkIO {
                 sendMessage("blerp");
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

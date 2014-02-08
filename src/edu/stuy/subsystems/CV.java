@@ -12,14 +12,14 @@ public class CV {
     public CV() {
         System.out.println("CV constructor start");
 
-        //Thread t = new Thread(new Runnable() {
-         //   public void run() {
+        Thread t = new Thread(new Runnable() {
+           public void run() {
                 System.out.println("Instantiating net now!");
                 CV.net = new NetworkIO();
                 System.out.println("I FINISHED INSTANTIATING NET!!");
-        //    }
-        //});
-        //t.start();
+            }
+        });
+        t.start();
         System.out.println("CV constructor end");
     }
 
