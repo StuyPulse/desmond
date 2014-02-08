@@ -100,6 +100,9 @@ public class Shooter {
          if (gamepad.getRightBumper()) {
              releaseWinch();
          }
+         else if (gamepad.getStartButton()) {
+             stopWinch();
+         }
          else if (gamepad.getLeftBumper()) {
              retractWinch();
          }
