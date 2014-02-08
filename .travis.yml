@@ -16,3 +16,6 @@ before_script:
     wget -q frc.justink.im/sunspotfrcsdk.zip
     unzip frc.zip
     unzip sunspotfrcsdk.zip
+
+script:
+    ant deploy build
