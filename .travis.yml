@@ -1,0 +1,18 @@
+language: java
+jdk:
+    - oraclejdk7
+
+env:
+    CLASSPATH=$CLASSPATH:jars
+
+before_install:
+    sudo apt-get -qq update
+
+install:
+    sudo apt-get -qq install unzip
+
+before_script:
+    wget -q frc.justink.im/frc.zip
+    wget -q frc.justink.im/sunspotfrcsdk.zip
+    unzip frc.zip
+    unzip sunspotfrcsdk.zip
