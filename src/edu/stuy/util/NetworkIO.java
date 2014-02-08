@@ -18,9 +18,15 @@ public class NetworkIO {
     private DataInputStream in;
     private String message;
     private int mostRecentOut;
+    private boolean setup;
 
     public NetworkIO() {
+        setup = false;
         mostRecentOut = Constants.CV_I_DONT_KNOW;
+        initializeConnection();
+    }
+    
+    public void initializeConnection() {
         try {
             System.out.println("First thing, creating socket");
             SocketConnection requestSocket = (SocketConnection) Connector.open("socket://" + Constants.CV_IP + ":" + Constants.CV_SERVER_PORT);
@@ -32,17 +38,20 @@ public class NetworkIO {
             out = new DataOutputStream(requestSocket.openOutputStream());
             System.out.println("Flushing output stream.");
             out.flush();
+            setup = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+    }
+    
     public void run() {
         try {
-            if (in.available() > 0) {
-                System.out.println("Available: " + in.available());
+            if (!setup) {
+                initializeConnection();
+            }
+            if (setup && in.available() > 0) {
                 mostRecentOut = in.readInt();
-                System.out.println("Out: " + mostRecentOut);
                 sendMessage("blerp");
             }
         } catch (Exception e) {
