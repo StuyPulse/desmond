@@ -13,8 +13,8 @@ public class Acquirer {
     private Talon roller;
  
     public Acquirer() {
-        pistonExtend = new Solenoid(Constants.THING_DOWN_CHANNEL);
-        pistonRetract = new Solenoid(Constants.THING_UP_CHANNEL);
+        pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
+        pistonRetract = new Solenoid(Constants.PISTON_RETRACT_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
     }
     
