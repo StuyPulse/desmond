@@ -16,3 +16,6 @@ before_script:
 
 script:
     ant deploy build -Dsunspot.home=sunspotfrcsdk
+
+notifications:
+    irc: "irc.freenode.org##yulli"
