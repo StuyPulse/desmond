@@ -107,4 +107,13 @@ public class Shooter {
              retractWinch();
          }
      }
+     
+     public void testChooChoo(Gamepad gamepad){
+         if (gamepad.getLeftButton()){
+             shootingWinch.set(1);
+         }
+         else if (gamepad.getBottomButton()){
+             shootingWinch.set(0);
+         }
+     }
 }
