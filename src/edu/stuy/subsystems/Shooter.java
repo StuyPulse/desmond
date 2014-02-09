@@ -106,6 +106,12 @@ public class Shooter {
          else if (gamepad.getLeftBumper()) {
              retractWinch();
          }
+         else if (gamepad.getLeftY() > 0){
+             chooChoo.set(gamepad.getLeftY());
+         }
+         else if (gamepad.getLeftY() <= 0){
+             chooChoo.set(0);
+         }
      }
      
      public void testChooChoo(Gamepad gamepad){
