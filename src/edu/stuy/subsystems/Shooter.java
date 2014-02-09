@@ -122,12 +122,4 @@ public class Shooter {
         retractWinch();
     }
 
-    public void testChooChoo(Gamepad gamepad) {
-        if (gamepad.getLeftButton()) {
-            chooChoo.set(1);
-        } else if (gamepad.getBottomButton()) {
-            chooChoo.set(0);
-        }
-    }
-
 }
