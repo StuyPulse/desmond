@@ -7,10 +7,12 @@ import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter {
 
     private boolean retracting = false;
+    private boolean automaticRetract = false;
     private AnalogChannel goalSensor;
     private Talon chooChoo;
     //private Encoder winchEncoder;
@@ -47,6 +49,9 @@ public class Shooter {
             chooChoo.set(1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
+            if (automaticRetract) {
+                initiateWinch();
+            }
         }
     }
 
@@ -121,5 +126,10 @@ public class Shooter {
         } else if (gamepad.getBottomButton()) {
             chooChoo.set(0);
         }
+    }
+    
+    public void dashboardOptionForAutomatic() {
+        SmartDashboard.putBoolean("Automatic Retract after firing?", automaticRetract);
+        automaticRetract = SmartDashboard.getBoolean("Automatic Retract after firing?");
     }
 }
