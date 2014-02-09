@@ -8,7 +8,7 @@ public class Constants {
     public static final int LEFT_MOTOR_CHANNEL = 10;
     public static final int ACQUIRER_ROLLER_CHANNEL = 8;
     public static final int SHOOTER_CHANNEL = 7;
-
+ 
     /* SOLENOID */
     public static final int PISTON_EXTEND_CHANNEL = 2;
     public static final int PISTON_RETRACT_CHANNEL = 3;

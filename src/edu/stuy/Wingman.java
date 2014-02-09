@@ -11,7 +11,7 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    CV cv;
+    //CV cv;
     
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
@@ -22,7 +22,7 @@ public class Wingman extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        cv = CV.getInstance();
+        //cv = CV.getInstance();
         resetAll();
         
 
@@ -47,7 +47,7 @@ public class Wingman extends IterativeRobot {
     
     // This function is called periodically during autonomous
     public void autonomousPeriodic() {
-        SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
+        //SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
     }
 
     // This function is called periodically during operator control
