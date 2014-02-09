@@ -12,7 +12,7 @@ public class Shooter {
     public static final double POSITION_TWO = 0.0;
     
      private AnalogChannel goalSensor;
-     private Talon shootingWinch;
+     private Talon chooChoo;
      //private Encoder winchEncoder;
      private static Shooter instance;
      private DigitalInput ballSensor;
@@ -22,7 +22,7 @@ public class Shooter {
      
      private Shooter() {
          goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
-         shootingWinch = new Talon(Constants.SHOOTER_CHANNEL);
+         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
          /*winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
          winchEncoder.start();
          winchEncoder.reset(); */
@@ -46,9 +46,9 @@ public class Shooter {
          if (readyToShoot()) {
             //int angle = getAngle();
             //if(angle <= (Constants.DEGREES_WINCH_RELEASE/2)) {
-            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
+            chooChoo.set(Constants.SHOOTER_WINCH_SPEED_ONE);
          } else {
-            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
+            chooChoo.set(Constants.SHOOTER_WINCH_SPEED_TWO);
          }
      }
      
@@ -56,13 +56,13 @@ public class Shooter {
          //int angle = getAngle();
          //if (angle >= Constants.DEGREES_WINCH_RETRACT/2) {
          if(isFullyRetracted()){
-            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_ONE);
+            chooChoo.set(Constants.SHOOTER_WINCH_SPEED_ONE);
          } else {
-            shootingWinch.set(Constants.SHOOTER_WINCH_SPEED_TWO);
+            chooChoo.set(Constants.SHOOTER_WINCH_SPEED_TWO);
          }
      }
      public void stopWinch() {
-         shootingWinch.set(0);
+         chooChoo.set(0);
      }
      /*
      public int getAngle() {
@@ -110,10 +110,10 @@ public class Shooter {
      
      public void testChooChoo(Gamepad gamepad){
          if (gamepad.getLeftButton()){
-             shootingWinch.set(1);
+             chooChoo.set(1);
          }
          else if (gamepad.getBottomButton()){
-             shootingWinch.set(0);
+             chooChoo.set(0);
          }
      }
 }
