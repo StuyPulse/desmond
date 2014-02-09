@@ -73,4 +73,8 @@ public class NetworkIO {
         run();
         return getMostRecent();
     }
+    
+    public boolean getConnected() {
+        return setup;
+    }
 }

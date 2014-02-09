@@ -53,6 +53,8 @@ public class Wingman extends IterativeRobot {
     public void teleopPeriodic() {
         //SmartDashboard.putNumber("Angle", shooter.getAngle());
         SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
+        SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
+        SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         shooter.testChooChoo(rightPad);
