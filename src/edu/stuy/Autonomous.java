@@ -1,4 +1,3 @@
-
 package edu.stuy;
 
 import edu.stuy.subsystems.*;
@@ -96,9 +95,9 @@ public class Autonomous {
     
     // Shoot without CV
     public static void shoot() {
-        Shooter.getInstance().releaseWinch();
+        Shooter.getInstance().fireBall();
         Timer.delay(0.5);
-        Shooter.getInstance().retractWinch();
+        Shooter.getInstance().initiateWinch();
     }
     
     // Drive forward
