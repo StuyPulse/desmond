@@ -79,7 +79,7 @@ public class Autonomous {
             shoot();
         }
         else {
-            Timer.delay(5.5);
+            Timer.delay(4.5);
             shoot();
         }
     }
@@ -88,7 +88,7 @@ public class Autonomous {
         if (Shooter.getInstance().isGoalHot()) {
             shoot();
         } else {
-            Timer.delay(5.5);
+            Timer.delay(4.5);
             shoot();
         }
     }
@@ -96,8 +96,6 @@ public class Autonomous {
     // Shoot without CV
     public static void shoot() {
         Shooter.getInstance().fireBall();
-        Timer.delay(0.5);
-        Shooter.getInstance().initiateWinch();
     }
     
     // Drive forward
@@ -125,7 +123,7 @@ public class Autonomous {
     }
     
     public static void finishLoadingNextBall() {
-        if (!Shooter.getInstance().hasBall()) { // Finish loading next ball
+        if (!Shooter.getInstance().hasBall() && Shooter.getInstance().isFullyRetracted()) { // Finish loading next ball
             Acquirer.getInstance().intakeBall();
             Timer.delay(1.0); // Delay should be tuned
         }

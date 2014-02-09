@@ -12,19 +12,19 @@ public class Wingman extends IterativeRobot {
     Drivetrain drivetrain;
     Acquirer acquirer;
     CV cv;
-    
+
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
-    
+
     SendableChooser autonChooser;
-    
+
     public void robotInit() {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
         cv = CV.getInstance();
         resetAll();
-        
+
         // SendableChooser for auton
         autonChooser = new SendableChooser();
         autonChooser.addDefault("1 - Wait for hot goal, shoot, and drive forward", Integer.valueOf(1));
@@ -36,37 +36,46 @@ public class Wingman extends IterativeRobot {
 
     public void autonomousInit() {
         resetAll();
+        Thread startRetractingWinch = new Thread(new Runnable() {
+
+            public void run() {
+                while (isAutonomous() && isEnabled()) {
+                    shooter.retractWinch();
+                }
+            }
+
+        });
+        startRetractingWinch.start();
         Integer selection = (Integer) autonChooser.getSelected();
         Autonomous.auton(selection.intValue());
     }
-    
+
+    // This function is called periodically during autonomous
+    public void autonomousPeriodic() {
+        SmartDashboard.putBoolean("Goal hot?", cv.isGoalHot());
+    }
+
     public void teleopInit() {
         resetAll();
     }
     
-    // This function is called periodically during autonomous
-    public void autonomousPeriodic() {
-        SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
-    }
-
     // This function is called periodically during operator control
     public void teleopPeriodic() {
         //SmartDashboard.putNumber("Angle", shooter.getAngle());
-        SmartDashboard.putBoolean("Shooting?",shooter.readyToShoot());
+        SmartDashboard.putBoolean("Shooting?", shooter.readyToShoot());
         SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
         SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         shooter.testChooChoo(rightPad);
-        shooter.dashboardOptionForAutomatic();
         drivetrain.tankDrive(rightPad);
     }
-    
+
     // This function is called periodically during test mode
     public void testPeriodic() {
         // To be added later    
     }
-    
+
     public void resetAll() {
         shooter.reset();
         drivetrain.reset();
