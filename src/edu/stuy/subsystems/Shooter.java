@@ -39,24 +39,23 @@ public class Shooter {
     }
 
     public void reset() {
-        retractWinch();
+        retractWinchIfCan();
     }
 
-    public void releaseWinch() {
+    public void fireBall() {
         if (isFullyRetracted() && !retracting) {
             chooChoo.set(1.0);
-            Timer.delay(Constants.SHOOTER_RETRACT_DELAY);
+            Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
         }
     }
 
-    public void retractWinch() {
+    public void retractWinchIfCan() {
         if (retracting && !isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
             chooChoo.set(1.0);
         }
         else {
-            chooChoo.set(0.0);
-            retracting = false;
+            stopWinch();
         }
     }
 
@@ -103,7 +102,7 @@ public class Shooter {
 
     public void manualGamepadControl(Gamepad gamepad) {
         if (gamepad.getRightBumper()) {
-            releaseWinch();
+            fireBall();
         } else if (gamepad.getStartButton()) {
             stopWinch();
         } else if (gamepad.getLeftBumper()) {
@@ -113,7 +112,7 @@ public class Shooter {
         } else if (gamepad.getLeftY() <= 0) {
             chooChoo.set(0);
         }
-        retractWinch();
+        retractWinchIfCan();
     }
 
     public void testChooChoo(Gamepad gamepad) {

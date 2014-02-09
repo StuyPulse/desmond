@@ -59,7 +59,7 @@ public class Acquirer {
         return compressor.getPressureSwitchValue();
     }
     
-    public void startCompressor() {
+    public void startCompressorIfNeeded() {
         if (hasEnoughPressure()) {
             compressor.stop();
         }
@@ -85,6 +85,7 @@ public class Acquirer {
             stopRoller();
         }
         roller.set(gamepad.getRightY());
+        startCompressorIfNeeded();
     }
     
 }
