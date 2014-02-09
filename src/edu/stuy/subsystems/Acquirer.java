@@ -80,10 +80,11 @@ public class Acquirer {
         }
         else if (gamepad.getLeftButton()) {
             rotateUp();
-        }
+        }   
         else {
             stopRoller();
         }
+        roller.set(gamepad.getRightY());
     }
     
 }
