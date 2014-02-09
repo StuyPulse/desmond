@@ -50,6 +50,7 @@ public class Shooter {
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
             if (automaticRetract) {
+                Timer.delay(Constants.SHOOTER_DELAY_FOR_AUTO_RETRACT);
                 initiateWinch();
             }
         }
