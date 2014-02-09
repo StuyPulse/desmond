@@ -24,7 +24,7 @@ public class Constants {
     public static final int BALL_CENTERED_SWITCH_CHANNEL = -1;
     //public static final int WINCH_ENCODER_CHANNEL_A = 7;
     //public static final int WINCH_ENCODER_CHANNEL_B = 8;
-    public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = -1;
+    public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
 
     /* ENCODER */
     public static final int PULSES_PER_REVOLUTION = 250; // TO BE CHANGED
@@ -65,6 +65,6 @@ public class Constants {
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
-    public static final double SHOOTER_DELAY_FOR_AUTO_RETRACT = 1;
+    public static final double SHOOTER_DELAY_FOR_RETRACT = 1;
 
 }

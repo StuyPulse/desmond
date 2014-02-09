@@ -32,7 +32,7 @@ public class CV {
 
     // TODO: Implement wrapper for Josh's CV code.
     public boolean isGoalHot() {
-        while (net == null) { /*System.out.println("Net is null. :(");*/}
+        if (net == null) { return false; }
         int status = net.getCurrent();
         if (!(status == Constants.CV_I_DONT_KNOW)) {
             Timer.delay(0.5);
@@ -42,6 +42,6 @@ public class CV {
     }
     
     public boolean isPiConnected() {
-        return net.getConnected();
+        return net!=null && net.getConnected();
     }
 }
