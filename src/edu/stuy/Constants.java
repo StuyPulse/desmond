@@ -65,6 +65,6 @@ public class Constants {
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
-    public static final double SHOOTER_DELAY_FOR_AUTO_RETRACT = 1;
+    public static final double SHOOTER_DELAY_FOR_RETRACT = 1;
 
 }

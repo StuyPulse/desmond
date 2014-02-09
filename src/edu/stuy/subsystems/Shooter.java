@@ -41,7 +41,7 @@ public class Shooter {
     }
 
     public void reset() {
-        retractWinchIfCan();
+        retractWinch();
     }
 
     public void fireBall() {
@@ -49,18 +49,15 @@ public class Shooter {
             chooChoo.set(1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
-            if (automaticRetract) {
-                Timer.delay(Constants.SHOOTER_DELAY_FOR_AUTO_RETRACT);
-                initiateWinch();
-            }
+            Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
+            initiateWinch();
         }
     }
 
-    public void retractWinchIfCan() {
+    public void retractWinch() {
         if (retracting && !isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
             chooChoo.set(1.0);
-        }
-        else {
+        } else {
             stopWinch();
         }
     }
@@ -68,8 +65,8 @@ public class Shooter {
     public void initiateWinch() {
         retracting = true;
         startTime = System.currentTimeMillis();
-    } 
-    
+    }
+
     public void stopWinch() {
         chooChoo.set(0);
         retracting = false;
@@ -84,6 +81,10 @@ public class Shooter {
 
     public boolean hasBall() {
         return ballSensor.get();
+    }
+
+    public boolean isStillRetracting() {
+        return retracting;
     }
 
     public boolean isBallCentered() {
@@ -118,7 +119,7 @@ public class Shooter {
         } else if (gamepad.getLeftY() <= 0) {
             chooChoo.set(0);
         }
-        retractWinchIfCan();
+        retractWinch();
     }
 
     public void testChooChoo(Gamepad gamepad) {
@@ -128,9 +129,5 @@ public class Shooter {
             chooChoo.set(0);
         }
     }
-    
-    public void dashboardOptionForAutomatic() {
-        SmartDashboard.putBoolean("Automatic Retract after firing?", automaticRetract);
-        automaticRetract = SmartDashboard.getBoolean("Automatic Retract after firing?");
-    }
+
 }
