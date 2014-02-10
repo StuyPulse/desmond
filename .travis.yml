@@ -5,9 +5,6 @@ jdk:
 env:
     CLASSPATH=$CLASSPATH:jars
 
-before_install:
-    sudo apt-get -qq update
-
 install:
     sudo apt-get -qq install unzip
 

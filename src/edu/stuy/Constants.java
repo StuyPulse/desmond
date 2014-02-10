@@ -3,7 +3,7 @@ package edu.stuy;
 public class Constants {
     
     /* PWM */
-    public static final int RIGHT_MOTOR_CHANNEL = 1;
+    public static final int RIGHT_MOTOR_CHANNEL = 1
     public static final int LEFT_MOTOR_CHANNEL = 2;
     public static final int ACQUIRER_ROLLER_CHANNEL = 3;
     public static final int SHOOTER_CHANNEL = 4;
