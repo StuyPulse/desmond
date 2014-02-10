@@ -15,4 +15,11 @@ script:
     ant compile -Dsunspot.home=sunspotfrcsdk
 
 notifications:
-    irc: "irc.freenode.org##yulli"
+    irc:
+        channels:
+            - "irc.freenode.org##yulli"
+        on_success: change
+        on_failure: always
+        template:
+            - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+            - "Build details : %{build_url}"
