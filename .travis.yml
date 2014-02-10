@@ -15,7 +15,7 @@ before_script:
     wget -q frc.justink.im/frc.zip; wget -q frc.justink.im/sunspotfrcsdk.zip; unzip frc.zip; unzip sunspotfrcsdk.zip
 
 script:
-    ant deploy build -Dsunspot.home=sunspotfrcsdk
+    ant compile -Dsunspot.home=sunspotfrcsdk
 
 notifications:
     irc: "irc.freenode.org##yulli"
