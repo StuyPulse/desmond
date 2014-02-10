@@ -13,23 +13,23 @@ public class Shooter {
 
     private boolean retracting = false;
     private boolean automaticRetract = false;
-    private AnalogChannel goalSensor;
+    //private AnalogChannel goalSensor;
     private Talon chooChoo;
     //private Encoder winchEncoder;
     private static Shooter instance;
-    private DigitalInput ballSensor;
-    private DigitalInput ballCenteredSwitch;
+    //private DigitalInput ballSensor;
+    //private DigitalInput ballCenteredSwitch;
     private DigitalInput catapultRetractedSwitch;
     private long startTime = System.currentTimeMillis();
 
     private Shooter() {
-        goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
+        //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
         /*winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
          winchEncoder.start();
          winchEncoder.reset(); */
-        ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
-        ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
+        //ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
+        //ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
     }
 
@@ -80,7 +80,7 @@ public class Shooter {
      */
 
     public boolean hasBall() {
-        return ballSensor.get();
+        return true;//ballSensor.get();
     }
 
     public boolean isStillRetracting() {
@@ -88,7 +88,8 @@ public class Shooter {
     }
 
     public boolean isBallCentered() {
-        return !ballCenteredSwitch.get(); //closed switch is false
+        return true;
+//!ballCenteredSwitch.get(); //closed switch is false
     }
 
     public boolean isFullyRetracted() {
@@ -103,8 +104,8 @@ public class Shooter {
     }
 
     public boolean isGoalHot() {
-        double voltage = goalSensor.getAverageVoltage();
-        return (voltage >= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE);
+        //double voltage = goalSensor.getAverageVoltage();
+        return true;//(voltage >= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE);
     }
 
     public void manualGamepadControl(Gamepad gamepad) {
@@ -116,6 +117,7 @@ public class Shooter {
             initiateWinch();
         } else if (gamepad.getLeftY() > 0) {
             chooChoo.set(gamepad.getLeftY());
+            System.out.println("Running choo choo");
         } else if (gamepad.getLeftY() <= 0) {
             chooChoo.set(0);
         }

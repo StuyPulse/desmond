@@ -68,6 +68,10 @@ public class Wingman extends IterativeRobot {
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
+        //SmartDashboard.putBoolean("Run_Compressor");
+        //if (SmartDashboard.getBoolean("Run_Compressor")) {
+            //Acquirer.getInstance().compressor.start();
+        //}
     }
 
     // This function is called periodically during test mode

@@ -12,7 +12,7 @@ public class Acquirer {
     private Solenoid pistonExtend;
     private Solenoid pistonRetract;
     private Talon roller;
-    private Compressor compressor;
+    public Compressor compressor;
  
     public Acquirer() {
         pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
@@ -56,6 +56,7 @@ public class Acquirer {
     }
     
     public boolean hasEnoughPressure() {
+        System.out.println("in hasEnoughPressure()");
         return compressor.getPressureSwitchValue();
     }
     
@@ -65,10 +66,14 @@ public class Acquirer {
         }
         else {
             compressor.start();
+            System.out.println("starting compressor");
         }
     }
     
     public void manualGamepadControl(Gamepad gamepad) {
+        if (gamepad.getBottomButton()) {
+            compressor.start();
+        }
         if (gamepad.getDPadDown()) {
             ejectBall();
         }
@@ -84,7 +89,7 @@ public class Acquirer {
         else {
             stopRoller();
         }
-        roller.set(gamepad.getRightY());
+        //roller.set(gamepad.getRightY());
         startCompressorIfNeeded();
     }
     
