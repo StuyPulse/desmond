@@ -29,7 +29,9 @@ public class Wingman extends IterativeRobot {
         autonChooser = new SendableChooser();
         autonChooser.addDefault("1 - Wait for hot goal, shoot, and drive forward", Integer.valueOf(1));
         autonChooser.addObject("2 - Wait for hot goal, shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(2));
-        autonChooser.addObject("3 - Shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(3));
+        autonChooser.addObject("3 - Wait for hot goal (analog), shoot, and drive forward", Integer.valueOf(3));
+        autonChooser.addObject("4 - Wait for hot goal (analog), shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(4));
+        autonChooser.addObject("5 - Shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(5));
         autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));
         SmartDashboard.putData("Autonomous routine", autonChooser);
     }
