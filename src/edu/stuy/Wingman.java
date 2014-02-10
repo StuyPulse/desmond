@@ -69,6 +69,7 @@ public class Wingman extends IterativeRobot {
         SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
         SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
+        SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
