@@ -57,5 +57,8 @@ public class Constants {
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
     public static final double SHOOTER_DELAY_FOR_RETRACT = 1;
+    
+    //RELAY outputs
+    public static final int CAMERA_RELAY_CHANNEL = 2;
 
 }

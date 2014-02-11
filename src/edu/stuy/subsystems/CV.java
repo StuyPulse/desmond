@@ -2,14 +2,18 @@ package edu.stuy.subsystems;
 
 import edu.stuy.util.NetworkIO;
 import edu.stuy.Constants;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Timer;
 
 public class CV {
 
     private static CV instance;
     private static NetworkIO net;
+    private Relay cameraLight;
+    
 
     public CV() {
+        cameraLight = new Relay(Constants.CAMERA_RELAY_CHANNEL);
         System.out.println("CV constructor start");
 
         Thread t = new Thread(new Runnable() {
@@ -43,5 +47,26 @@ public class CV {
     
     public boolean isPiConnected() {
         return net!=null && net.getConnected();
+    }
+    
+    public boolean getLightValue() {
+        if (cameraLight.get() == Relay.Value.kOff) 
+            return false;
+        else 
+            return true;
+    }
+    
+    public void resetLight() {
+        cameraLight.free();
+    }
+    
+    public void setCameraLight(boolean on) {
+        Relay.Value currVal = cameraLight.get();
+        if (currVal != Relay.Value.kOn && on) { // Turn camera light on
+            cameraLight.set(Relay.Value.kOn);
+        }
+        else { // Turn camera light off 
+            cameraLight.set(Relay.Value.kOff);
+        }
     }
 }
