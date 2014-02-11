@@ -22,14 +22,7 @@ public class Constants {
     public static final int ENCODER_CHANNEL_RIGHT_A = 1;
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
     public static final int BALL_CENTERED_SWITCH_CHANNEL = -1;
-    //public static final int WINCH_ENCODER_CHANNEL_A = 7;
-    //public static final int WINCH_ENCODER_CHANNEL_B = 8;
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
-
-    /* ENCODER */
-    public static final int PULSES_PER_REVOLUTION = 250; // TO BE CHANGED
-    public static final int DEGREES_WINCH_RETRACT = 240;
-    public static final int DEGREES_WINCH_RELEASE = 360 - DEGREES_WINCH_RETRACT;
 
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
     private static final double ENCODER_PULSE_PER_REV = 360.0;
@@ -60,8 +53,6 @@ public class Constants {
     public static final String CV_IP = "10.6.94.10";
 
     // SHOOTER constants
-    public static final double SHOOTER_WINCH_SPEED_ONE = 0.1;
-    public static final double SHOOTER_WINCH_SPEED_TWO = 0.0;
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;

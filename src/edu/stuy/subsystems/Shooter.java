@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -15,7 +14,6 @@ public class Shooter {
     private boolean automaticRetract = false;
     private AnalogChannel goalSensor;
     private Talon chooChoo;
-    //private Encoder winchEncoder;
     private static Shooter instance;
     private DigitalInput ballSensor;
     private DigitalInput ballCenteredSwitch;
@@ -25,9 +23,6 @@ public class Shooter {
     private Shooter() {
         goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
-        /*winchEncoder = new Encoder(Constants.WINCH_ENCODER_CHANNEL_A, Constants.WINCH_ENCODER_CHANNEL_B);
-         winchEncoder.start();
-         winchEncoder.reset(); */
         ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
         ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
@@ -71,14 +66,7 @@ public class Shooter {
         chooChoo.set(0);
         retracting = false;
     }
-    /*
-     public int getAngle() {
-     double pulses = winchEncoder.get() % Constants.PULSES_PER_REVOLUTION;
-     double angle = pulses / Constants.PULSES_PER_REVOLUTION * 360;
-     return (int) angle;
-     }
-     */
-
+    
     public boolean hasBall() {
         return ballSensor.get();
     }
@@ -93,13 +81,6 @@ public class Shooter {
 
     public boolean isFullyRetracted() {
         return !catapultRetractedSwitch.get(); //closed switch is false
-    }
-
-    public boolean readyToShoot() {
-        /*int angle = getAngle();
-         return (angle < 340 && angle > 380-Constants.DEGREES_WINCH_RETRACT);
-         */
-        return isFullyRetracted();
     }
 
     public boolean isGoalHot() {
