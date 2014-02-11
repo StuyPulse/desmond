@@ -22,7 +22,6 @@ public class Drivetrain {
     private Encoder encoderLeft;
     
     private Drivetrain() {
-        
         drivetrain = new RobotDrive(Constants.LEFT_MOTOR_CHANNEL, Constants.RIGHT_MOTOR_CHANNEL);
         drivetrain.setSafetyEnabled(false);
         gyro = new Gyro(Constants.GYRO_CHANNEL);
@@ -62,9 +61,9 @@ public class Drivetrain {
     
     public void reset() {
         tankDrive(0.0, 0.0);
-        gyroReset();
+        //gyroReset();
     }
-
+    /*
     public double getAngle() {
         return gyro.getAngle();
     }
@@ -72,7 +71,7 @@ public class Drivetrain {
     public void gyroReset() {
         gyro.reset();
     }
-    
+    */  
     public double getLeftEnc() {
         return encoderLeft.getDistance();
     }
