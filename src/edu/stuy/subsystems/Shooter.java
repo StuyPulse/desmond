@@ -96,9 +96,10 @@ public class Shooter {
         } else if (gamepad.getLeftBumper()) {
             initiateWinch();
         } else if (gamepad.getLeftY() > 0) {
+            retracting = false;
             chooChoo.set(gamepad.getLeftY());
         } else if (gamepad.getLeftY() <= 0) {
-            chooChoo.set(0);
+            stopWinch();
         }
         retractWinch();
     }

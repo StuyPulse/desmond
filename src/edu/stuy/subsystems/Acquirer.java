@@ -75,16 +75,18 @@ public class Acquirer {
         else if (gamepad.getDPadUp()) {
             intakeBall();
         }
-        else if (gamepad.getTopButton()) {
+        else if (gamepad.getRightY() < -.01 || gamepad.getRightY() > .01) {
+            roller.set(gamepad.getRightY());
+        }
+        else {
+            stopRoller();
+        }
+        if (gamepad.getTopButton()) {
             rotateDown();
         }
         else if (gamepad.getLeftButton()) {
             rotateUp();
-        }   
-        else {
-            stopRoller();
         }
-        roller.set(gamepad.getRightY());
         startCompressorIfNeeded();
     }
     

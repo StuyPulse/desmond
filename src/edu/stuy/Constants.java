@@ -40,6 +40,7 @@ public class Constants {
     // Temporary. Port assignments will be supplied by Dan later. 
     public static final int GYRO_CHANNEL = -1;
     public static final int GOAL_SENSOR_CHANNEL = -1;
+    
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
 
