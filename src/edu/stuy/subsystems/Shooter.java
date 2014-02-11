@@ -12,19 +12,19 @@ public class Shooter {
 
     private boolean retracting = false;
     private boolean automaticRetract = false;
-    private AnalogChannel goalSensor;
+    //private AnalogChannel goalSensor;
     private Talon chooChoo;
     private static Shooter instance;
-    private DigitalInput ballSensor;
-    private DigitalInput ballCenteredSwitch;
+    //private DigitalInput ballSensor;
+    //private DigitalInput ballCenteredSwitch;
     private DigitalInput catapultRetractedSwitch;
     private long startTime = System.currentTimeMillis();
 
     private Shooter() {
-        goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
+        //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
-        ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
-        ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
+        //ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
+        //ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
     }
 
@@ -67,27 +67,27 @@ public class Shooter {
         retracting = false;
     }
     
-    public boolean hasBall() {
-        return ballSensor.get();
-    }
-
     public boolean isStillRetracting() {
         return retracting;
     }
-
+    /*
+    public boolean hasBall() {
+        return ballSensor.get();
+    }
+    
     public boolean isBallCentered() {
         return !ballCenteredSwitch.get(); //closed switch is false
     }
-
+    */
     public boolean isFullyRetracted() {
         return !catapultRetractedSwitch.get(); //closed switch is false
     }
-
+    /*
     public boolean isGoalHot() {
         double voltage = goalSensor.getAverageVoltage();
-        return (voltage >= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE);
+        return (voltage <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE); // Sensor is active when low
     }
-
+    */
     public void manualGamepadControl(Gamepad gamepad) {
         if (gamepad.getRightBumper()) {
             fireBall();

@@ -63,14 +63,13 @@ public class Wingman extends IterativeRobot {
     
     // This function is called periodically during operator control
     public void teleopPeriodic() {
-        //SmartDashboard.putNumber("Angle", shooter.getAngle());
         SmartDashboard.putBoolean("Shooting?", shooter.isFullyRetracted());
         SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
         SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
-        SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
-        SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
-        SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
-        SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
+        //SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
+        //SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
+        //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
+        //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);

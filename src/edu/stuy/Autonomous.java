@@ -50,14 +50,14 @@ public class Autonomous {
     
     // Auton sets for using Analog light sensor instead of CV
     public static void auton3() {
-        shootIfHotAnalog();
+        //shootIfHotAnalog();
         driveForward();
     }
     
     public static void auton4() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
-        shootIfHotAnalog();
+        //shootIfHotAnalog();
         finishLoadingNextBall();
         shoot();
         driveForward();
@@ -83,7 +83,7 @@ public class Autonomous {
             shoot();
         }
     }
-    
+    /*
     public static void shootIfHotAnalog() {
         if (Shooter.getInstance().isGoalHot()) {
             shoot();
@@ -92,7 +92,7 @@ public class Autonomous {
             shoot();
         }
     }
-    
+    */
     // Shoot without CV
     public static void shoot() {
         Shooter.getInstance().fireBall();
@@ -123,7 +123,8 @@ public class Autonomous {
     }
     
     public static void finishLoadingNextBall() {
-        if (!Shooter.getInstance().hasBall() && Shooter.getInstance().isFullyRetracted()) { // Finish loading next ball
+        //if (!Shooter.getInstance().hasBall() && Shooter.getInstance().isFullyRetracted()) { // Finish loading next ball
+        if (!Shooter.getInstance().isFullyRetracted()) {
             Acquirer.getInstance().intakeBall();
             Timer.delay(1.0); // Delay should be tuned
         }
