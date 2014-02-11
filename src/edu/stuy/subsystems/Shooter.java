@@ -2,25 +2,22 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter {
 
     private boolean retracting = false;
     private boolean automaticRetract = false;
-    //private AnalogChannel goalSensor;
-    private Talon chooChoo;
-    //private Encoder winchEncoder;
     private static Shooter instance;
+    private DigitalInput catapultRetractedSwitch;
+    private Talon chooChoo;
+    private long startTime = System.currentTimeMillis();
+    //private AnalogChannel goalSensor; // Dan's magic CV
+    //private Encoder winchEncoder;
     //private DigitalInput ballSensor;
     //private DigitalInput ballCenteredSwitch;
-    private DigitalInput catapultRetractedSwitch;
-    private long startTime = System.currentTimeMillis();
 
     private Shooter() {
         //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
@@ -108,20 +105,27 @@ public class Shooter {
         return true;//(voltage >= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE);
     }
 
-    public void manualGamepadControl(Gamepad gamepad) {
+    public void manualGamepadControl(Gamepad gamepad) { 
+        if (gamepad.getLeftBumper()) {
+            initiateWinch();
+            System.out.println("Choo choo initiated.");
+        }
+        
         if (gamepad.getRightBumper()) {
             fireBall();
+            System.out.println("Firing ball.");
         } else if (gamepad.getStartButton()) {
             stopWinch();
-        } else if (gamepad.getLeftBumper()) {
-            initiateWinch();
-        } else if (gamepad.getLeftY() > 0) {
+            System.out.println("Winch manually stopped.");
+        }
+        
+        if (gamepad.getLeftY() > 0 && !retracting) {
             chooChoo.set(gamepad.getLeftY());
-            System.out.println("Running choo choo");
-        } else if (gamepad.getLeftY() <= 0) {
+            System.out.println("Running choo choo with analog.");
+        } else if (gamepad.getLeftY() <= 0 && !retracting) {
             chooChoo.set(0);
+            System.out.println("Choo choo stopped because of analog sticks.");
         }
         retractWinch();
     }
-
 }
