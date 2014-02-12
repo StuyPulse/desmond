@@ -25,6 +25,9 @@ public class Autonomous {
             case 5:
                 auton5(); // Dumb fire
                 break;
+            case 6:
+                auton6(); // Just move forward
+                break;
         }
     }
 
@@ -72,7 +75,11 @@ public class Autonomous {
         driveForward();
     }
     
-    
+    // Auton for just moving forward to get mobility points
+    public static void auton6() {
+        driveForward();
+    }
+
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
