@@ -67,6 +67,9 @@ public class Wingman extends IterativeRobot {
         SmartDashboard.putBoolean("Shooting?", shooter.isFullyRetracted());
         SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
         SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
+        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
+        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
+        SmartDashboard.putBoolean("Has enough pressure", acquirer.hasEnoughPressure());
         //SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
         //SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
         //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
