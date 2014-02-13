@@ -2,7 +2,7 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
-import edu.wpi.first.wpilibj.Compressor;
+import edu.stuy.util.CompressorHack;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -12,14 +12,14 @@ public class Acquirer {
     private Solenoid pistonExtend;
     private Solenoid pistonRetract;
     private Talon roller;
-    public Compressor compressor;
+    public CompressorHack hackedCompressor;
  
     public Acquirer() {
         pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
         pistonRetract = new Solenoid(Constants.PISTON_RETRACT_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
-        compressor = new Compressor(Constants.PRESSURE_SWITCH_CHANNEL, Constants.COMPRESSOR_RELAY_CHANNEL);
-        compressor.start();
+        hackedCompressor = new CompressorHack();
+        hackedCompressor.start();
     }
     
     public static Acquirer getInstance() {
@@ -52,7 +52,7 @@ public class Acquirer {
     }
     
     public void stopCompressor() { // for troubleshooting
-        compressor.stop();
+//        compressor.stop();
     }
     
     public void reset() {
