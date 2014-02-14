@@ -11,19 +11,19 @@ public class Autonomous {
                 auton0(); // Do nothing
                 break;
             case 1:
-                auton1(); // CV
+                auton1(); // CV- one ball only
                 break;
             case 2:
-                auton2(); // CV
+                auton2(); // CV- two balls only
                 break;
             case 3:
-                auton3(); // Analog light sensor 
+                auton3(); // Analog light sensor- only drives forward and flashes light
                 break;
             case 4:
-                auton4(); // Analog light sensor 
+                auton4(); // Analog light sensor- shoots and then drives forward
                 break;
             case 5:
-                auton5(); // Dumb fire
+                auton5(); // Dumb fire with no CV- shoots two times 
                 break;
             case 6:
                 auton6(); // Just move forward
@@ -130,8 +130,7 @@ public class Autonomous {
     }
     
     public static void finishLoadingNextBall() {
-        //if (!Shooter.getInstance().hasBall() && Shooter.getInstance().isFullyRetracted()) { // Finish loading next ball
-        if (!Shooter.getInstance().isFullyRetracted()) {
+        if (Shooter.getInstance().isFullyRetracted()) {
             Acquirer.getInstance().intakeBall();
             Timer.delay(1.0); // Delay should be tuned
         }
