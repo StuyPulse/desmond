@@ -43,7 +43,7 @@ public class Shooter {
 
     public void fireBall() {
         if (isFullyRetracted() && !retracting) {
-            chooChoo.set(1.0);
+            chooChoo.set(-1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
@@ -53,7 +53,7 @@ public class Shooter {
 
     public void retractWinch() {
         if (!isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
-            chooChoo.set(1.0);
+            chooChoo.set(-1.0); // This MUST be negative!
         } else {
             stopWinch();
         }
@@ -120,7 +120,8 @@ public class Shooter {
         }
         
         if (gamepad.getLeftY() > 0) {
-            chooChoo.set(gamepad.getLeftY());
+            chooChoo.set(-gamepad.getLeftY()); // The analog stick Y increases as it is pulled downwards
+            System.out.println(gamepad.getLeftY());
             System.out.println("Running choo choo with analog.");
         } else if (gamepad.getLeftY() <= 0 && !retracting) {
             chooChoo.set(0);
