@@ -76,9 +76,9 @@ public class Acquirer {
         }
         // else if is not required; can run simultaneously 
         if (gamepad.getTopButton()) {
-            rotateUp();
-        } else if (gamepad.getLeftButton()) {
             rotateDown();
+        } else if (gamepad.getLeftButton()) {
+            rotateUp();
         } 
     }
 }
