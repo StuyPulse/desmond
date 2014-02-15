@@ -12,13 +12,14 @@ public class Acquirer {
     private Solenoid pistonExtend;
     private Solenoid pistonRetract;
     private Talon roller;
-    private Compressor compressor;
+    public Compressor compressor;
  
     public Acquirer() {
         pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
         pistonRetract = new Solenoid(Constants.PISTON_RETRACT_CHANNEL);
         roller = new Talon(Constants.ACQUIRER_ROLLER_CHANNEL);
         compressor = new Compressor(Constants.PRESSURE_SWITCH_CHANNEL, Constants.COMPRESSOR_RELAY_CHANNEL);
+        compressor.start();
     }
     
     public static Acquirer getInstance() {
@@ -50,44 +51,34 @@ public class Acquirer {
         roller.set(0);
     }
     
+    public void stopCompressor() { // for troubleshooting
+//        compressor.stop();
+    }
+    
     public void reset() {
         rotateUp();
         stopRoller();
     }
     
-    public boolean hasEnoughPressure() {
-        return compressor.getPressureSwitchValue();
-    }
-    
-    public void startCompressorIfNeeded() {
-        if (hasEnoughPressure()) {
-            compressor.stop();
-        }
-        else {
-            compressor.start();
-        }
-    }
-    
     public void manualGamepadControl(Gamepad gamepad) {
-        if (gamepad.getDPadDown()) {
-            ejectBall();
-        }
-        else if (gamepad.getDPadUp()) {
-            intakeBall();
-        }
-        else if (gamepad.getRightY() < -.01 || gamepad.getRightY() > .01) {
+        if (Math.abs(gamepad.getRightY()) >= 0.1) {
             roller.set(gamepad.getRightY());
-        }
-        else {
+            System.out.println("Acquirer being controlled with analog." + gamepad.getRightY());
+        } else if (gamepad.getDPadDown()) {
+            ejectBall();
+            System.out.println("Acquirer being controlled with button. Ejecting.");
+        } else if (gamepad.getDPadUp()) {
+            intakeBall();
+            System.out.println("Acquirer being controlled with button. Intaking.");
+        } else {
             stopRoller();
+            System.out.println("Acquirer not being controlled by anything.");
         }
+        // else if is not required; can run simultaneously 
         if (gamepad.getTopButton()) {
             rotateDown();
-        }
-        else if (gamepad.getLeftButton()) {
+        } else if (gamepad.getLeftButton()) {
             rotateUp();
-        }
-        startCompressorIfNeeded();
+        } 
     }
-    
 }

@@ -2,6 +2,7 @@ package edu.stuy;
 
 import edu.stuy.subsystems.*;
 import edu.stuy.util.Gamepad;
+import edu.stuy.util.CompressorHack;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -11,18 +12,22 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    CV cv;
+    //CV cv;
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
 
     SendableChooser autonChooser;
+    
+    public void tellStateToHack() {
+        CompressorHack.isEnabled = isEnabled();
+    }
 
     public void robotInit() {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        cv = CV.getInstance();
+        //cv = CV.getInstance();
         resetAll();
 
         // SendableChooser for auton
@@ -55,11 +60,16 @@ public class Wingman extends IterativeRobot {
 
     // This function is called periodically during autonomous
     public void autonomousPeriodic() {
-        SmartDashboard.putBoolean("Goal hot?", cv.isGoalHot());
+        //SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
     }
 
     public void teleopInit() {
         resetAll();
+        tellStateToHack();
+    }
+    
+    public void disabledInit() {
+        tellStateToHack();
     }
     
     // This function is called periodically during operator control
@@ -70,6 +80,7 @@ public class Wingman extends IterativeRobot {
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Has enough pressure", acquirer.hasEnoughPressure());
+        SmartDashboard.putBoolean("Shooting?", shooter.readyToShoot());
         //SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
         //SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
         //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
@@ -84,6 +95,7 @@ public class Wingman extends IterativeRobot {
     public void testPeriodic() {
         // To be added later    
     }
+    
 
     public void resetAll() {
         shooter.reset();

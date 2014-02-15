@@ -11,22 +11,24 @@ public class Autonomous {
                 auton0(); // Do nothing
                 break;
             case 1:
-                auton1(); // CV- one ball only
+                auton1(); // CV- one ball, drive forward
                 break;
             case 2:
-                auton2(); // CV- two balls only
+                auton2(); // CV- two balls, drive forward
                 break;
             case 3:
-                auton3(); // Analog light sensor- only drives forward and flashes light
+                auton3(); // Analog light sensor- 1 ball, drive forward
                 break;
             case 4:
-                auton4(); // Analog light sensor- shoots and then drives forward
+                auton4(); // Analog light sensor- 2 balls, drive forward
                 break;
             case 5:
-                auton5(); // Dumb fire with no CV- shoots two times 
+                auton5(); // Dumb fire with no CV- shoots one time
                 break;
             case 6:
-                auton6(); // Just move forward
+                auton6(); // Dumb fire with no CV- shoots two times
+            case 7:
+                auton7(); // Just move forward
                 break;
         }
     }
@@ -66,8 +68,14 @@ public class Autonomous {
         driveForward();
     }
 
-    // Auton for dumb firing, without CV/light sensor
+    // Auton for dumb firing (one ball), without CV/light sensor
     public static void auton5() {
+        shoot();
+        driveForward();
+    }
+    
+    // Auton for dumb firing (two balls), without CV/light sensor
+    public static void auton6() {
         readyNextBall();
         shoot();
         finishLoadingNextBall();
@@ -75,11 +83,11 @@ public class Autonomous {
         driveForward();
     }
     
-    // Auton for just moving forward to get mobility points
-    public static void auton6() {
+     // Auton for just moving forward to get mobility points
+    public static void auton7() {
         driveForward();
     }
-
+    
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {

@@ -2,23 +2,22 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter {
 
     private boolean retracting = false;
     private boolean automaticRetract = false;
-    //private AnalogChannel goalSensor;
-    private Talon chooChoo;
     private static Shooter instance;
+    private DigitalInput catapultRetractedSwitch;
+    private Talon chooChoo;
+    private long startTime = System.currentTimeMillis();
+    //private AnalogChannel goalSensor; // Dan's magic CV
+    //private Encoder winchEncoder;
     //private DigitalInput ballSensor;
     //private DigitalInput ballCenteredSwitch;
-    private DigitalInput catapultRetractedSwitch;
-    private long startTime = System.currentTimeMillis();
 
     private Shooter() {
         //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
@@ -41,7 +40,7 @@ public class Shooter {
 
     public void fireBall() {
         if (isFullyRetracted() && !retracting) {
-            chooChoo.set(1.0);
+            chooChoo.set(-1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
@@ -50,8 +49,8 @@ public class Shooter {
     }
 
     public void retractWinch() {
-        if (retracting && !isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
-            chooChoo.set(1.0);
+        if (!isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
+            chooChoo.set(-1.0); // This MUST be negative!
         } else {
             stopWinch();
         }
@@ -72,36 +71,52 @@ public class Shooter {
     }
     /*
     public boolean hasBall() {
-        return ballSensor.get();
+        return true;//ballSensor.get();
     }
     
     public boolean isBallCentered() {
-        return !ballCenteredSwitch.get(); //closed switch is false
+        return true;
+//!ballCenteredSwitch.get(); //closed switch is false
     }
+
     */
     public boolean isFullyRetracted() {
         return !catapultRetractedSwitch.get(); //closed switch is false
     }
+
     /*
     public boolean isGoalHot() {
         double voltage = goalSensor.getAverageVoltage();
         return (voltage <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE); // Sensor is active when low
     }
     */
-    public void manualGamepadControl(Gamepad gamepad) {
+
+    public void manualGamepadControl(Gamepad gamepad) { 
+        if (gamepad.getLeftBumper()) {
+            initiateWinch();
+            System.out.println("Choo choo initiated.");
+        }
         if (gamepad.getRightBumper()) {
             fireBall();
+            System.out.println("Firing ball.");
         } else if (gamepad.getStartButton()) {
             stopWinch();
-        } else if (gamepad.getLeftBumper()) {
-            initiateWinch();
-        } else if (gamepad.getLeftY() > 0) {
-            retracting = false;
-            chooChoo.set(gamepad.getLeftY());
-        } else if (gamepad.getLeftY() <= 0) {
-            stopWinch();
+            System.out.println("Winch manually stopped.");
         }
-        retractWinch();
+        
+        if (gamepad.getLeftY() > 0) {
+            chooChoo.set(-gamepad.getLeftY()); // The analog stick Y increases as it is pulled downwards
+            System.out.println(gamepad.getLeftY());
+            System.out.println("Running choo choo with analog.");
+        } else if (gamepad.getLeftY() <= 0 && !retracting) {
+            chooChoo.set(0);
+            System.out.println("Choo choo stopped because of analog sticks.");
+        }
+        
+        // if there is a retract request
+        if (retracting) {
+            retractWinch();
+        }
+        System.out.println("Is the catapult triggering the limit switch? " + (isFullyRetracted() ? "Yes" : "No"));
     }
-
 }
