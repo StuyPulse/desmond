@@ -12,7 +12,7 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    //CV cv;
+    CV cv;
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
@@ -27,7 +27,7 @@ public class Wingman extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        //cv = CV.getInstance();
+        cv = CV.getInstance();
         resetAll();
 
         // SendableChooser for auton
@@ -60,7 +60,7 @@ public class Wingman extends IterativeRobot {
 
     // This function is called periodically during autonomous
     public void autonomousPeriodic() {
-        //SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
+        SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
     }
 
     public void teleopInit() {
@@ -79,8 +79,7 @@ public class Wingman extends IterativeRobot {
         SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
-        SmartDashboard.putBoolean("Has enough pressure", acquirer.hasEnoughPressure());
-        SmartDashboard.putBoolean("Shooting?", shooter.readyToShoot());
+        SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
         //SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
         //SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
         //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
