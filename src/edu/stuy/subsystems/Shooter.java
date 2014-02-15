@@ -52,7 +52,7 @@ public class Shooter {
     }
 
     public void retractWinch() {
-        if (retracting && !isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
+        if (!isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
             chooChoo.set(1.0);
         } else {
             stopWinch();
@@ -119,13 +119,17 @@ public class Shooter {
             System.out.println("Winch manually stopped.");
         }
         
-        if (gamepad.getLeftY() > 0 && !retracting) {
+        if (gamepad.getLeftY() > 0) {
             chooChoo.set(gamepad.getLeftY());
             System.out.println("Running choo choo with analog.");
         } else if (gamepad.getLeftY() <= 0 && !retracting) {
             chooChoo.set(0);
             System.out.println("Choo choo stopped because of analog sticks.");
         }
-        retractWinch();
+        
+        // if there is a retract request
+        if (retracting) {
+            retractWinch();
+        }
     }
 }
