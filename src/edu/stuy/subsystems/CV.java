@@ -10,14 +10,13 @@ public class CV {
     private static CV instance;
     private static NetworkIO net;
     private Relay cameraLight;
-    
 
     public CV() {
         cameraLight = new Relay(Constants.CAMERA_RELAY_CHANNEL);
         System.out.println("CV constructor start");
 
         Thread t = new Thread(new Runnable() {
-           public void run() {
+            public void run() {
                 System.out.println("Instantiating net now!");
                 CV.net = new NetworkIO();
                 System.out.println("I FINISHED INSTANTIATING NET!!");
@@ -36,36 +35,38 @@ public class CV {
 
     // TODO: Implement wrapper for Josh's CV code.
     public boolean isGoalHot() {
-        if (net == null) { return false; }
+        if (net == null) {
+            return false;
+        }
         int status = net.getCurrent();
         if (!(status == Constants.CV_I_DONT_KNOW)) {
             Timer.delay(0.5);
             status = net.getCurrent();
         }
-        return status==Constants.CV_TARGET_IS_HOT;
+        return status == Constants.CV_TARGET_IS_HOT;
     }
-    
+
     public boolean isPiConnected() {
-        return net!=null && net.getConnected();
+        return net != null && net.getConnected();
     }
-    
+
     public boolean getLightValue() {
-        if (cameraLight.get() == Relay.Value.kOff) 
+        if (cameraLight.get() == Relay.Value.kOff) {
             return false;
-        else 
+        } else {
             return true;
+        }
     }
-    
+
     public void resetLight() {
         cameraLight.free();
     }
-    
+
     public void setCameraLight(boolean on) {
         Relay.Value currVal = cameraLight.get();
         if (currVal != Relay.Value.kOn && on) { // Turn camera light on
             cameraLight.set(Relay.Value.kOn);
-        }
-        else { // Turn camera light off 
+        } else { // Turn camera light off 
             cameraLight.set(Relay.Value.kOff);
         }
     }

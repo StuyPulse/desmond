@@ -8,7 +8,7 @@ public class Constants {
     public static final int LEFT_MOTOR_CHANNEL = 10;
     public static final int ACQUIRER_ROLLER_CHANNEL = 8;
     public static final int SHOOTER_CHANNEL = 7;
- 
+
     /* SOLENOID */
     public static final int PISTON_EXTEND_CHANNEL = 2;
     public static final int PISTON_RETRACT_CHANNEL = 3;
@@ -40,7 +40,7 @@ public class Constants {
     // Temporary. Port assignments will be supplied by Dan later. 
     public static final int GYRO_CHANNEL = -1;
     public static final int GOAL_SENSOR_CHANNEL = -1;
-    
+
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
 
@@ -58,7 +58,7 @@ public class Constants {
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
     public static final double SHOOTER_DELAY_FOR_RETRACT = 0;
-    
+
     //RELAY outputs
     public static final int CAMERA_RELAY_CHANNEL = 2;
 

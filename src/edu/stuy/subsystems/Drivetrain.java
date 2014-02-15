@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drivetrain {
-    
+
     double driveStraightSpeed = 0; // TODO: To be implemented during driver tuning
-   
+
     //private Gyro gyro;
     private static Drivetrain instance;
     private RobotDrive drivetrain;
@@ -20,12 +20,12 @@ public class Drivetrain {
     PIDController backwardController;
     private Encoder encoderRight;
     private Encoder encoderLeft;
-    
+
     private Drivetrain() {
         drivetrain = new RobotDrive(Constants.LEFT_MOTOR_CHANNEL, Constants.RIGHT_MOTOR_CHANNEL);
         drivetrain.setSafetyEnabled(false);
         //gyro = new Gyro(Constants.GYRO_CHANNEL);
-        
+
         encoderRight = new Encoder(Constants.ENCODER_CHANNEL_RIGHT_A, Constants.ENCODER_CHANNEL_RIGHT_B);
         encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
         encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_LEFT_A, Constants.ENCODER_CHANNEL_LEFT_B);
@@ -35,18 +35,18 @@ public class Drivetrain {
         encoderRight.reset();
         encoderLeft.reset();
     }
-    
+
     public static Drivetrain getInstance() {
         if (instance == null) {
             instance = new Drivetrain();
-        }   
+        }
         return instance;
     }
-    
+
     public void tankDrive(double leftValue, double rightValue) {
         drivetrain.tankDrive(leftValue, rightValue);
     }
-    
+
     public void tankDrive(Gamepad gamepad) {
         double right = gamepad.getRightY();
         double left = gamepad.getLeftY();
@@ -58,26 +58,26 @@ public class Drivetrain {
         }
         tankDrive(left, right);
     }
-    
+
     public void reset() {
         tankDrive(0.0, 0.0);
         //gyroReset();
     }
     /*
-    public double getAngle() {
-        return 0.0;//gyro.getAngle();
-    }
+     public double getAngle() {
+     return 0.0;//gyro.getAngle();
+     }
 
-    public void gyroReset() {
-        //gyro.reset();
-    }
-    */  
+     public void gyroReset() {
+     //gyro.reset();
+     }
+     */
 
     // We must invert the left encoder's value
     public double getLeftEnc() {
         return -encoderLeft.getDistance();
     }
-    
+
     public double getRightEnc() {
         return encoderRight.getDistance();
     }
@@ -90,17 +90,17 @@ public class Drivetrain {
     public double getAvgDistance() {
         return (getLeftEnc() + getRightEnc()) / 2;
     }
-    
+
     public void dashboardPIDUpdate() {
         SmartDashboard.putNumber("Drivetrain P", Constants.PVAL_D);
         SmartDashboard.putNumber("Drivetrain I", Constants.IVAL_D);
         SmartDashboard.putNumber("Drivetrain D", Constants.DVAL_D);
-        
-        double tp,ti,td;
+
+        double tp, ti, td;
         tp = SmartDashboard.getNumber("Drivetrain P");
         ti = SmartDashboard.getNumber("Drivetrain I");
         td = SmartDashboard.getNumber("Drivetrain D");
-        
+
         forwardController.setPID(tp, ti, td);
         backwardController.setPID(tp, ti, td);
     }

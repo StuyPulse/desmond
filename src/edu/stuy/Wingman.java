@@ -18,7 +18,7 @@ public class Wingman extends IterativeRobot {
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
 
     SendableChooser autonChooser;
-    
+
     public void tellStateToHack() {
         CompressorHack.isEnabled = isEnabled();
     }
@@ -69,11 +69,11 @@ public class Wingman extends IterativeRobot {
         resetAll();
         tellStateToHack();
     }
-    
+
     public void disabledInit() {
         tellStateToHack();
     }
-    
+
     // This function is called periodically during operator control
     public void teleopPeriodic() {
         SmartDashboard.putBoolean("Shooting?", shooter.isFullyRetracted());
@@ -96,7 +96,6 @@ public class Wingman extends IterativeRobot {
     public void testPeriodic() {
         // To be added later    
     }
-    
 
     public void resetAll() {
         shooter.reset();

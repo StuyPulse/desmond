@@ -68,33 +68,33 @@ public class Shooter {
         chooChoo.set(0);
         retracting = false;
     }
-    
+
     public boolean isStillRetracting() {
         return retracting;
     }
     /*
-    public boolean hasBall() {
-        return true;//ballSensor.get();
-    }
+     public boolean hasBall() {
+     return true;//ballSensor.get();
+     }
     
-    public boolean isBallCentered() {
-        return true;
-//!ballCenteredSwitch.get(); //closed switch is false
-    }
+     public boolean isBallCentered() {
+     return true;
+     //!ballCenteredSwitch.get(); //closed switch is false
+     }
 
-    */
+     */
+
     public boolean isFullyRetracted() {
         return !catapultRetractedSwitch.get(); //closed switch is false
     }
 
     /*
-    public boolean isGoalHot() {
-        double voltage = goalSensor.getAverageVoltage();
-        return (voltage <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE); // Sensor is active when low
-    }
-    */
-
-    public void manualGamepadControl(Gamepad gamepad) { 
+     public boolean isGoalHot() {
+     double voltage = goalSensor.getAverageVoltage();
+     return (voltage <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE); // Sensor is active when low
+     }
+     */
+    public void manualGamepadControl(Gamepad gamepad) {
         if (gamepad.getLeftBumper()) {
             initiateWinch();
             System.out.println("Choo choo initiated.");
@@ -106,7 +106,7 @@ public class Shooter {
             stopWinch();
             System.out.println("Winch manually stopped.");
         }
-        
+
         if (gamepad.getRightY() > 0) {
             chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
             System.out.println(gamepad.getRightY());
@@ -115,7 +115,7 @@ public class Shooter {
             chooChoo.set(0);
             System.out.println("Choo choo stopped because of analog sticks.");
         }
-        
+
         // if there is a retract request
         if (retracting) {
             retractWinch();

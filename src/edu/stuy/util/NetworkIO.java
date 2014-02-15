@@ -25,7 +25,7 @@ public class NetworkIO {
         mostRecentOut = Constants.CV_I_DONT_KNOW;
         initializeConnection();
     }
-    
+
     public void initializeConnection() {
         try {
             System.out.println("First thing, creating socket");
@@ -43,7 +43,7 @@ public class NetworkIO {
         }
 
     }
-    
+
     public void run() {
         try {
             if (!setup) {
@@ -73,7 +73,7 @@ public class NetworkIO {
         run();
         return getMostRecent();
     }
-    
+
     public boolean getConnected() {
         return setup;
     }

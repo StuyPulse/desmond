@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 
 public class Acquirer {
-    
+
     private static Acquirer instance;
     private Solenoid pistonExtend;
     private Solenoid pistonRetract;
     private Talon roller;
     public Compressor compressor;
- 
+
     public Acquirer() {
         pistonExtend = new Solenoid(Constants.PISTON_EXTEND_CHANNEL);
         pistonRetract = new Solenoid(Constants.PISTON_RETRACT_CHANNEL);
@@ -21,45 +21,45 @@ public class Acquirer {
         compressor = new Compressor(Constants.PRESSURE_SWITCH_CHANNEL, Constants.COMPRESSOR_RELAY_CHANNEL);
         compressor.start();
     }
-    
+
     public static Acquirer getInstance() {
         if (instance == null) {
             instance = new Acquirer();
         }
         return instance;
     }
-    
+
     public void rotateDown() {
         pistonExtend.set(true);
         pistonRetract.set(false);
     }
-    
+
     public void rotateUp() {
         pistonExtend.set(false);
         pistonRetract.set(true);
     }
-    
+
     public void intakeBall() {
         roller.set(-1);
     }
-    
+
     public void ejectBall() {
         roller.set(1);
     }
-    
+
     public void stopRoller() {
         roller.set(0);
     }
-    
+
     public void stopCompressor() { // for troubleshooting
 //        compressor.stop();
     }
-    
+
     public void reset() {
         rotateUp();
         stopRoller();
     }
-    
+
     public void manualGamepadControl(Gamepad gamepad) {
         if (Math.abs(gamepad.getLeftY()) >= 0.1) {
             roller.set(gamepad.getLeftY());
@@ -79,6 +79,6 @@ public class Acquirer {
             rotateDown();
         } else if (gamepad.getLeftButton()) {
             rotateUp();
-        } 
+        }
     }
 }
