@@ -61,8 +61,8 @@ public class Acquirer {
     }
     
     public void manualGamepadControl(Gamepad gamepad) {
-        if (Math.abs(gamepad.getRightY()) >= 0.1) {
-            roller.set(gamepad.getRightY());
+        if (Math.abs(gamepad.getLeftY()) >= 0.1) {
+            roller.set(gamepad.getLeftY());
             System.out.println("Acquirer being controlled with analog." + gamepad.getRightY());
         } else if (gamepad.getDPadDown()) {
             ejectBall();
@@ -76,9 +76,9 @@ public class Acquirer {
         }
         // else if is not required; can run simultaneously 
         if (gamepad.getTopButton()) {
-            rotateDown();
-        } else if (gamepad.getLeftButton()) {
             rotateUp();
+        } else if (gamepad.getLeftButton()) {
+            rotateDown();
         } 
     }
 }

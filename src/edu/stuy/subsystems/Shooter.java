@@ -104,11 +104,11 @@ public class Shooter {
             System.out.println("Winch manually stopped.");
         }
         
-        if (gamepad.getLeftY() > 0) {
-            chooChoo.set(-gamepad.getLeftY()); // The analog stick Y increases as it is pulled downwards
-            System.out.println(gamepad.getLeftY());
+        if (gamepad.getRightY() > 0) {
+            chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
+            System.out.println(gamepad.getRightY());
             System.out.println("Running choo choo with analog.");
-        } else if (gamepad.getLeftY() <= 0 && !retracting) {
+        } else if (gamepad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
             System.out.println("Choo choo stopped because of analog sticks.");
         }
