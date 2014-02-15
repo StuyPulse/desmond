@@ -41,7 +41,7 @@ public class Autonomous {
     // Auton set that relies on CV
     public static void auton1() {
         shootIfHotCV();
-        driveForward();
+        driveBackward();
     }
     
     public static void auton2() {
@@ -50,13 +50,13 @@ public class Autonomous {
         shootIfHotCV();
         finishLoadingNextBall();
         shoot();
-        driveForward();
+        driveBackward();
     }
     
     // Auton sets for using Analog light sensor instead of CV
     public static void auton3() {
         //shootIfHotAnalog();
-        driveForward();
+        driveBackward();
     }
     
     public static void auton4() {
@@ -65,13 +65,13 @@ public class Autonomous {
         //shootIfHotAnalog();
         finishLoadingNextBall();
         shoot();
-        driveForward();
+        driveBackward();
     }
 
     // Auton for dumb firing (one ball), without CV/light sensor
     public static void auton5() {
         shoot();
-        driveForward();
+        driveBackward();
     }
     
     // Auton for dumb firing (two balls), without CV/light sensor
@@ -80,12 +80,12 @@ public class Autonomous {
         shoot();
         finishLoadingNextBall();
         shoot();
-        driveForward();
+        driveBackward();
     }
     
      // Auton for just moving forward to get mobility points
     public static void auton7() {
-        driveForward();
+        driveBackward();
     }
     
     // Wait for CV to say goal is hot and then shoot
@@ -114,8 +114,10 @@ public class Autonomous {
     }
     
     // Drive forward
-    public static void driveForward() {
-        System.out.println("Driving forward at " + System.currentTimeMillis());
+    public static void driveBackward() {
+        System.out.println("Driving backward at " + System.currentTimeMillis());
+        // Delay for a short time in case we just shot a ball
+        Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
         Acquirer.getInstance().rotateUp();
         // These numbers will require tuning
         Drivetrain.getInstance().tankDrive(0.25, 0.25);

@@ -62,4 +62,7 @@ public class Constants {
     //RELAY outputs
     public static final int CAMERA_RELAY_CHANNEL = 2;
 
+    // AUTON constants
+    public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
+
 }
