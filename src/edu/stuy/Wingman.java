@@ -12,7 +12,7 @@ public class Wingman extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    CV cv;
+    //CV cv;
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
@@ -27,7 +27,7 @@ public class Wingman extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        cv = CV.getInstance();
+        //cv = CV.getInstance();
         resetAll();
 
         // SendableChooser for auton
@@ -36,13 +36,14 @@ public class Wingman extends IterativeRobot {
         autonChooser.addObject("2 - Wait for hot goal, shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(2));
         autonChooser.addObject("3 - Wait for hot goal (analog), shoot, and drive forward", Integer.valueOf(3));
         autonChooser.addObject("4 - Wait for hot goal (analog), shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(4));
-        autonChooser.addObject("5 - Shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(5));
+        autonChooser.addObject("5 - Shoot ball, drive forward", Integer.valueOf(5));
         autonChooser.addObject("7 - Drive forward", Integer.valueOf(7));
         autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));
         SmartDashboard.putData("Autonomous routine", autonChooser);
     }
 
     public void autonomousInit() {
+        System.out.println("Initting auton");
         resetAll();
         Thread startRetractingWinch = new Thread(new Runnable() {
 
@@ -55,12 +56,13 @@ public class Wingman extends IterativeRobot {
         });
         startRetractingWinch.start();
         Integer selection = (Integer) autonChooser.getSelected();
+        System.out.println(selection.intValue());
         Autonomous.auton(selection.intValue());
     }
 
     // This function is called periodically during autonomous
     public void autonomousPeriodic() {
-        SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
+        //SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot());
     }
 
     public void teleopInit() {
@@ -75,8 +77,8 @@ public class Wingman extends IterativeRobot {
     // This function is called periodically during operator control
     public void teleopPeriodic() {
         SmartDashboard.putBoolean("Shooting?", shooter.isFullyRetracted());
-        SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
-        SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
+        //SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
+        //SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
@@ -87,7 +89,7 @@ public class Wingman extends IterativeRobot {
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
-        cv.setCameraLight(true);
+        //cv.setCameraLight(true);
     }
 
     // This function is called periodically during test mode

@@ -40,11 +40,14 @@ public class Shooter {
 
     public void fireBall() {
         if (isFullyRetracted() && !retracting) {
+            System.out.println("Shooting at " + System.currentTimeMillis());
             chooChoo.set(-1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
             initiateWinch();
+        } else {
+            System.out.println("Not shooting at " + System.currentTimeMillis());
         }
     }
 

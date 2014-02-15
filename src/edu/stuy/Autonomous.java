@@ -115,6 +115,7 @@ public class Autonomous {
     
     // Drive forward
     public static void driveForward() {
+        System.out.println("Driving forward at " + System.currentTimeMillis());
         Acquirer.getInstance().rotateUp();
         // These numbers will require tuning
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
