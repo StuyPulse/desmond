@@ -72,8 +72,10 @@ public class Drivetrain {
         //gyro.reset();
     }
     */  
+
+    // We must invert the left encoder's value
     public double getLeftEnc() {
-        return encoderLeft.getDistance();
+        return -encoderLeft.getDistance();
     }
     
     public double getRightEnc() {
