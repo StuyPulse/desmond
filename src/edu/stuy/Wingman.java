@@ -2,7 +2,6 @@ package edu.stuy;
 
 import edu.stuy.subsystems.*;
 import edu.stuy.util.Gamepad;
-import edu.stuy.util.CompressorHack;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -18,10 +17,6 @@ public class Wingman extends IterativeRobot {
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
 
     SendableChooser autonChooser;
-
-    public void tellStateToHack() {
-        CompressorHack.isEnabled = isEnabled();
-    }
 
     public void robotInit() {
         shooter = Shooter.getInstance();
@@ -67,11 +62,9 @@ public class Wingman extends IterativeRobot {
 
     public void teleopInit() {
         resetAll();
-        tellStateToHack();
     }
 
     public void disabledInit() {
-        tellStateToHack();
     }
 
     // This function is called periodically during operator control
