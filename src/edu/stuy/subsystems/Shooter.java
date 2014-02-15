@@ -132,5 +132,6 @@ public class Shooter {
         if (retracting) {
             retractWinch();
         }
+        System.out.println("Is the catapult triggering the limit switch? " + (isFullyRetracted() ? "Yes" : "No"));
     }
 }
