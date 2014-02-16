@@ -63,8 +63,11 @@ public class Autonomous {
     }
 
     public static void auton3() {
-        driveForward(2);
-        lowShootIfHotCV();
+        if (!CV.getInstance().isGoalHot()) {
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+        }
+        driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
+        lowShoot();
     }
 
     // Auton set for using Analog light sensor instead of CV
@@ -82,8 +85,11 @@ public class Autonomous {
     }
 
     public static void auton6() {
-        driveForward(2);
-        //lowShootIfHotAnalog(); // TODO: uncomment me
+//        if (!Shooter.getInstance().isGoalHot()) { // TODO: uncomment me
+//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+//        }
+        driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
+        lowShoot();
     }
 
     // Auton set for dumb firing
