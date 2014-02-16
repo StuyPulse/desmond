@@ -87,7 +87,7 @@ public class Autonomous {
     public static void auton6() {
         driveForward(2);
         driveBackward(.5);
-        lowShootIfHotAnalog();
+        //lowShootIfHotAnalog();
     }
 
     // Auton for dumb firing (one ball), without CV/light sensor
@@ -146,14 +146,14 @@ public class Autonomous {
      }
      */
 
-    public static void lowShootIfHotAnalog() {
-        if (Shooter.getInstance().isGoalHot()) {
-            lowShoot();
-        } else {
-            Timer.delay(4.5);
-            lowShoot();
-        }
-    }
+//    public static void lowShootIfHotAnalog() {
+//        if (Shooter.getInstance().isGoalHot()) {
+//            lowShoot();
+//        } else {
+//            Timer.delay(4.5);
+//            lowShoot();
+//        }
+//    }
 
     // Shoot without CV
     public static void shoot() {
@@ -201,11 +201,11 @@ public class Autonomous {
     
     public static void driveForward(double time) {
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/3)
+        Timer.delay(time/3);
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
-        Timer.delay(time/3)
+        Timer.delay(time/3);
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/3)
+        Timer.delay(time/3);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
