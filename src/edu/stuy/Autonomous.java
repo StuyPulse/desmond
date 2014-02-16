@@ -51,7 +51,7 @@ public class Autonomous {
     // Auton set that relies on CV
     public static void auton1() {
         shootIfHotCV();
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     public static void auton2() {
@@ -59,7 +59,7 @@ public class Autonomous {
         shootIfHotCV();
         finishLoadingNextBall();
         shoot();
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     public static void auton3() {
@@ -73,7 +73,7 @@ public class Autonomous {
     // Auton set for using Analog light sensor instead of CV
     public static void auton4() {
         //shootIfHotAnalog(); // TODO: uncomment me
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     public static void auton5() {
@@ -81,7 +81,7 @@ public class Autonomous {
         //shootIfHotAnalog(); // TODO: uncomment me
         finishLoadingNextBall();
         shoot();
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     public static void auton6() {
@@ -95,7 +95,7 @@ public class Autonomous {
     // Auton set for dumb firing
     public static void auton7() {
         shoot();
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     public static void auton8() {
@@ -103,7 +103,7 @@ public class Autonomous {
         shoot();
         finishLoadingNextBall();
         shoot();
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     // One point auton with dumb fire while acquirer is up
@@ -114,7 +114,7 @@ public class Autonomous {
 
     // Auton for just moving forward to get mobility points
     public static void auton10() {
-        driveBackward();
+        driveBackwardForMobilityPoints();
     }
 
     // Wait for CV to say goal is hot and then shoot
@@ -172,7 +172,7 @@ public class Autonomous {
         Acquirer.getInstance().ejectBall();
     }
 
-    public static void driveBackward() {
+    public static void driveBackwardForMobilityPoints() {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
         Acquirer.getInstance().rotateUp();
