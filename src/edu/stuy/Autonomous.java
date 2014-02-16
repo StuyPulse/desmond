@@ -105,6 +105,15 @@ public class Autonomous {
             shoot();
         }
     }
+
+    public static void lowShootIfHotCV() {
+        if (CV.getInstance().isGoalHot()) {
+            lowShoot();
+        } else {
+            Timer.delay(4.5);
+            shoot();
+        }
+    }
     /*
      public static void shootIfHotAnalog() {
      if (Shooter.getInstance().isGoalHot()) {
@@ -115,6 +124,15 @@ public class Autonomous {
      }
      }
      */
+
+    public static void lowShootIfHotAnalog() {
+        if (Shooter.getInstance().isGoalHot()) {
+            lowShoot();
+        } else {
+            Timer.delay(4.5);
+            lowShoot();
+        }
+    }
 
     // Shoot without CV
     public static void shoot() {
