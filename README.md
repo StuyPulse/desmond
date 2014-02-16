@@ -1,3 +1,3 @@
-# Wingman [![Build Status](https://travis-ci.org/prog694/wingman.png?branch=develop)](https://travis-ci.org/prog694/wingman)
+# DESmond [![Build Status](https://travis-ci.org/prog694/desmond.png?branch=develop)](https://travis-ci.org/prog694/desmond)
 
-Code for Aerial Assist (2014) robot, under the temporary name "Wingman". 
+Code for Aerial Assist (2014) robot, DESmond.

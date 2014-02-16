@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
-public class Wingman extends IterativeRobot {
+public class DESmond extends IterativeRobot {
 
     Shooter shooter;
     Drivetrain drivetrain;
