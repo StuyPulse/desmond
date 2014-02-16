@@ -32,7 +32,10 @@ public class Autonomous {
                 auton7(); // Just move forward
                 break;
             case 8:
-                auton8();
+                auton8(); // 1-point auton with acq down
+                break;
+            case 9:
+                auton9(); // 1-point auton with acq up
                 break;
         }
     }
@@ -92,10 +95,16 @@ public class Autonomous {
         driveBackward();
     }
     
-    // One point auton with dumb fire
+    // One point auton with dumb fire while acquirer is down
     public static void auton8() {
         driveForward(2);
         driveBackward(.5);
+        lowShoot();
+    }
+    
+    // One point auton with dumb fire while acquirer is up
+    public static void auton9() {
+        driveForward(2);
         lowShoot();
     }
     
@@ -165,11 +174,15 @@ public class Autonomous {
     
     public static void driveForward(double time) {
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/3);
+        Timer.delay(time/5);
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
-        Timer.delay(time/3);
+        Timer.delay(time/5);
+        Drivetrain.getInstance().tankDrive(-0.75, -0.75);
+        Timer.delay(time/5);
+        Drivetrain.getInstance().tankDrive(-0.50, -0.50);
+        Timer.delay(time/5);
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/3);
+        Timer.delay(time/5);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
