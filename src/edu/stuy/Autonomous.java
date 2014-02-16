@@ -35,7 +35,7 @@ public class Autonomous {
                 auton8(); // Dumb fire high goal- 2 times
                 break;
             case 9:
-                auton9(); // Dumb fire low goal- acq up
+                auton9(); // Dumb fire low goal
                 break;
             case 10:
                 auton10(); // Just drive forward
@@ -156,6 +156,7 @@ public class Autonomous {
 //            lowShoot();
 //        }
 //    }
+    
     // Shoot without CV
     public static void shoot() {
         Shooter.getInstance().fireBall();
