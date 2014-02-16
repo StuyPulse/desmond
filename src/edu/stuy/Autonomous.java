@@ -102,7 +102,7 @@ public class Autonomous {
 
     // One point auton with dumb fire while acquirer is up
     public static void auton9() {
-        driveForward(2);
+        driveForward(2.25);
         lowShoot();
     }
 
@@ -199,16 +199,21 @@ public class Autonomous {
     }
 
     public static void driveForward(double time) {
+        double partial = time / 2;
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time / 10);
+        Timer.delay(partial / 6);
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
-        Timer.delay(time / 5);
+        Timer.delay(partial / 6);
         Drivetrain.getInstance().tankDrive(-0.75, -0.75);
-        Timer.delay((time / 5) * 2);
+        Timer.delay(partial / 6);
+        Drivetrain.getInstance().tankDrive(-1, -1);
+        Timer.delay(time - partial);
+        Drivetrain.getInstance().tankDrive(-0.75, -0.75);
+        Timer.delay(partial / 6);
         Drivetrain.getInstance().tankDrive(-0.50, -0.50);
-        Timer.delay(time / 5);
+        Timer.delay(partial / 6);
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time / 10);
+        Timer.delay(partial / 6);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
