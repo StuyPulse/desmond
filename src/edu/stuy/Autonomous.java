@@ -31,6 +31,9 @@ public class Autonomous {
             case 7:
                 auton7(); // Just move forward
                 break;
+            case 8:
+                auton8();
+                break;
         }
     }
 
@@ -91,8 +94,8 @@ public class Autonomous {
     
     // One point auton with dumb fire
     public static void auton8() {
-        driveBackward(2);
-        driveForward(.5);
+        driveForward(2);
+        driveBackward(.5);
         lowShoot();
     }
     
