@@ -56,7 +56,7 @@ public class Autonomous {
 
     public static void auton2() {
         readyNextBall();
-        // There may not be enough time to check if the goal is hot AND shoot both balls
+        // NOTE: There may not be enough time to check if the goal is hot AND shoot both balls
         shootIfHotCV();
         finishLoadingNextBall();
         shoot();
@@ -71,14 +71,14 @@ public class Autonomous {
 
     // Auton sets for using Analog light sensor instead of CV
     public static void auton4() {
-        //shootIfHotAnalog();
+        //shootIfHotAnalog(); // TODO: uncomment me
         driveBackward();
     }
 
     public static void auton5() {
         readyNextBall();
-        // There may not be enough time to check if the goal is hot AND shoot both balls
-        //shootIfHotAnalog();
+        // NOTE: There may not be enough time to check if the goal is hot AND shoot both balls
+        //shootIfHotAnalog(); // TODO: uncomment me
         finishLoadingNextBall();
         shoot();
         driveBackward();
@@ -87,7 +87,7 @@ public class Autonomous {
     public static void auton6() {
         driveForward(2);
         driveBackward(.5);
-        //lowShootIfHotAnalog();
+        //lowShootIfHotAnalog(); // TODO: uncomment me
     }
 
     // Auton for dumb firing (one ball), without CV/light sensor
@@ -136,6 +136,7 @@ public class Autonomous {
         }
     }
 
+    // TODO: uncomment these
 //    public static void shootIfHotAnalog() {
 //        if (Shooter.getInstance().isGoalHot()) {
 //            shoot();
@@ -166,7 +167,7 @@ public class Autonomous {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
         Acquirer.getInstance().rotateUp();
-        // These numbers will require tuning
+        // TODO: These numbers will require tuning
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
         Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);
@@ -207,14 +208,14 @@ public class Autonomous {
     public static void readyNextBall() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
-        Timer.delay(1.0); // Delay should be tuned to ready next ball, but not load until first ball is fired
+        Timer.delay(1.0); // TODO: Delay should be tuned to ready next ball, but not load until first ball is fired
         Acquirer.getInstance().stopRoller();
     }
 
     public static void finishLoadingNextBall() {
         if (Shooter.getInstance().isFullyRetracted()) {
             Acquirer.getInstance().intakeBall();
-            Timer.delay(1.0); // Delay should be tuned
+            Timer.delay(1.0); // TODO: Delay should be tuned
         }
         Acquirer.getInstance().stopRoller();
     }
