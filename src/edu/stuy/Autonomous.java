@@ -17,19 +17,28 @@ public class Autonomous {
                 auton2(); // CV- two balls, drive forward
                 break;
             case 3:
-                auton3(); // Analog light sensor- 1 ball, drive forward
+                auton3(); // CV- drive forward, low goal
                 break;
             case 4:
-                auton4(); // Analog light sensor- 2 balls, drive forward
+                auton4(); // Analog light sensor- 1 ball, drive forward
                 break;
             case 5:
-                auton5(); // Dumb fire with no CV- shoots one time
+                auton5(); // Analog light sensor- 2 balls, drive forward
                 break;
             case 6:
-                auton6(); // Dumb fire with no CV- shoots two times
+                auton6(); // Analog light sensor- drive forward, low goal
                 break;
             case 7:
-                auton7(); // Just move forward
+                auton7(); // Dumb fire with no CV- shoots one time
+                break;
+            case 8:
+                auton8(); // Dumb fire with no CV- shoots two times
+                break;
+            case 9:
+                auton9(); // Dumb fire with no CV- low goal
+                break;
+            case 10:
+                auton10(); // Just move forward
                 break;
         }
     }
@@ -54,13 +63,19 @@ public class Autonomous {
         driveBackward();
     }
 
-    // Auton sets for using Analog light sensor instead of CV
     public static void auton3() {
+        driveBackward(2);
+        driveForward(.5);
+        lowShootIfHotCV();
+    }
+
+    // Auton sets for using Analog light sensor instead of CV
+    public static void auton4() {
         //shootIfHotAnalog();
         driveBackward();
     }
 
-    public static void auton4() {
+    public static void auton5() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
         //shootIfHotAnalog();
@@ -69,31 +84,37 @@ public class Autonomous {
         driveBackward();
     }
 
+    public static void auton6() {
+        driveBackward(2);
+        driveForward(.5);
+        lowShootIfHotAnalog();
+    }
+
     // Auton for dumb firing (one ball), without CV/light sensor
-    public static void auton5() {
+    public static void auton7() {
         shoot();
         driveBackward();
     }
 
     // Auton for dumb firing (two balls), without CV/light sensor
-    public static void auton6() {
+    public static void auton8() {
         readyNextBall();
         shoot();
         finishLoadingNextBall();
         shoot();
         driveBackward();
     }
-
-    // Auton for just moving forward to get mobility points
-    public static void auton7() {
-        driveBackward();
-    }
     
     // One point auton with dumb fire
-    public static void auton8() {
+    public static void auton9() {
         driveBackward(2);
         driveForward(.5);
         lowShoot();
+    }
+
+    // Auton for just moving forward to get mobility points
+    public static void auton10() {
+        driveBackward();
     }
     
     // Wait for CV to say goal is hot and then shoot
