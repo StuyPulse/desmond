@@ -55,7 +55,7 @@ public class Wingman extends IterativeRobot {
         });
         startRetractingWinch.start();
         Integer selection = (Integer) autonChooser.getSelected();
-        System.out.println(selection.intValue());
+        System.out.println("Selected auton #" + selection.intValue());
         Autonomous.auton(selection.intValue());
     }
 

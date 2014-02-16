@@ -109,8 +109,7 @@ public class Shooter {
 
         if (gamepad.getRightY() > 0) {
             chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
-            System.out.println(gamepad.getRightY());
-            System.out.println("Running choo choo with analog.");
+            System.out.println("Running choo choo with analog. Value: " + -gamepad.getRightY());
         } else if (gamepad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
             System.out.println("Choo choo stopped because of analog sticks.");
@@ -120,6 +119,5 @@ public class Shooter {
         if (retracting) {
             retractWinch();
         }
-        System.out.println("Is the catapult triggering the limit switch? " + (isFullyRetracted() ? "Yes" : "No"));
     }
 }
