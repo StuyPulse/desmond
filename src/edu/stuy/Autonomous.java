@@ -4,7 +4,7 @@ import edu.stuy.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Autonomous {
-    
+
     public static void auton(int x) {
         switch (x) {
             case 0:
@@ -45,7 +45,7 @@ public class Autonomous {
                 break;
         }
     }
-    
+
     // Empty auton for testing purposes
     public static void auton0() {
         // Do nothing
@@ -98,17 +98,17 @@ public class Autonomous {
         shoot();
         driveBackward();
     }
-    
+
     public static void auton8() {
         // TODO
     }
-    
+
     // One point auton with dumb fire while acquirer is up
     public static void auton9() {
         driveForward(2);
         lowShootAcquirerDown();
     }
-    
+
     // One point auton with dumb fire
     public static void auton10() {
         driveForward(2);
@@ -139,7 +139,7 @@ public class Autonomous {
             shoot();
         }
     }
-    
+
     public static void lowShootAcquirerUpIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
             lowShootAcquirerUp();
@@ -179,7 +179,7 @@ public class Autonomous {
     public static void lowShootAcquirerUp() {
         Acquirer.getInstance().ejectBall();
     }
-    
+
     public static void driveBackward() {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
@@ -200,29 +200,29 @@ public class Autonomous {
 
     public static void driveBackward(double time) {
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
-        Timer.delay(time / 5);
+        Timer.delay(time / 10);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);
         Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(0.75, 0.75);
-        Timer.delay(time / 5);
+        Timer.delay((time / 5) * 2);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);
         Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
-        Timer.delay(time / 5);
+        Timer.delay(time / 10);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
     public static void driveForward(double time) {
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/5);
+        Timer.delay(time / 10);
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
-        Timer.delay(time/5);
+        Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(-0.75, -0.75);
-        Timer.delay(time/5);
+        Timer.delay((time / 5) * 10);
         Drivetrain.getInstance().tankDrive(-0.50, -0.50);
-        Timer.delay(time/5);
+        Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
-        Timer.delay(time/5);
+        Timer.delay(time / 10);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
