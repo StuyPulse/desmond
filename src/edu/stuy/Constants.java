@@ -16,30 +16,28 @@ public class Constants {
     public static final int COMPRESSOR_RELAY_CHANNEL = 1;
 
     /* GPIO */
-    public static final int BALL_SENSOR_CHANNEL = -1;
+    public static final int BALL_SENSOR_CHANNEL = -1; // TODO: assign me
     public static final int ENCODER_CHANNEL_LEFT_A = 10;
     public static final int ENCODER_CHANNEL_LEFT_B = 11;
     public static final int ENCODER_CHANNEL_RIGHT_A = 1;
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
-    public static final int BALL_CENTERED_SWITCH_CHANNEL = -1;
+    public static final int BALL_CENTERED_SWITCH_CHANNEL = -1; // TODO: assign me
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
 
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
     private static final double ENCODER_PULSE_PER_REV = 360.0;
-    private static final double GEAR_RATIO = 42.0 / 39.0; // TO BE CHANGED
-    private static final double WHEEL_RADIUS = 2.0; // TO BE CHANGED
+    private static final double GEAR_RATIO = 42.0 / 39.0; // TODO: TO BE CHANGED
+    private static final double WHEEL_RADIUS = 2.0; // TODO: TO BE CHANGED
     private static final double CIRCUMFERENCE = 2 * Math.PI * WHEEL_RADIUS;
     public static final double ENCODER_DISTANCE_PER_PULSE = CIRCUMFERENCE / (ENCODER_PULSE_PER_REV * GEAR_RATIO);
 
     /* GYRO DRIVE STRAIGHT PID VALUES */
-    public static final double PVAL_D = .01; // TO BE CHANGED
-    public static final double IVAL_D = .01; // TO BE CHANGED
-    public static final double DVAL_D = .01; // TO BE CHANGED
+    public static final double PVAL_D = .01; // TODO: TO BE CHANGED
+    public static final double IVAL_D = .01; // TODO: TO BE CHANGED
+    public static final double DVAL_D = .01; // TODO: TO BE CHANGED
 
     /* ANALOG INPUT */
-    // Temporary. Port assignments will be supplied by Dan later. 
-    public static final int GYRO_CHANNEL = -1;
-    public static final int GOAL_SENSOR_CHANNEL = -1;
+    public static final int GOAL_SENSOR_CHANNEL = -1; // TODO: assign me
 
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
@@ -54,8 +52,8 @@ public class Constants {
     public static final String CV_IP = "10.6.94.14";
 
     // SHOOTER constants
-    public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // To be changed later
-    public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if something goes wrong
+    public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // TODO: To be changed later
+    public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
     public static final double SHOOTER_DELAY_FOR_RETRACT = 0;
 

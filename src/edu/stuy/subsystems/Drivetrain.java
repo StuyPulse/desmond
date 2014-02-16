@@ -3,7 +3,6 @@ package edu.stuy.subsystems;
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -13,7 +12,6 @@ public class Drivetrain {
 
     double driveStraightSpeed = 0; // TODO: To be implemented during driver tuning
 
-    //private Gyro gyro;
     private static Drivetrain instance;
     private RobotDrive drivetrain;
     PIDController forwardController;
@@ -24,7 +22,6 @@ public class Drivetrain {
     private Drivetrain() {
         drivetrain = new RobotDrive(Constants.LEFT_MOTOR_CHANNEL, Constants.RIGHT_MOTOR_CHANNEL);
         drivetrain.setSafetyEnabled(false);
-        //gyro = new Gyro(Constants.GYRO_CHANNEL);
 
         encoderRight = new Encoder(Constants.ENCODER_CHANNEL_RIGHT_A, Constants.ENCODER_CHANNEL_RIGHT_B);
         encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
@@ -61,17 +58,7 @@ public class Drivetrain {
 
     public void reset() {
         tankDrive(0.0, 0.0);
-        //gyroReset();
     }
-    /*
-     public double getAngle() {
-     return 0.0;//gyro.getAngle();
-     }
-
-     public void gyroReset() {
-     //gyro.reset();
-     }
-     */
 
     // We must invert the left encoder's value
     public double getLeftEnc() {

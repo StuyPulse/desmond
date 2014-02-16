@@ -51,16 +51,13 @@ public class Acquirer {
         roller.set(0);
     }
 
-    public void stopCompressor() { // for troubleshooting
-//        compressor.stop();
-    }
-
     public void reset() {
         rotateUp();
         stopRoller();
     }
 
     public void manualGamepadControl(Gamepad gamepad) {
+        // Acquirer frame controls
         if (Math.abs(gamepad.getLeftY()) >= 0.1) {
             roller.set(gamepad.getLeftY());
             System.out.println("Acquirer being controlled with analog." + gamepad.getRightY());
@@ -74,7 +71,8 @@ public class Acquirer {
             stopRoller();
             System.out.println("Acquirer not being controlled by anything.");
         }
-        // else if is not required; can run simultaneously 
+
+        // Acquirer roller controls
         if (gamepad.getTopButton()) {
             rotateDown();
         } else if (gamepad.getLeftButton()) {
