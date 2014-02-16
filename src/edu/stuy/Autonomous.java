@@ -128,21 +128,10 @@ public class Autonomous {
     }
 
     public static void lowShootIfHotCV() {
-        if (CV.getInstance().isGoalHot()) {
-            lowShoot();
-        } else {
+        if (!(CV.getInstance().isGoalHot())) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-            shoot();
         }
-    }
-
-    public static void lowShootAcquirerUpIfHotCV() {
-        if (CV.getInstance().isGoalHot()) {
-            lowShoot();
-        } else {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-            shoot();
-        }
+        lowShoot();
     }
 
     // TODO: uncomment these
