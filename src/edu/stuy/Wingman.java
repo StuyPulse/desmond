@@ -37,7 +37,7 @@ public class Wingman extends IterativeRobot {
         autonChooser.addObject("7 - Dumb fire one ball, drive forward", Integer.valueOf(7));
         autonChooser.addObject("8 - Dumb fire one ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(8));
         autonChooser.addDefault("9 - Dumb fire low goal", Integer.valueOf(9));
-        autonChooser.addObject("10 - Drive forward only", Integer.valueOf(10));
+        autonChooser.addObject("10 - Drive forward only (away from acquirer)", Integer.valueOf(10));
         SmartDashboard.putData("Autonomous routine", autonChooser);
     }
 
