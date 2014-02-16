@@ -32,7 +32,7 @@ public class Wingman extends IterativeRobot {
         autonChooser.addObject("3 - Wait for hot goal (analog), shoot, and drive forward", Integer.valueOf(3));
         autonChooser.addObject("4 - Wait for hot goal (analog), shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(4));
         autonChooser.addObject("5 - Shoot ball, drive forward", Integer.valueOf(5));
-        autonChooser.addObject("7 - Shoot one ball without CV, drive forward", Integer.valueOf(6));
+        autonChooser.addObject("6 - Shoot one ball without CV, drive forward", Integer.valueOf(6));
         autonChooser.addObject("7 - Shoot two balls without CV, drive forward", Integer.valueOf(7));
         autonChooser.addObject("8 - Drive forward, fire into low goal", Integer.valueOf(8));
         autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));

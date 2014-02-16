@@ -93,8 +93,7 @@ public class Autonomous {
     public static void auton8() {
         driveBackward(2);
         driveForward(.5);
-        Acquirer.getInstance().rotateDown();
-        Acquirer.getInstance().ejectBall();
+        lowShoot();
     }
     
     // Wait for CV to say goal is hot and then shoot
@@ -122,6 +121,11 @@ public class Autonomous {
         Shooter.getInstance().fireBall();
     }
 
+    public static void lowShoot() {
+        Acquirer.getInstance().rotateDown();
+        Acquirer.getInstance().ejectBall();
+    }
+    
     // Drive forward
     public static void driveBackward() {
         System.out.println("Driving backward at " + System.currentTimeMillis());
@@ -143,8 +147,16 @@ public class Autonomous {
     }
     
     public static void driveBackward(double time) {
+        Drivetrain.getInstance().tankDrive(0.25, 0.25);
+        Timer.delay(time/5);
+        Drivetrain.getInstance().tankDrive(0.5, 0.5);
+        Timer.delay(time/5);
         Drivetrain.getInstance().tankDrive(0.75, 0.75);
-        Timer.delay(time);
+        Timer.delay(time/5);
+        Drivetrain.getInstance().tankDrive(0.5, 0.5);
+        Timer.delay(time/5);
+        Drivetrain.getInstance().tankDrive(0.25, 0.25);
+        Timer.delay(time/5);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
     
