@@ -17,7 +17,7 @@ public class Autonomous {
                 auton2(); // CV- two balls, drive forward
                 break;
             case 3:
-                auton3(); // CV- drive forward, low goal
+                auton3(); // CV- low goal
                 break;
             case 4:
                 auton4(); // Analog light sensor- 1 ball, drive forward
@@ -26,7 +26,7 @@ public class Autonomous {
                 auton5(); // Analog light sensor- 2 balls, drive forward
                 break;
             case 6:
-                auton6(); // Analog light sensor- drive forward, low goal
+                auton6(); // Analog light sensor- low goal
                 break;
             case 7:
                 auton7(); // Dumb fire high goal- 1 time
@@ -35,13 +35,10 @@ public class Autonomous {
                 auton8(); // Dumb fire high goal- 2 times
                 break;
             case 9:
-                auton9(); // Dumb fire low goal- acq down
+                auton9(); // Dumb fire low goal- acq up
                 break;
             case 10:
-                auton10(); // Dumb fire low goal- acq up
-                break;
-            case 11:
-                auton11(); // Just move forward
+                auton10(); // Just drive forward
                 break;
         }
     }
@@ -58,8 +55,7 @@ public class Autonomous {
     }
 
     public static void auton2() {
-        readyNextBall();
-        // NOTE: There may not be enough time to check if the goal is hot AND shoot both balls
+        startLoadingNextBall();
         shootIfHotCV();
         finishLoadingNextBall();
         shoot();
@@ -68,19 +64,17 @@ public class Autonomous {
 
     public static void auton3() {
         driveForward(2);
-        driveBackward(.5);
-        lowShootAcquirerDownIfHotCV();
+        lowShootIfHotCV();
     }
 
-    // Auton sets for using Analog light sensor instead of CV
+    // Auton set for using Analog light sensor instead of CV
     public static void auton4() {
         //shootIfHotAnalog(); // TODO: uncomment me
         driveBackward();
     }
 
     public static void auton5() {
-        readyNextBall();
-        // NOTE: There may not be enough time to check if the goal is hot AND shoot both balls
+        startLoadingNextBall();
         //shootIfHotAnalog(); // TODO: uncomment me
         finishLoadingNextBall();
         shoot();
@@ -89,35 +83,31 @@ public class Autonomous {
 
     public static void auton6() {
         driveForward(2);
-        driveBackward(.5);
         //lowShootIfHotAnalog(); // TODO: uncomment me
     }
 
-    // Auton for dumb firing (one ball), without CV/light sensor
+    // Auton set for dumb firing
     public static void auton7() {
         shoot();
         driveBackward();
     }
 
     public static void auton8() {
-        // TODO
+        startLoadingNextBall();
+        shoot();
+        finishLoadingNextBall();
+        shoot();
+        driveBackward();
     }
 
     // One point auton with dumb fire while acquirer is up
     public static void auton9() {
         driveForward(2);
-        lowShootAcquirerDown();
-    }
-
-    // One point auton with dumb fire
-    public static void auton10() {
-        driveForward(2);
-        driveBackward(.5);
-        lowShootAcquirerUp();
+        lowShoot();
     }
 
     // Auton for just moving forward to get mobility points
-    public static void auton11() {
+    public static void auton10() {
         driveBackward();
     }
 
@@ -131,9 +121,9 @@ public class Autonomous {
         }
     }
 
-    public static void lowShootAcquirerDownIfHotCV() {
+    public static void lowShootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
-            lowShootAcquirerDown();
+            lowShoot();
         } else {
             Timer.delay(4.5);
             shoot();
@@ -142,7 +132,7 @@ public class Autonomous {
 
     public static void lowShootAcquirerUpIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
-            lowShootAcquirerUp();
+            lowShoot();
         } else {
             Timer.delay(4.5);
             shoot();
@@ -171,12 +161,7 @@ public class Autonomous {
         Shooter.getInstance().fireBall();
     }
 
-    public static void lowShootAcquirerDown() {
-        Acquirer.getInstance().rotateDown();
-        Acquirer.getInstance().ejectBall();
-    }
-
-    public static void lowShootAcquirerUp() {
+    public static void lowShoot() {
         Acquirer.getInstance().ejectBall();
     }
 
@@ -226,7 +211,7 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
-    public static void readyNextBall() {
+    public static void startLoadingNextBall() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
         Timer.delay(1.0); // TODO: Delay should be tuned to ready next ball, but not load until first ball is fired
