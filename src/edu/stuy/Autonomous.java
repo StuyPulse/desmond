@@ -102,7 +102,7 @@ public class Autonomous {
 
     // One point auton with dumb fire while acquirer is up
     public static void auton9() {
-        driveForward(2.25);
+        driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
         lowShoot();
     }
 
@@ -116,7 +116,7 @@ public class Autonomous {
         if (CV.getInstance().isGoalHot()) {
             shoot();
         } else {
-            Timer.delay(4.5);
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
             shoot();
         }
     }
@@ -125,7 +125,7 @@ public class Autonomous {
         if (CV.getInstance().isGoalHot()) {
             lowShoot();
         } else {
-            Timer.delay(4.5);
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
             shoot();
         }
     }
@@ -134,7 +134,7 @@ public class Autonomous {
         if (CV.getInstance().isGoalHot()) {
             lowShoot();
         } else {
-            Timer.delay(4.5);
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
             shoot();
         }
     }
@@ -144,7 +144,7 @@ public class Autonomous {
 //        if (Shooter.getInstance().isGoalHot()) {
 //            shoot();
 //        } else {
-//            Timer.delay(4.5);
+//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
 //            shoot();
 //        }
 //    }
@@ -152,7 +152,7 @@ public class Autonomous {
 //        if (Shooter.getInstance().isGoalHot()) {
 //            lowShoot();
 //        } else {
-//            Timer.delay(4.5);
+//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
 //            lowShoot();
 //        }
 //    }
