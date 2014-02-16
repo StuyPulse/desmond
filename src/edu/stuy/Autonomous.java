@@ -10,35 +10,35 @@ public class Autonomous {
             case 0:
                 auton0(); // Do nothing
                 break;
-            case 1:
+            case 1: // Shooter faces goal
                 auton1(); // CV- one ball, drive forward
                 break;
-            case 2:
+            case 2: // Shooter faces goal
                 auton2(); // CV- two balls, drive forward
                 break;
-            case 3:
+            case 3: // Acquirer faces goal
                 auton3(); // CV- low goal
                 break;
-            case 4:
+            case 4: // Shooter faces goal
                 auton4(); // Analog light sensor- 1 ball, drive forward
                 break;
-            case 5:
+            case 5: // Shooter faces goal
                 auton5(); // Analog light sensor- 2 balls, drive forward
                 break;
-            case 6:
+            case 6: // Acquirer faces goal
                 auton6(); // Analog light sensor- low goal
                 break;
-            case 7:
+            case 7: // Shooter faces goal
                 auton7(); // Dumb fire high goal- 1 time
                 break;
-            case 8:
+            case 8: // Shooter faces goal
                 auton8(); // Dumb fire high goal- 2 times
                 break;
-            case 9:
-                auton9(); // Dumb fire low goal- acq up
+            case 9: // Acquirer faces goal
+                auton9(); // Dumb fire low goal- acquirer up
                 break;
-            case 10:
-                auton10(); // Just drive forward
+            case 10: // Shooter faces goal
+                auton10(); // Just drive backward
                 break;
         }
     }
