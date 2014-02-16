@@ -27,6 +27,7 @@ public class Autonomous {
                 break;
             case 6:
                 auton6(); // Dumb fire with no CV- shoots two times
+                break;
             case 7:
                 auton7(); // Just move forward
                 break;
@@ -87,7 +88,15 @@ public class Autonomous {
     public static void auton7() {
         driveBackward();
     }
-
+    
+    // One point auton with dumb fire
+    public static void auton8() {
+        driveBackward(2);
+        driveForward(.5);
+        Acquirer.getInstance().rotateDown();
+        Acquirer.getInstance().ejectBall();
+    }
+    
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
@@ -130,6 +139,18 @@ public class Autonomous {
         Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);
         Timer.delay(0.25);
+        Drivetrain.getInstance().tankDrive(0, 0);
+    }
+    
+    public static void driveBackward(double time) {
+        Drivetrain.getInstance().tankDrive(0.75, 0.75);
+        Timer.delay(time);
+        Drivetrain.getInstance().tankDrive(0, 0);
+    }
+    
+    public static void driveForward(double time) {
+        Drivetrain.getInstance().tankDrive(-0.5, -0.5);
+        Timer.delay(time);
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
