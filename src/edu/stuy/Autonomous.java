@@ -17,25 +17,31 @@ public class Autonomous {
                 auton2(); // CV- two balls, drive forward
                 break;
             case 3:
-                auton3(); // Analog light sensor- 1 ball, drive forward
+                auton3(); // CV- drive forward, low goal
                 break;
             case 4:
-                auton4(); // Analog light sensor- 2 balls, drive forward
+                auton4(); // Analog light sensor- 1 ball, drive forward
                 break;
             case 5:
-                auton5(); // Dumb fire with no CV- shoots one time
+                auton5(); // Analog light sensor- 2 balls, drive forward
                 break;
             case 6:
-                auton6(); // Dumb fire with no CV- shoots two times
+                auton6(); // Analog light sensor- drive forward, low goal
                 break;
             case 7:
-                auton7(); // Dumb fire 1-point auton with acq down
+                auton7(); // Dumb fire high goal- 1 time
                 break;
             case 8:
-                auton8(); // Dumb fire 1-point auton with acq up
+                auton8(); // Dumb fire high goal- 2 times
                 break;
             case 9:
-                auton9(); // Just move forward
+                auton9(); // Dumb fire low goal- acq down
+                break;
+            case 10:
+                auton10(); // Dumb fire low goal- acq up
+                break;
+            case 11:
+                auton11(); // Just move forward
                 break;
         }
     }
@@ -60,13 +66,19 @@ public class Autonomous {
         driveBackward();
     }
 
-    // Auton sets for using Analog light sensor instead of CV
     public static void auton3() {
+        driveForward(2);
+        driveBackward(.5);
+        lowShootAcquirerDownIfHotCV();
+    }
+
+    // Auton sets for using Analog light sensor instead of CV
+    public static void auton4() {
         //shootIfHotAnalog();
         driveBackward();
     }
 
-    public static void auton4() {
+    public static void auton5() {
         readyNextBall();
         // There may not be enough time to check if the goal is hot AND shoot both balls
         //shootIfHotAnalog();
@@ -75,36 +87,37 @@ public class Autonomous {
         driveBackward();
     }
 
-    // Auton for dumb firing (one ball), without CV/light sensor
-    public static void auton5() {
-        shoot();
-        driveBackward();
+    public static void auton6() {
+        driveForward(2);
+        driveBackward(.5);
+        //lowShootIfHotAnalog();
     }
 
-    // Auton for dumb firing (two balls), without CV/light sensor
-    public static void auton6() {
-        readyNextBall();
-        shoot();
-        finishLoadingNextBall();
+    // Auton for dumb firing (one ball), without CV/light sensor
+    public static void auton7() {
         shoot();
         driveBackward();
     }
     
-    // One point auton with dumb fire while acquirer is down
-    public static void auton7() {
-        driveForward(2);
-        driveBackward(.5);
-        lowShootAcquirerDown();
+    public static void auton8() {
+        // TODO
     }
     
     // One point auton with dumb fire while acquirer is up
-    public static void auton8() {
+    public static void auton9() {
         driveForward(2);
-        lowShootAcquirerUp();
+        lowShootAcquirerDown();
     }
     
+    // One point auton with dumb fire
+    public static void auton10() {
+        driveForward(2);
+        driveBackward(.5);
+        lowShootAcquirerUp();
+    }
+
     // Auton for just moving forward to get mobility points
-    public static void auton9() {
+    public static void auton11() {
         driveBackward();
     }
     
@@ -112,6 +125,24 @@ public class Autonomous {
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
             shoot();
+        } else {
+            Timer.delay(4.5);
+            shoot();
+        }
+    }
+
+    public static void lowShootAcquirerDownIfHotCV() {
+        if (CV.getInstance().isGoalHot()) {
+            lowShootAcquirerDown();
+        } else {
+            Timer.delay(4.5);
+            shoot();
+        }
+    }
+    
+    public static void lowShootAcquirerUpIfHotCV() {
+        if (CV.getInstance().isGoalHot()) {
+            lowShootAcquirerUp();
         } else {
             Timer.delay(4.5);
             shoot();
@@ -127,6 +158,15 @@ public class Autonomous {
      }
      }
      */
+
+//    public static void lowShootIfHotAnalog() {
+//        if (Shooter.getInstance().isGoalHot()) {
+//            lowShoot();
+//        } else {
+//            Timer.delay(4.5);
+//            lowShoot();
+//        }
+//    }
 
     // Shoot without CV
     public static void shoot() {
