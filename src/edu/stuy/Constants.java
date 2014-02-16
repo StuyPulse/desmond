@@ -64,5 +64,7 @@ public class Constants {
 
     // AUTON constants
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
+    public static final double AUTON_DRIVE_FORWARD_TIME = 2.0;
+    public static final double AUTON_DRIVE_BACKWARD_TIME = 2.0;
 
 }

@@ -4,7 +4,7 @@ import edu.stuy.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Autonomous {
-
+    
     public static void auton(int x) {
         switch (x) {
             case 0:
@@ -29,17 +29,17 @@ public class Autonomous {
                 auton6(); // Dumb fire with no CV- shoots two times
                 break;
             case 7:
-                auton7(); // Just move forward
+                auton7(); // Dumb fire 1-point auton with acq down
                 break;
             case 8:
-                auton8(); // 1-point auton with acq down
+                auton8(); // Dumb fire 1-point auton with acq up
                 break;
             case 9:
-                auton9(); // 1-point auton with acq up
+                auton9(); // Just move forward
                 break;
         }
     }
-
+    
     // Empty auton for testing purposes
     public static void auton0() {
         // Do nothing
@@ -89,23 +89,23 @@ public class Autonomous {
         shoot();
         driveBackward();
     }
-
-    // Auton for just moving forward to get mobility points
-    public static void auton7() {
-        driveBackward();
-    }
     
     // One point auton with dumb fire while acquirer is down
-    public static void auton8() {
+    public static void auton7() {
         driveForward(2);
         driveBackward(.5);
-        lowShoot();
+        lowShootAcquirerDown();
     }
     
     // One point auton with dumb fire while acquirer is up
-    public static void auton9() {
+    public static void auton8() {
         driveForward(2);
-        lowShoot();
+        lowShootAcquirerUp();
+    }
+    
+    // Auton for just moving forward to get mobility points
+    public static void auton9() {
+        driveBackward();
     }
     
     // Wait for CV to say goal is hot and then shoot
@@ -133,8 +133,11 @@ public class Autonomous {
         Shooter.getInstance().fireBall();
     }
 
-    public static void lowShoot() {
+    public static void lowShootAcquirerDown() {
         Acquirer.getInstance().rotateDown();
+        Acquirer.getInstance().ejectBall();
+    }
+    public static void lowShootAcquirerUp() {
         Acquirer.getInstance().ejectBall();
     }
     
