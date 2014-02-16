@@ -200,8 +200,12 @@ public class Autonomous {
     }
     
     public static void driveForward(double time) {
+        Drivetrain.getInstance().tankDrive(-0.25, -0.25);
+        Timer.delay(time/3)
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
-        Timer.delay(time);
+        Timer.delay(time/3)
+        Drivetrain.getInstance().tankDrive(-0.25, -0.25);
+        Timer.delay(time/3)
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
