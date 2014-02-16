@@ -218,7 +218,7 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(-0.5, -0.5);
         Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(-0.75, -0.75);
-        Timer.delay((time / 5) * 10);
+        Timer.delay((time / 5) * 2);
         Drivetrain.getInstance().tankDrive(-0.50, -0.50);
         Timer.delay(time / 5);
         Drivetrain.getInstance().tankDrive(-0.25, -0.25);
