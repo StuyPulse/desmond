@@ -64,8 +64,8 @@ public class Autonomous {
     }
 
     public static void auton3() {
-        driveBackward(2);
-        driveForward(.5);
+        driveForward(2);
+        driveBackward(.5);
         lowShootIfHotCV();
     }
 
@@ -85,8 +85,8 @@ public class Autonomous {
     }
 
     public static void auton6() {
-        driveBackward(2);
-        driveForward(.5);
+        driveForward(2);
+        driveBackward(.5);
         lowShootIfHotAnalog();
     }
 
@@ -107,8 +107,8 @@ public class Autonomous {
     
     // One point auton with dumb fire
     public static void auton9() {
-        driveBackward(2);
-        driveForward(.5);
+        driveForward(2);
+        driveBackward(.5);
         lowShoot();
     }
 
