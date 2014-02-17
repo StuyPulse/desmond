@@ -23,6 +23,7 @@ public class Constants {
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
     public static final int BALL_CENTERED_SWITCH_CHANNEL = -1; // TODO: assign me
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
+    public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 3; // 3 for rear (acquirer), 1 for front (shooter)
 
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
     private static final double ENCODER_PULSE_PER_REV = 360.0;
@@ -37,7 +38,7 @@ public class Constants {
     public static final double DVAL_D = .01; // TODO: TO BE CHANGED
 
     /* ANALOG INPUT */
-    public static final int GOAL_SENSOR_CHANNEL = -1; // TODO: assign me
+    public static final int GOAL_SENSOR_CHANNEL = 13; // Rear is 13 (acquirer), front is 14 (shooter)
 
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
