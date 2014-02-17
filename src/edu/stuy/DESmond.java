@@ -42,20 +42,10 @@ public class DESmond extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        System.out.println("Initting auton");
+        System.out.println("Initializing auton");
         resetAll();
-        Thread startRetractingWinch = new Thread(new Runnable() {
-
-            public void run() {
-                while (isAutonomous() && isEnabled()) {
-                    shooter.retractWinch();
-                }
-            }
-
-        });
-        startRetractingWinch.start();
         Integer selection = (Integer) autonChooser.getSelected();
-        System.out.println("Selected auton #" + selection.intValue());
+        System.out.println("Selected auton # " + selection.intValue());
         Autonomous.auton(selection.intValue());
     }
 
@@ -66,6 +56,7 @@ public class DESmond extends IterativeRobot {
 
     public void teleopInit() {
         resetAll();
+        
     }
 
     public void disabledInit() {

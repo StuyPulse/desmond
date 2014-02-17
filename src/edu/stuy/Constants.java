@@ -51,8 +51,8 @@ public class Constants {
 
     // SHOOTER constants
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // TODO: To be changed later
-    public static final long SHOOTER_RETRACT_TIMEOUT = 1200; // TODO: Failsafe if limit switch fails
-    public static final double SHOOTER_DELAY_FOR_FIRE = 0.25;
+    public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
+    public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
     public static final double SHOOTER_DELAY_FOR_RETRACT = 0;
 
     //RELAY outputs
@@ -63,5 +63,6 @@ public class Constants {
     public static final double AUTON_TIME_TO_DRIVE_18_FEET = 2.25;
     // Makes the delay factor in the time needed to drive + some buffer
     public static final double AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
+    public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 0.8;
 
 }

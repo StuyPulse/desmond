@@ -58,7 +58,7 @@ public class Autonomous {
         startLoadingNextBall();
         shootIfHotCV();
         finishLoadingNextBall();
-        shoot();
+        extendAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -80,7 +80,7 @@ public class Autonomous {
         startLoadingNextBall();
         //shootIfHotAnalog(); // TODO: uncomment me
         finishLoadingNextBall();
-        shoot();
+        extendAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -94,15 +94,18 @@ public class Autonomous {
 
     // Auton set for dumb firing
     public static void auton7() {
-        shoot();
+        extendAndShoot();
         driveBackwardForMobilityPoints();
     }
 
     public static void auton8() {
-        startLoadingNextBall();
-        shoot();
+        // startLoadingNextBall(); commented for teting purposes
+        extendAndShoot();
+        Shooter.getInstance().initiateWinch();
+        Shooter.getInstance().retractWinch();
+        Acquirer.getInstance().rotateDown(); // temp; added for testing purposes
         finishLoadingNextBall();
-        shoot();
+        extendAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -120,10 +123,10 @@ public class Autonomous {
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
-            shoot();
+            extendAndShoot();
         } else {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-            shoot();
+            extendAndShoot();
         }
     }
 
@@ -153,7 +156,9 @@ public class Autonomous {
 //    }
     
     // Shoot without CV
-    public static void shoot() {
+    public static void extendAndShoot() {
+        Acquirer.getInstance().rotateDown();
+        Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
         Shooter.getInstance().fireBall();
     }
 
@@ -164,8 +169,6 @@ public class Autonomous {
     public static void driveBackwardForMobilityPoints() {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
-        Acquirer.getInstance().rotateUp();
-        // TODO: These numbers will require tuning
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
         Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);

@@ -52,7 +52,6 @@ public class Acquirer {
     }
 
     public void reset() {
-        rotateUp();
         stopRoller();
     }
 
@@ -60,16 +59,12 @@ public class Acquirer {
         // Acquirer frame controls
         if (Math.abs(gamepad.getLeftY()) >= 0.1) {
             roller.set(gamepad.getLeftY());
-            System.out.println("Acquirer being controlled with analog." + gamepad.getRightY());
         } else if (gamepad.getDPadDown()) {
             ejectBall();
-            System.out.println("Acquirer being controlled with button. Ejecting.");
         } else if (gamepad.getDPadUp()) {
             intakeBall();
-            System.out.println("Acquirer being controlled with button. Intaking.");
         } else {
             stopRoller();
-            System.out.println("Acquirer not being controlled by anything.");
         }
 
         // Acquirer roller controls

@@ -31,12 +31,13 @@ public class Shooter {
     }
 
     public void reset() {
-        retractWinch();
+        initiateWinch();
     }
 
     public void fireBall() {
-        if (isFullyRetracted() && !retracting) {
+        if (!retracting) {
             System.out.println("Shooting at " + System.currentTimeMillis());
+            System.out.println("Is fully retracted?: " + isFullyRetracted());
             chooChoo.set(-1.0);
             Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
             chooChoo.set(0.0);
@@ -44,6 +45,7 @@ public class Shooter {
             initiateWinch();
         } else {
             System.out.println("Not shooting at " + System.currentTimeMillis());
+            System.out.println("Is fully retracted?: " + isFullyRetracted());
         }
     }
 
@@ -82,27 +84,24 @@ public class Shooter {
     public void manualGamepadControl(Gamepad gamepad) {
         if (gamepad.getLeftBumper()) {
             initiateWinch();
-            System.out.println("Choo choo initiated.");
         }
         if (gamepad.getRightBumper()) {
             fireBall();
             System.out.println("Firing ball.");
         } else if (gamepad.getStartButton()) {
             stopWinch();
-            System.out.println("Winch manually stopped.");
         }
 
         if (gamepad.getRightY() > 0) {
             chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
-            System.out.println("Running choo choo with analog. Value: " + -gamepad.getRightY());
         } else if (gamepad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
-            System.out.println("Choo choo stopped because of analog sticks.");
         }
 
         // if there is a retract request
         if (retracting) {
             retractWinch();
         }
+        System.out.println("Is the limit switch triggered? " + (instance.isFullyRetracted() ? "YES" : "NO"));
     }
 }
