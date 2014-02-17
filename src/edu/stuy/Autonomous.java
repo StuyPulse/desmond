@@ -99,8 +99,9 @@ public class Autonomous {
     }
 
     public static void auton8() {
-        startLoadingNextBall();
+        // startLoadingNextBall(); commented for testing purposes
         shoot();
+        Acquirer.getInstance().rotateDown(); // temp; for testing purposes
         finishLoadingNextBall();
         shoot();
         driveBackwardForMobilityPoints();
