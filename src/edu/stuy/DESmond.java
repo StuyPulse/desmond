@@ -42,10 +42,10 @@ public class DESmond extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        System.out.println("Initializing auton");
+        System.out.println("Initialising auton");
         resetAll();
         Integer selection = (Integer) autonChooser.getSelected();
-        System.out.println("Selected auton # " + selection.intValue());
+        System.out.println("Selected auton #" + selection.intValue());
         Autonomous.auton(selection.intValue());
     }
 
