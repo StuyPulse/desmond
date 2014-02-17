@@ -80,8 +80,6 @@ public class DESmond extends IterativeRobot {
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
-        //SmartDashboard.putBoolean("Ball Centered?", shooter.isBallCentered());
-        //SmartDashboard.putBoolean("Hopper - Has Ball?", shooter.hasBall());
         //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
         //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
         acquirer.manualGamepadControl(leftPad);

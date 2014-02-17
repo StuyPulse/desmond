@@ -16,14 +16,10 @@ public class Shooter {
     private long startTime = System.currentTimeMillis();
     //private AnalogChannel goalSensor; // Dan's magic CV
     //private Encoder winchEncoder;
-    //private DigitalInput ballSensor;
-    //private DigitalInput ballCenteredSwitch;
 
     private Shooter() {
         //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
-        //ballSensor = new DigitalInput(Constants.BALL_SENSOR_CHANNEL);
-        //ballCenteredSwitch = new DigitalInput(Constants.BALL_CENTERED_SWITCH_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
     }
 
@@ -72,17 +68,6 @@ public class Shooter {
     public boolean isStillRetracting() {
         return retracting;
     }
-    /*
-     public boolean hasBall() {
-     return true;//ballSensor.get();
-     }
-    
-     public boolean isBallCentered() {
-     return true;
-     //!ballCenteredSwitch.get(); //closed switch is false
-     }
-
-     */
 
     public boolean isFullyRetracted() {
         return !catapultRetractedSwitch.get(); //closed switch is false

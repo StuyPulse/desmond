@@ -16,12 +16,10 @@ public class Constants {
     public static final int COMPRESSOR_RELAY_CHANNEL = 1;
 
     /* GPIO */
-    public static final int BALL_SENSOR_CHANNEL = -1; // TODO: assign me
     public static final int ENCODER_CHANNEL_LEFT_A = 10;
     public static final int ENCODER_CHANNEL_LEFT_B = 11;
     public static final int ENCODER_CHANNEL_RIGHT_A = 1;
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
-    public static final int BALL_CENTERED_SWITCH_CHANNEL = -1; // TODO: assign me
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
     public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 3; // 3 for rear (acquirer), 1 for front (shooter)
 
@@ -39,7 +37,6 @@ public class Constants {
 
     /* ANALOG INPUT */
     public static final int GOAL_SENSOR_CHANNEL = 13; // Rear is 13 (acquirer), front is 14 (shooter)
-
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
 
