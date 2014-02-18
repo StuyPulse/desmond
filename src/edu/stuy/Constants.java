@@ -53,7 +53,6 @@ public class Constants {
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // TODO: To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
-    public static final double SHOOTER_DELAY_FOR_RETRACT = 0;
 
     //RELAY outputs
     public static final int CAMERA_RELAY_CHANNEL = 2;

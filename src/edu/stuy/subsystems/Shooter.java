@@ -39,7 +39,6 @@ public class Shooter {
         chooChoo.set(-1.0);
         Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
         chooChoo.set(0.0);
-        Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
         initiateWinch();
     }
 
