@@ -162,6 +162,18 @@ public class Autonomous {
         Shooter.getInstance().fireBall();
     }
 
+    public static void shoot() {
+        Shooter.getInstance().fireBall();
+    }
+
+    public static void readyShooter() {
+        Shooter.getInstance().initiateWinch();
+        while (!Shooter.getInstance().isFullyRetracted()) {
+            Shooter.getInstance().retractWinch();
+        }
+        Shooter.getInstance().stopWinch();
+    }
+
     public static void lowShoot() {
         Acquirer.getInstance().ejectBall();
     }
