@@ -35,8 +35,6 @@ public class Shooter {
     }
 
     public void fireBall() {
-        System.out.println("Shooting at " + System.currentTimeMillis());
-        System.out.println("Is fully retracted?: " + isFullyRetracted());
         chooChoo.set(-1.0);
         Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
         chooChoo.set(0.0);
@@ -87,7 +85,6 @@ public class Shooter {
         }
         if (gamepad.getRightBumper()) {
             fireBall();
-            System.out.println("Firing ball.");
         } else if (gamepad.getStartButton()) {
             stopWinch();
         }
@@ -102,6 +99,5 @@ public class Shooter {
         if (retracting) {
             retractWinch();
         }
-        System.out.println("Is the limit switch triggered? " + (instance.isFullyRetracted() ? "YES" : "NO"));
     }
 }
