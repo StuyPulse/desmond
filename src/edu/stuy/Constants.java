@@ -21,7 +21,7 @@ public class Constants {
     public static final int ENCODER_CHANNEL_RIGHT_A = 1;
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
-    public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 3; // 3 for rear (acquirer), 1 for front (shooter)
+    public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 13; // Rear is 13 (acquirer), front is 14 (shooter)
 
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
     private static final double ENCODER_PULSE_PER_REV = 360.0;
@@ -36,9 +36,9 @@ public class Constants {
     public static final double DVAL_D = .01; // TODO: TO BE CHANGED
 
     /* ANALOG INPUT */
-    public static final int GOAL_SENSOR_CHANNEL = 13; // Rear is 13 (acquirer), front is 14 (shooter)
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
+    public static final int GOAL_SENSOR_ANALOG_CHANNEL = 3; // 3 for rear (acquirer), 1 for front (shooter)
 
     //CV constants
     //Robot and Pi are different endian, so these are the values flipped
@@ -50,12 +50,12 @@ public class Constants {
     public static final String CV_IP = "10.6.94.14";
 
     // SHOOTER constants
-    public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 4.0; // TODO: To be changed later
+    public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 3.3; // TODO: To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
 
     //RELAY outputs
-    public static final int CAMERA_RELAY_CHANNEL = 2;
+    public static final int CAMERA_RELAY_CHANNEL = 6;
 
     // AUTON constants
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;

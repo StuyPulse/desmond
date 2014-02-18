@@ -75,12 +75,12 @@ public class Autonomous {
 
     // Auton set for using Analog light sensor instead of CV
     public static void auton4() {
-        //shootIfHotAnalog(); // TODO: uncomment me
+        shootIfHotAnalog();
         driveBackwardForMobilityPoints();
     }
 
     public static void auton5() {
-        //shootIfHotAnalog(); // TODO: uncomment me
+        shootIfHotAnalog();
         readyShooter();
         loadNextBall();
         shoot();
@@ -88,9 +88,9 @@ public class Autonomous {
     }
 
     public static void auton6() {
-//        if (!Shooter.getInstance().isGoalHot()) { // TODO: uncomment me
-//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-//        }
+        if (!Shooter.getInstance().isGoalHotDigital()) {
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+        }
         driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
         lowShoot();
     }
@@ -155,23 +155,19 @@ public class Autonomous {
         lowShoot();
     }
 
-    // TODO: uncomment these
-//    public static void shootIfHotAnalog() {
-//        if (Shooter.getInstance().isGoalHot()) {
-//            shoot();
-//        } else {
-//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-//            shoot();
-//        }
-//    }
-//    public static void lowShootIfHotAnalog() {
-//        if (Shooter.getInstance().isGoalHot()) {
-//            lowShoot();
-//        } else {
-//            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-//            lowShoot();
-//        }
-//    }
+    public static void shootIfHotAnalog() {
+        if (Shooter.getInstance().isGoalHotDigital()) {
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+        }
+        shoot();
+    }
+    public static void lowShootIfHotAnalog() {
+        if (Shooter.getInstance().isGoalHotDigital()) {
+            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+        }
+        lowShoot();
+    }
+
     // Shoot without CV
     public static void extendAndShoot() {
         Acquirer.getInstance().rotateDown();

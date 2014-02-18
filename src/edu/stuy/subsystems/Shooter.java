@@ -3,22 +3,23 @@ package edu.stuy.subsystems;
 import edu.stuy.Constants;
 import edu.wpi.first.wpilibj.Timer;
 import edu.stuy.util.Gamepad;
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 
 public class Shooter {
 
     private boolean retracting = false;
-    private boolean automaticRetract = false;
     private static Shooter instance;
     private DigitalInput catapultRetractedSwitch;
     private Talon chooChoo;
     private long startTime = System.currentTimeMillis();
-    //private AnalogChannel goalSensor; // Dan's magic CV
-    //private Encoder winchEncoder;
+    private AnalogChannel goalSensorAnalog; // Dan's magic CV
+    private DigitalInput goalSensorDigital;
 
     private Shooter() {
-        //goalSensor = new AnalogChannel(Constants.GOAL_SENSOR_CHANNEL);
+        goalSensorAnalog = new AnalogChannel(Constants.GOAL_SENSOR_ANALOG_CHANNEL);
+        goalSensorDigital = new DigitalInput(Constants.GOAL_SENSOR_DIGITAL_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
     }
@@ -68,12 +69,18 @@ public class Shooter {
         return !catapultRetractedSwitch.get(); //closed switch is false
     }
 
-    /*
-     public boolean isGoalHot() {
-     double voltage = goalSensor.getAverageVoltage();
-     return (voltage <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE); // Sensor is active when low
-     }
-     */
+    public double getGoalVoltage() {
+        return goalSensorAnalog.getAverageVoltage();
+    }
+    
+    public boolean isGoalHotAnalog() {
+        return getGoalVoltage() <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE; // Sensor is active when low
+    }
+
+    public boolean isGoalHotDigital() {
+        return goalSensorDigital.get();
+    }
+
     public void manualGamepadControl(Gamepad gamepad) {
         if (gamepad.getLeftBumper()) {
             initiateWinch();

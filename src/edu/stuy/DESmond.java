@@ -66,13 +66,14 @@ public class DESmond extends IterativeRobot {
     // This function is called periodically during operator control
     // TODO: uncomment some of these when CV/analog works
     public void teleopPeriodic() {
-        SmartDashboard.putBoolean("Shooting?", shooter.isFullyRetracted());
+        SmartDashboard.putNumber("Dan's - Goal Voltage", shooter.getGoalVoltage());
+        SmartDashboard.putBoolean("Dan's - Goal Hot (Analog)", shooter.isGoalHotAnalog());
+        SmartDashboard.putBoolean("Dan's - Goal Hot (Digital)?", shooter.isGoalHotDigital());
         //SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
         //SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
-        //SmartDashboard.putBoolean("Shooter - Goal Hot?", shooter.isGoalHot());
         //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
