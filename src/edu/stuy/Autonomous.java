@@ -180,8 +180,9 @@ public class Autonomous {
     }
 
     public static void readyShooter() {
+        double startTime = System.currentTimeMillis();
         Shooter.getInstance().initiateWinch();
-        while (!Shooter.getInstance().isFullyRetracted()) {
+        while (!Shooter.getInstance().isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
             Shooter.getInstance().retractWinch();
         }
         Shooter.getInstance().stopWinch();
