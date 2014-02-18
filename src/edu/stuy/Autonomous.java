@@ -154,7 +154,6 @@ public class Autonomous {
 //            lowShoot();
 //        }
 //    }
-    
     // Shoot without CV
     public static void extendAndShoot() {
         Acquirer.getInstance().rotateDown();

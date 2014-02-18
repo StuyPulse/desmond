@@ -31,22 +31,16 @@ public class Shooter {
     }
 
     public void reset() {
-        initiateWinch();
     }
 
     public void fireBall() {
-        if (!retracting) {
-            System.out.println("Shooting at " + System.currentTimeMillis());
-            System.out.println("Is fully retracted?: " + isFullyRetracted());
-            chooChoo.set(-1.0);
-            Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
-            chooChoo.set(0.0);
-            Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
-            initiateWinch();
-        } else {
-            System.out.println("Not shooting at " + System.currentTimeMillis());
-            System.out.println("Is fully retracted?: " + isFullyRetracted());
-        }
+        System.out.println("Shooting at " + System.currentTimeMillis());
+        System.out.println("Is fully retracted?: " + isFullyRetracted());
+        chooChoo.set(-1.0);
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
+        chooChoo.set(0.0);
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_RETRACT);
+        initiateWinch();
     }
 
     public void retractWinch() {
