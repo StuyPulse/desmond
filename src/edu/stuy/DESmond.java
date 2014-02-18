@@ -28,18 +28,18 @@ public class DESmond extends IterativeRobot {
         // SendableChooser for auton
         autonChooser = new SendableChooser();
         autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));
-        autonChooser.addObject("1 - Wait for hot goal using CV, shoot, and drive forward", Integer.valueOf(1));
-        autonChooser.addObject("2 - Wait for hot goal using CV, shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(2));
-        autonChooser.addObject("3 - Wait for hot goal using CV, drive forward, fire into low goal", Integer.valueOf(3));
-        autonChooser.addObject("4 - Wait for hot goal using analog, shoot, and drive forward", Integer.valueOf(4));
-        autonChooser.addObject("5 - Wait for hot goal using analog, shoot first ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(5));
-        autonChooser.addObject("6 - Wait for hot goal using analog, drive forward, fire into low goal", Integer.valueOf(6));
+        autonChooser.addObject("1 - CV one ball and drive forward", Integer.valueOf(1));
+        autonChooser.addObject("2 - CV two ball and drive forward", Integer.valueOf(2));
+        autonChooser.addObject("3 - CV low goal", Integer.valueOf(3));
+        autonChooser.addObject("4 - Light sensor one ball and drive forward", Integer.valueOf(4));
+        autonChooser.addObject("5 - Light sensor two ball and drive forward", Integer.valueOf(5));
+        autonChooser.addObject("6 - Light sensor low goal", Integer.valueOf(6));
         autonChooser.addObject("7 - Dumb fire one ball, drive forward", Integer.valueOf(7));
-        autonChooser.addObject("8 - Dumb fire one ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(8));
+        autonChooser.addObject("8 - Dumb fire two ball, drive forward", Integer.valueOf(8));
         autonChooser.addObject("9 - Dumb fire low goal", Integer.valueOf(9));
-        autonChooser.addObject("10 - Drive forward only (away from acquirer)", Integer.valueOf(10));
-        autonChooser.addDefault("11 - dumb fire one ball, intake second ball, shoot second ball, drive backwards, etc.", Integer.valueOf(11));
-        SmartDashboard.putData("Autonomous routine", autonChooser);
+        autonChooser.addObject("10 - Drive forward only", Integer.valueOf(10));
+        autonChooser.addDefault("11 - Dumb fire three ball and drive forward", Integer.valueOf(11));
+        SmartDashboard.putData("Autonomous Routine", autonChooser);
     }
 
     public void autonomousInit() {
