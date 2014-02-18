@@ -40,6 +40,9 @@ public class Autonomous {
             case 10: // Shooter faces goal
                 auton10(); // Just drive backward
                 break;
+            case 11:
+                auton11();
+                break;
         }
     }
 
@@ -118,6 +121,20 @@ public class Autonomous {
 
     // Auton for just moving forward to get mobility points
     public static void auton10() {
+        driveBackwardForMobilityPoints();
+    }
+
+    public static void auton11() {
+        extendAndShoot();
+        readyShooter();
+        loadNextBall();
+        Timer.delay(1.5); // This should remain in order to ensure separation
+        shoot();
+        readyShooter();
+        loadBallWhileMoving(Constants.AUTON_THREE_BALL_DRIVE_TIME);
+        driveBackward(Constants.AUTON_THREE_BALL_DRIVE_TIME);
+        rotateDownToClearShooter();
+        shoot();
         driveBackwardForMobilityPoints();
     }
 

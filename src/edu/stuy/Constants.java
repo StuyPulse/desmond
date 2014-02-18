@@ -64,5 +64,6 @@ public class Constants {
     public static final double AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
     public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 0.8;
     public static final double AUTON_TIME_TO_INTAKE_BALL = 1.75;
+    public static final double AUTON_THREE_BALL_DRIVE_TIME = 1.0;
 
 }

@@ -36,8 +36,9 @@ public class DESmond extends IterativeRobot {
         autonChooser.addObject("6 - Wait for hot goal using analog, drive forward, fire into low goal", Integer.valueOf(6));
         autonChooser.addObject("7 - Dumb fire one ball, drive forward", Integer.valueOf(7));
         autonChooser.addObject("8 - Dumb fire one ball, intake second ball, shoot second ball, drive forward", Integer.valueOf(8));
-        autonChooser.addDefault("9 - Dumb fire low goal", Integer.valueOf(9));
+        autonChooser.addObject("9 - Dumb fire low goal", Integer.valueOf(9));
         autonChooser.addObject("10 - Drive forward only (away from acquirer)", Integer.valueOf(10));
+        autonChooser.addDefault("11 - dumb fire one ball, intake second ball, shoot second ball, drive backwards, etc.", Integer.valueOf(11));
         SmartDashboard.putData("Autonomous routine", autonChooser);
     }
 
