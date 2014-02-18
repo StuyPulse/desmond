@@ -181,6 +181,7 @@ public class Autonomous {
     public static void driveBackwardForMobilityPoints() {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
+        Acquirer.getInstance().rotateUp();
         Drivetrain.getInstance().tankDrive(0.25, 0.25);
         Timer.delay(0.25);
         Drivetrain.getInstance().tankDrive(0.5, 0.5);
