@@ -55,10 +55,10 @@ public class Autonomous {
     }
 
     public static void auton2() {
-        startLoadingNextBall();
         shootIfHotCV();
-        finishLoadingNextBall();
-        extendAndShoot();
+        readyShooter();
+        loadNextBall();
+        shoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -77,10 +77,10 @@ public class Autonomous {
     }
 
     public static void auton5() {
-        startLoadingNextBall();
         //shootIfHotAnalog(); // TODO: uncomment me
-        finishLoadingNextBall();
-        extendAndShoot();
+        readyShooter();
+        loadNextBall();
+        shoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -96,17 +96,18 @@ public class Autonomous {
     public static void auton7() {
         extendAndShoot();
         driveBackwardForMobilityPoints();
+        readyShooter();
     }
 
+    // One ball is shot hot, another is not
     public static void auton8() {
-        // startLoadingNextBall(); commented for teting purposes
         extendAndShoot();
-        Shooter.getInstance().initiateWinch();
-        Shooter.getInstance().retractWinch();
-        Acquirer.getInstance().rotateDown(); // temp; added for testing purposes
-        finishLoadingNextBall();
-        extendAndShoot();
+        readyShooter();
+        loadNextBall();
+        Timer.delay(1.5); // This should remain in order to ensure separation
+        shoot();
         driveBackwardForMobilityPoints();
+        readyShooter();
     }
 
     // One point auton with dumb fire while acquirer is up
@@ -226,18 +227,10 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
-    public static void startLoadingNextBall() {
+    public static void loadNextBall() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
-        Timer.delay(1.0); // TODO: Delay should be tuned to ready next ball, but not load until first ball is fired
-        Acquirer.getInstance().stopRoller();
-    }
-
-    public static void finishLoadingNextBall() {
-        if (Shooter.getInstance().isFullyRetracted()) {
-            Acquirer.getInstance().intakeBall();
-            Timer.delay(1.0); // TODO: Delay should be tuned
-        }
+        Timer.delay(Constants.AUTON_TIME_TO_INTAKE_BALL); // TODO: Delay should be tuned
         Acquirer.getInstance().stopRoller();
     }
 }
