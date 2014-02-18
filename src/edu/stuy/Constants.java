@@ -21,7 +21,7 @@ public class Constants {
     public static final int ENCODER_CHANNEL_RIGHT_A = 1;
     public static final int ENCODER_CHANNEL_RIGHT_B = 2;
     public static final int CATAPULT_RETRACTED_SWITCH_CHANNEL = 7;
-    public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 13; // Rear is 13 (acquirer), front is 14 (shooter)
+    public static final int GOAL_SENSOR_DIGITAL_CHANNEL = 14; // Rear is 13 (acquirer), front is 14 (shooter)
 
     /* DRIVETRAIN DISTANCE MEASUREMENT CONSTANTS */
     private static final double ENCODER_PULSE_PER_REV = 360.0;
@@ -38,7 +38,7 @@ public class Constants {
     /* ANALOG INPUT */
     public static final int GAMEPAD_RIGHT_PORT = 1;
     public static final int GAMEPAD_LEFT_PORT = 2;
-    public static final int GOAL_SENSOR_ANALOG_CHANNEL = 3; // 3 for rear (acquirer), 1 for front (shooter)
+    public static final int GOAL_SENSOR_ANALOG_CHANNEL = 1; // 3 for rear (acquirer), 1 for front (shooter)
 
     //CV constants
     //Robot and Pi are different endian, so these are the values flipped
@@ -62,7 +62,7 @@ public class Constants {
     public static final double AUTON_TIME_TO_DRIVE_18_FEET = 2.25;
     // Makes the delay factor in the time needed to drive + some buffer
     public static final double AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
-    public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 0.8;
+    public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 1.6;
     public static final double AUTON_TIME_TO_INTAKE_BALL = 1.75;
     public static final double AUTON_THREE_BALL_DRIVE_TIME = 1.0;
 
