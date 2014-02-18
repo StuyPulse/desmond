@@ -227,6 +227,17 @@ public class Autonomous {
         Drivetrain.getInstance().tankDrive(0, 0);
     }
 
+    public static void rotateDownToClearShooter() {
+        Acquirer.getInstance().rotateDown();
+    }
+
+    public static void loadBallWhileMoving(double time) {
+        Acquirer.getInstance().intakeBall();
+        driveForward(time);
+        Acquirer.getInstance().stopRoller();
+        Acquirer.getInstance().rotateUp();
+    }
+
     public static void loadNextBall() {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
