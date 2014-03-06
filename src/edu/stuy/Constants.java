@@ -49,6 +49,8 @@ public class Constants {
     public static final int CV_SERVER_PORT = 12345;
     public static final String CV_IP = "10.6.94.14";
 
+    public static final int DAN_CAMERA_AUTON_DELAY = 200;
+
     // SHOOTER constants
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 3.3; // TODO: To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails

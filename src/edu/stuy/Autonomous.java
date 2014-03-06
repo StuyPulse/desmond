@@ -75,11 +75,13 @@ public class Autonomous {
 
     // Auton set for using Analog light sensor instead of CV
     public static void auton4() {
+        delayForDanCam();
         shootIfHotAnalog();
         driveBackwardForMobilityPoints();
     }
 
     public static void auton5() {
+        delayForDanCam();
         shootIfHotAnalog();
         readyShooter();
         loadNextBall();
@@ -258,5 +260,10 @@ public class Autonomous {
         Acquirer.getInstance().intakeBall();
         Timer.delay(Constants.AUTON_TIME_TO_INTAKE_BALL); // TODO: Delay should be tuned
         Acquirer.getInstance().stopRoller();
+    }
+
+    // Accomodate for when the reflexite is rotating
+    public static void delayForDanCam() {
+        Timer.delay(Constants.DAN_CAMERA_AUTON_DELAY);
     }
 }
