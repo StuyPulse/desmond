@@ -40,8 +40,8 @@ public class Autonomous {
             case 10: // Shooter faces goal
                 auton10(); // Just drive backward
                 break;
-            case 11:
-                auton11();
+            case 11: // Shooter faces goal
+                auton11(); // Dumb fire high goal - 3 ball
                 break;
         }
     }
