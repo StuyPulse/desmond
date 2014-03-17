@@ -27,18 +27,22 @@ public class DESmond extends IterativeRobot {
 
         // SendableChooser for auton
         autonChooser = new SendableChooser();
-        autonChooser.addObject("0 - Do nothing", Integer.valueOf(0));
-        autonChooser.addObject("1 - CV one ball and drive forward", Integer.valueOf(1));
-        autonChooser.addObject("2 - CV two ball and drive forward", Integer.valueOf(2));
-        autonChooser.addObject("3 - CV low goal", Integer.valueOf(3));
-        autonChooser.addObject("4 - Light sensor one ball and drive forward", Integer.valueOf(4));
-        autonChooser.addObject("5 - Light sensor two ball and drive forward", Integer.valueOf(5));
-        autonChooser.addObject("6 - Light sensor low goal", Integer.valueOf(6));
-        autonChooser.addObject("7 - Dumb fire one ball, drive forward", Integer.valueOf(7));
-        autonChooser.addDefault("8 - Dumb fire two ball, drive forward", Integer.valueOf(8));
-        autonChooser.addObject("9 - Dumb fire low goal", Integer.valueOf(9));
-        autonChooser.addObject("10 - Drive forward only", Integer.valueOf(10));
-        autonChooser.addObject("11 - Dumb fire three ball and drive forward", Integer.valueOf(11));
+        autonChooser.addObject("00 - Do nothing",                               Integer.valueOf(00));
+
+        autonChooser.addObject("10 - CV one ball and drive forward",            Integer.valueOf(10));
+        autonChooser.addObject("11 - CV two ball and drive forward",            Integer.valueOf(11));
+        autonChooser.addObject("12 - CV low goal",                              Integer.valueOf(12));
+
+        autonChooser.addObject("20 - Light sensor one ball and drive forward",  Integer.valueOf(20));
+        autonChooser.addObject("21 - Light sensor two ball and drive forward",  Integer.valueOf(21));
+        autonChooser.addObject("22 - Light sensor low goal",                    Integer.valueOf(22));
+
+        autonChooser.addObject("30 - Dumb fire one ball, drive forward",        Integer.valueOf(30));
+        autonChooser.addDefault("31 - Dumb fire two ball, drive forward",       Integer.valueOf(31));
+        autonChooser.addObject("32 - Dumb fire low goal",                       Integer.valueOf(32));
+        autonChooser.addObject("33 - Dumb fire three ball and drive forward",   Integer.valueOf(33));
+
+        autonChooser.addObject("40 - Drive forward only",                       Integer.valueOf(40));
         SmartDashboard.putData("Autonomous Routine", autonChooser);
     }
 

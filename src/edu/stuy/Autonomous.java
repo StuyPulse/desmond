@@ -7,57 +7,61 @@ public class Autonomous {
 
     public static void auton(int x) {
         switch (x) {
-            case 0:
-                auton0(); // Do nothing
+            case 00:
+                auton00(); // Do nothing
                 break;
-            case 1: // Shooter faces goal
-                auton1(); // CV- one ball, drive forward
-                break;
-            case 2: // Shooter faces goal
-                auton2(); // CV- two balls, drive forward
-                break;
-            case 3: // Acquirer faces goal
-                auton3(); // CV- low goal
-                break;
-            case 4: // Shooter faces goal
-                auton4(); // Analog light sensor- 1 ball, drive forward
-                break;
-            case 5: // Shooter faces goal
-                auton5(); // Analog light sensor- 2 balls, drive forward
-                break;
-            case 6: // Acquirer faces goal
-                auton6(); // Analog light sensor- low goal
-                break;
-            case 7: // Shooter faces goal
-                auton7(); // Dumb fire high goal- 1 time
-                break;
-            case 8: // Shooter faces goal
-                auton8(); // Dumb fire high goal- 2 times
-                break;
-            case 9: // Acquirer faces goal
-                auton9(); // Dumb fire low goal
-                break;
+
             case 10: // Shooter faces goal
-                auton10(); // Just drive backward
+                auton10(); // CV- one ball, drive forward
                 break;
             case 11: // Shooter faces goal
-                auton11(); // Dumb fire high goal - 3 ball
+                auton11(); // CV- two balls, drive forward
+                break;
+            case 12: // Acquirer faces goal
+                auton12(); // CV- low goal
+                break;
+
+            case 20: // Shooter faces goal
+                auton20(); // Analog light sensor- 1 ball, drive forward
+                break;
+            case 21: // Shooter faces goal
+                auton21(); // Analog light sensor- 2 balls, drive forward
+                break;
+            case 22: // Acquirer faces goal
+                auton22(); // Analog light sensor- low goal
+                break;
+
+            case 30: // Shooter faces goal
+                auton30(); // Dumb fire high goal- 1 time
+                break;
+            case 31: // Shooter faces goal
+                auton31(); // Dumb fire high goal- 2 times
+                break;
+            case 32: // Acquirer faces goal
+                auton32(); // Dumb fire low goal
+                break;
+            case 33: // Shooter faces goal
+                auton33(); // Dumb fire high goal - 3 ball
+                break;
+
+            case 40: // Shooter faces goal
+                auton40(); // Just drive backward
                 break;
         }
     }
 
     // Empty auton for testing purposes
-    public static void auton0() {
+    public static void auton00() {
         // Do nothing
     }
 
     // Auton set that relies on CV
-    public static void auton1() {
+    public static void auton10() {
         shootIfHotCV();
         driveBackwardForMobilityPoints();
     }
 
-    public static void auton2() {
+    public static void auton11() {
         shootIfHotCV();
         readyShooter();
         loadNextBall();
@@ -65,7 +69,7 @@ public class Autonomous {
         driveBackwardForMobilityPoints();
     }
 
-    public static void auton3() {
+    public static void auton12() {
         if (!CV.getInstance().isGoalHot()) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
@@ -74,13 +78,13 @@ public class Autonomous {
     }
 
     // Auton set for using Analog light sensor instead of CV
-    public static void auton4() {
+    public static void auton20() {
         delayForDanCam();
         shootIfHotAnalog();
         driveBackwardForMobilityPoints();
     }
 
-    public static void auton5() {
+    public static void auton21() {
         delayForDanCam();
         shootIfHotAnalog();
         readyShooter();
@@ -89,7 +93,7 @@ public class Autonomous {
         driveBackwardForMobilityPoints();
     }
 
-    public static void auton6() {
+    public static void auton22() {
         if (!Shooter.getInstance().isGoalHotDigital()) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
@@ -98,14 +102,14 @@ public class Autonomous {
     }
 
     // Auton set for dumb firing
-    public static void auton7() {
+    public static void auton30() {
         extendAndShoot();
         driveBackwardForMobilityPoints();
         readyShooter();
     }
 
     // One ball is shot hot, another is not
-    public static void auton8() {
+    public static void auton31() {
         extendAndShoot();
         readyShooter();
         loadNextBall();
@@ -116,17 +120,17 @@ public class Autonomous {
     }
 
     // One point auton with dumb fire while acquirer is up
-    public static void auton9() {
+    public static void auton32() {
         driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
         lowShoot();
     }
 
     // Auton for just moving forward to get mobility points
-    public static void auton10() {
+    public static void auton40() {
         driveBackwardForMobilityPoints();
     }
 
-    public static void auton11() {
+    public static void auton33() {
         extendAndShoot();
         readyShooter();
         loadNextBall();
@@ -163,6 +167,7 @@ public class Autonomous {
         }
         shoot();
     }
+
     public static void lowShootIfHotAnalog() {
         if (Shooter.getInstance().isGoalHotDigital()) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
