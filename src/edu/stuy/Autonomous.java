@@ -22,13 +22,13 @@ public class Autonomous {
                 break;
 
             case 20: // Shooter faces goal
-                auton20(); // Analog light sensor- 1 ball, drive forward
+                auton20(); // DV- 1 ball, drive forward
                 break;
             case 21: // Shooter faces goal
-                auton21(); // Analog light sensor- 2 balls, drive forward
+                auton21(); // DV- 2 balls, drive forward
                 break;
             case 22: // Acquirer faces goal
-                auton22(); // Analog light sensor- low goal
+                auton22(); // DV- low goal
                 break;
 
             case 30: // Shooter faces goal
@@ -79,12 +79,14 @@ public class Autonomous {
 
     // Auton set for using Analog light sensor instead of CV
     public static void auton20() {
+        Shooter.getInstance().enableCameraLight();
         delayForDanCam();
         shootIfHotAnalog();
         driveBackwardForMobilityPoints();
     }
 
     public static void auton21() {
+        Shooter.getInstance().enableCameraLight();
         delayForDanCam();
         shootIfHotAnalog();
         readyShooter();
@@ -94,6 +96,7 @@ public class Autonomous {
     }
 
     public static void auton22() {
+        Shooter.getInstance().enableCameraLight();
         if (!Shooter.getInstance().isGoalHotDigital()) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
