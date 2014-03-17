@@ -6,6 +6,7 @@ import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Relay;
 
 public class Shooter {
 
@@ -16,12 +17,14 @@ public class Shooter {
     private long startTime = System.currentTimeMillis();
     private AnalogChannel goalSensorAnalog; // Dan's magic CV
     private DigitalInput goalSensorDigital;
+    private Relay cameraReticleSwitch; // For the light alternation
 
     private Shooter() {
         goalSensorAnalog = new AnalogChannel(Constants.GOAL_SENSOR_ANALOG_CHANNEL);
         goalSensorDigital = new DigitalInput(Constants.GOAL_SENSOR_DIGITAL_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
+        cameraReticleSwitch = new Relay(Constants.CAMERA_RETICLE_SWITCH);
     }
 
     public static Shooter getInstance() {
@@ -93,6 +96,14 @@ public class Shooter {
             chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
         } else if (gamepad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
+        }
+
+        if (gamepad.getSelectButton()) {
+            if (cameraReticleSwitch.get() == Relay.Value.kForward) {
+                cameraReticleSwitch.set(Relay.Value.kOff);
+            } else {
+                cameraReticleSwitch.set(Relay.Value.kForward);
+            }
         }
 
         // if there is a retract request
