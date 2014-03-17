@@ -62,6 +62,18 @@ public class Shooter {
         retracting = false;
     }
 
+    public void enableCameraLight() {
+        cameraReticleSwitch.set(Relay.Value.kForward);
+    }
+
+    public void enableReticleLight() {
+        cameraReticleSwitch.set(Relay.Value.kReverse);
+    }
+
+    public void disableCameraAndReticleLights() {
+        cameraReticleSwitch.set(Relay.Value.kOff);
+    }
+
     public boolean isStillRetracting() {
         return retracting;
     }
@@ -73,7 +85,7 @@ public class Shooter {
     public double getGoalVoltage() {
         return goalSensorAnalog.getAverageVoltage();
     }
-    
+
     public boolean isGoalHotAnalog() {
         return getGoalVoltage() <= Constants.SHOOTER_GOAL_SENSOR_VOLTAGE; // Sensor is active when low
     }
@@ -99,10 +111,10 @@ public class Shooter {
         }
 
         if (gamepad.getSelectButton()) {
-            if (cameraReticleSwitch.get() == Relay.Value.kForward) {
-                cameraReticleSwitch.set(Relay.Value.kOff);
+            if (cameraReticleSwitch.get() == Relay.Value.kReverse) {
+                disableCameraAndReticleLights();
             } else {
-                cameraReticleSwitch.set(Relay.Value.kForward);
+                enableReticleLight();
             }
         }
 

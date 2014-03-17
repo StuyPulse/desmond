@@ -57,8 +57,7 @@ public class Constants {
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
 
     //RELAY outputs
-    public static final int CAMERA_RELAY_CHANNEL = 6;
-    public static final int CAMERA_RETICLE_SWITCH = 7;
+    public static final int CAMERA_RETICLE_SWITCH = 6;
 
     // AUTON constants
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
