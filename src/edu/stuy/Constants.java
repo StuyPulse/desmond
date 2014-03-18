@@ -47,7 +47,7 @@ public class Constants {
     public static final int CV_TARGET_IS_NOT_HOT = 33554432;
     public static final int CV_TIMEOUT = 3000;
     public static final int CV_SERVER_PORT = 12345;
-    public static final String CV_IP = "10.6.94.14";
+    public static final String CV_IP = "10.6.94.15";
 
     public static final int DAN_CAMERA_AUTON_DELAY = 200;
 
