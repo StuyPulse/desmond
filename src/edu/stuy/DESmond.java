@@ -67,7 +67,6 @@ public class DESmond extends IterativeRobot {
     // TODO: uncomment some of these when CV/analog works
     public void teleopPeriodic() {
         SmartDashboard.putNumber("Dan's - Goal Voltage", shooter.getGoalVoltage());
-        SmartDashboard.putBoolean("Dan's - Goal Hot (Analog)", shooter.isGoalHotAnalog());
         SmartDashboard.putBoolean("Dan's - Goal Hot (Digital)?", shooter.isGoalHotDigital());
         //SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
         //SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
