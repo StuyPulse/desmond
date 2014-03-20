@@ -34,11 +34,15 @@ public class Shooter {
     public void reset() {
     }
 
-    public void fireBallAndRetract() {
+    public void fireBall() {
         chooChoo.set(-1.0);
         long startTime = System.currentTimeMillis();
         while (isFullyRetracted() && System.currentTimeMillis() - startTime < Constants.SHOOTER_FIRE_TIMEOUT);
         chooChoo.set(0.0);
+    }
+
+    public void fireBallAndRetract() {
+        fireBall();
         initiateWinch();
     }
 
