@@ -71,7 +71,7 @@ public class Autonomous {
 
     public static void auton12() {
         if (!CV.getInstance().isGoalHot()) {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
         driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
         lowShoot();
@@ -98,7 +98,7 @@ public class Autonomous {
     public static void auton22() {
         Shooter.getInstance().enableCameraLight();
         if (!Shooter.getInstance().isGoalHotDigital()) {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
         driveForward(Constants.AUTON_TIME_TO_DRIVE_18_FEET);
         lowShoot();
@@ -152,28 +152,28 @@ public class Autonomous {
         if (CV.getInstance().isGoalHot()) {
             extendAndShoot();
         } else {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
             extendAndShoot();
         }
     }
 
     public static void lowShootIfHotCV() {
         if (!(CV.getInstance().isGoalHot())) {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
         lowShoot();
     }
 
     public static void shootIfHotAnalog() {
         if (Shooter.getInstance().isGoalHotDigital()) {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
         shoot();
     }
 
     public static void lowShootIfHotAnalog() {
         if (Shooter.getInstance().isGoalHotDigital()) {
-            Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
+            Timer.delay(Constants.AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
         lowShoot();
     }
