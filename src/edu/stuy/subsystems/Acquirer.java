@@ -57,9 +57,7 @@ public class Acquirer {
 
     public void manualGamepadControl(Gamepad gamepad) {
         // Acquirer frame controls
-        if (Math.abs(gamepad.getLeftY()) >= 0.1) {
-            roller.set(gamepad.getLeftY());
-        } else if (gamepad.getDPadDown()) {
+        if (gamepad.getDPadDown()) {
             ejectBall();
         } else if (gamepad.getDPadUp()) {
             intakeBall();
