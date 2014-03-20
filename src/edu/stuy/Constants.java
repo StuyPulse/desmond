@@ -14,6 +14,8 @@ public class Constants {
     public static final int PISTON_RETRACT_CHANNEL = 3;
     public static final int PRESSURE_SWITCH_CHANNEL = 5;
     public static final int COMPRESSOR_RELAY_CHANNEL = 1;
+    public static final int BLOCKER_UP_CHANNEL = 6;
+    public static final int BLOCKER_DOWN_CHANNEL = 7;
 
     /* GPIO */
     public static final int ENCODER_CHANNEL_LEFT_A = 10;

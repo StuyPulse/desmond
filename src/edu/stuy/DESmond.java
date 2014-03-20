@@ -11,6 +11,7 @@ public class DESmond extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
+    Blocker blocker;
     //CV cv; // TODO: uncomment when CV works
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
@@ -22,6 +23,7 @@ public class DESmond extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
+        blocker = Blocker.getInstance();
         //cv = CV.getInstance(); // TODO: uncomment when CV works
         resetAll();
 
@@ -61,7 +63,7 @@ public class DESmond extends IterativeRobot {
 
     public void teleopInit() {
         resetAll();
-        
+
     }
 
     public void disabledInit() {
@@ -81,6 +83,9 @@ public class DESmond extends IterativeRobot {
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
+        if (blocker != null) {
+            blocker.manualGamepadControl(rightPad);
+        }
         //cv.setCameraLight(true);
     }
 
@@ -93,6 +98,9 @@ public class DESmond extends IterativeRobot {
         shooter.reset();
         drivetrain.reset();
         acquirer.reset();
+        if (blocker != null) {
+            blocker.reset();
+        }
         // NOTE: CV does not have a reset() method
     }
 }
