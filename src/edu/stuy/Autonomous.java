@@ -109,14 +109,13 @@ public class Autonomous {
 
     // One ball is shot hot, another is not
     public static void auton8() {
-        extendAndShoot();
-        readyShooter();
-        loadNextBall();
         driveBackwardToLineUpShot();
-        Timer.delay(1.5); // This should remain in order to ensure separation
-        readyAndShoot();
+        extendAndShoot();
+        loadBallWhileMoving(Constants.AUTON_TIME_TO_LINE_UP_SHOT); // Reverse direction and pick up second ball
+        driveBackwardToLineUpShot();
+        Timer.delay(1.5);
+        extendAndShoot();
         driveBackwardForMobilityPoints();
-        readyShooter();
     }
 
     // One point auton with dumb fire while acquirer is up
