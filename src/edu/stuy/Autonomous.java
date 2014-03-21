@@ -61,7 +61,7 @@ public class Autonomous {
         shootIfHotCV();
         readyShooter();
         loadNextBall();
-        shoot();
+        readyAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -85,7 +85,7 @@ public class Autonomous {
         shootIfHotAnalog();
         readyShooter();
         loadNextBall();
-        shoot();
+        readyAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -110,7 +110,7 @@ public class Autonomous {
         readyShooter();
         loadNextBall();
         Timer.delay(1.5); // This should remain in order to ensure separation
-        shoot();
+        readyAndShoot();
         driveBackwardForMobilityPoints();
         readyShooter();
     }
@@ -131,12 +131,12 @@ public class Autonomous {
         readyShooter();
         loadNextBall();
         Timer.delay(1.5); // This should remain in order to ensure separation
-        shoot();
+        readyAndShoot();
         readyShooter();
         loadBallWhileMoving(Constants.AUTON_THREE_BALL_DRIVE_TIME);
         driveBackward(Constants.AUTON_THREE_BALL_DRIVE_TIME);
         rotateDownToClearShooter();
-        shoot();
+        readyAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -161,7 +161,7 @@ public class Autonomous {
         if (Shooter.getInstance().isGoalHotDigital()) {
             Timer.delay(Constants.AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
-        shoot();
+        readyAndShoot();
     }
     public static void lowShootIfHotAnalog() {
         if (Shooter.getInstance().isGoalHotDigital()) {
@@ -177,7 +177,8 @@ public class Autonomous {
         Shooter.getInstance().fireBallAndRetract();
     }
 
-    public static void shoot() {
+    public static void readyAndShoot() {
+        readyShooter();
         Shooter.getInstance().fireBallAndRetract();
     }
 
