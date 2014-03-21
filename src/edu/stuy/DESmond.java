@@ -63,7 +63,6 @@ public class DESmond extends IterativeRobot {
 
     public void teleopInit() {
         resetAll();
-
     }
 
     public void disabledInit() {

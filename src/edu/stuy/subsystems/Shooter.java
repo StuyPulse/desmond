@@ -35,6 +35,7 @@ public class Shooter {
     }
 
     public void reset() {
+        enableReticleLight();
     }
 
     public void fireBall() {
