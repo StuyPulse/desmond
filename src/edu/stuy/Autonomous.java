@@ -61,6 +61,7 @@ public class Autonomous {
         shootIfHotCV();
         readyShooter();
         loadNextBall();
+        driveBackwardToLineUpShot();
         readyAndShoot();
         driveBackwardForMobilityPoints();
     }
@@ -85,6 +86,7 @@ public class Autonomous {
         shootIfHotAnalog();
         readyShooter();
         loadNextBall();
+        driveBackwardToLineUpShot();
         readyAndShoot();
         driveBackwardForMobilityPoints();
     }
@@ -109,6 +111,7 @@ public class Autonomous {
         extendAndShoot();
         readyShooter();
         loadNextBall();
+        driveBackwardToLineUpShot();
         Timer.delay(1.5); // This should remain in order to ensure separation
         readyAndShoot();
         driveBackwardForMobilityPoints();
@@ -130,11 +133,12 @@ public class Autonomous {
         extendAndShoot();
         readyShooter();
         loadNextBall();
+        driveBackwardToLineUpShot();
         Timer.delay(1.5); // This should remain in order to ensure separation
         readyAndShoot();
         readyShooter();
-        loadBallWhileMoving(Constants.AUTON_THREE_BALL_DRIVE_TIME);
-        driveBackward(Constants.AUTON_THREE_BALL_DRIVE_TIME);
+        loadBallWhileMoving(Constants.AUTON_THREE_BALL_DRIVE_TIME + Constants.AUTON_TIME_TO_LINE_UP_SHOT);
+        driveBackward(Constants.AUTON_THREE_BALL_DRIVE_TIME + Constants.AUTON_TIME_TO_LINE_UP_SHOT);
         rotateDownToClearShooter();
         readyAndShoot();
         driveBackwardForMobilityPoints();
@@ -193,6 +197,10 @@ public class Autonomous {
 
     public static void lowShoot() {
         Acquirer.getInstance().ejectBall();
+    }
+
+    public static void driveBackwardToLineUpShot() {
+        driveBackward(Constants.AUTON_TIME_TO_LINE_UP_SHOT);
     }
 
     public static void driveBackwardForMobilityPoints() {
