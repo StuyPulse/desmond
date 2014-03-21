@@ -104,24 +104,24 @@ public class Shooter {
         return goalSensorDigital.get();
     }
 
-    public void manualGamepadControl(Gamepad gamepad) {
-        if (gamepad.getLeftBumper()) {
+    public void manualGamepadControl(Gamepad operatorPad, Gamepad driverPad) {
+        if (operatorPad.getLeftBumper()) {
             initiateWinch();
         }
-        if (gamepad.getRightBumper()) {
+        if (operatorPad.getRightBumper()) {
             fireBall();
-        } else if (gamepad.getStartButton()) {
+        } else if (operatorPad.getStartButton()) {
             stopWinch();
         }
 
-        if (gamepad.getRightY() > 0) {
-            chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
-        } else if (gamepad.getRightY() <= 0 && !retracting) {
+        if (operatorPad.getRightY() > 0) {
+            chooChoo.set(-operatorPad.getRightY()); // The analog stick Y increases as it is pulled downwards
+        } else if (operatorPad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
         }
 
         reticleWasToggled = reticleToggling;
-        reticleToggling = gamepad.getSelectButton();
+        reticleToggling = driverPad.getSelectButton();
 
         // if there is a reticle toggle request
         if (reticleToggling && !reticleWasToggled) {

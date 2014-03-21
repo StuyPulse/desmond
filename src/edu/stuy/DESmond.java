@@ -80,7 +80,7 @@ public class DESmond extends IterativeRobot {
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
         //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
         acquirer.manualGamepadControl(leftPad);
-        shooter.manualGamepadControl(leftPad);
+        shooter.manualGamepadControl(leftPad, rightPad);
         drivetrain.tankDrive(rightPad);
         if (blocker != null) {
             blocker.manualGamepadControl(rightPad);
