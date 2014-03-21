@@ -204,6 +204,10 @@ public class Autonomous {
         driveBackward(Constants.AUTON_TIME_TO_LINE_UP_SHOT);
     }
 
+    public static void driveForwardToUnlineUpShot() {
+        driveForward(Constants.AUTON_TIME_TO_LINE_UP_SHOT);
+    }
+
     public static void driveBackwardForMobilityPoints() {
         // Delay for a short time in case we just shot a ball
         Timer.delay(Constants.AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE);
