@@ -179,7 +179,7 @@ public class Autonomous {
     public static void extendAndShoot() {
         Acquirer.getInstance().rotateDown();
         Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
-        Shooter.getInstance().fireBallAndRetract();
+        readyAndShoot();
     }
 
     public static void readyAndShoot() {
