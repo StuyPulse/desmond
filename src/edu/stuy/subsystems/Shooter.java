@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Relay;
 public class Shooter {
 
     private boolean retracting = false;
+    private boolean reticleToggling, reticleWasToggled;
     private static Shooter instance;
     private DigitalInput catapultRetractedSwitch;
     private Talon chooChoo;
@@ -75,6 +76,14 @@ public class Shooter {
         cameraReticleSwitch.set(Relay.Value.kOff);
     }
 
+    public void toggleReticle() {
+        if (cameraReticleSwitch.get() == Relay.Value.kReverse) {
+            disableCameraAndReticleLights();
+        } else {
+            enableReticleLight();
+        }
+    }
+
     public boolean isStillRetracting() {
         return retracting;
     }
@@ -111,12 +120,12 @@ public class Shooter {
             chooChoo.set(0);
         }
 
-        if (gamepad.getSelectButton()) {
-            if (cameraReticleSwitch.get() == Relay.Value.kReverse) {
-                disableCameraAndReticleLights();
-            } else {
-                enableReticleLight();
-            }
+        reticleWasToggled = reticleToggling;
+        reticleToggling = gamepad.getSelectButton();
+
+        // if there is a reticle toggle request
+        if (reticleToggling && !reticleWasToggled) {
+            toggleReticle();
         }
 
         // if there is a retract request
