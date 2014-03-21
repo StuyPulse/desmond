@@ -101,6 +101,7 @@ public class Autonomous {
 
     // Auton set for dumb firing
     public static void auton7() {
+        driveBackwardToLineUpShot();
         extendAndShoot();
         driveBackwardForMobilityPoints();
         readyShooter();
