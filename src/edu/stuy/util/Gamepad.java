@@ -183,7 +183,7 @@ public class Gamepad extends Joystick {
      *
      * @return if the back button is pressed
      */
-    public boolean getBackButton() {
+    public boolean getSelectButton() {
         return getRawButton(9);
     }
 

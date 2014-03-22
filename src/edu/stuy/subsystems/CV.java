@@ -12,7 +12,7 @@ public class CV {
     private Relay cameraLight;
 
     public CV() {
-        cameraLight = new Relay(Constants.CAMERA_RELAY_CHANNEL);
+        cameraLight = new Relay(Constants.CAMERA_RETICLE_SWITCH);
         System.out.println("CV constructor start");
 
         Thread t = new Thread(new Runnable() {
@@ -65,7 +65,7 @@ public class CV {
     public void setCameraLight(boolean on) {
         Relay.Value currVal = cameraLight.get();
         if (currVal != Relay.Value.kOn && on) { // Turn camera light on
-            cameraLight.set(Relay.Value.kOn);
+            cameraLight.set(Relay.Value.kForward);
         } else { // Turn camera light off 
             cameraLight.set(Relay.Value.kOff);
         }

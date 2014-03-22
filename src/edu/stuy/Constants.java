@@ -14,6 +14,8 @@ public class Constants {
     public static final int PISTON_RETRACT_CHANNEL = 3;
     public static final int PRESSURE_SWITCH_CHANNEL = 5;
     public static final int COMPRESSOR_RELAY_CHANNEL = 1;
+    public static final int BLOCKER_UP_CHANNEL = 6;
+    public static final int BLOCKER_DOWN_CHANNEL = 7;
 
     /* GPIO */
     public static final int ENCODER_CHANNEL_LEFT_A = 10;
@@ -58,14 +60,15 @@ public class Constants {
     public static final long SHOOTER_FIRE_TIMEOUT = 2000;
 
     //RELAY outputs
-    public static final int CAMERA_RELAY_CHANNEL = 6;
+    public static final int CAMERA_RETICLE_SWITCH = 6;
 
     // AUTON constants
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
     public static final double AUTON_TIME_TO_DRIVE_18_FEET = 2.25;
     public static final double AUTON_TIME_TO_LINE_UP_SHOT = 0.75;
     // Makes the delay factor in the time needed to drive + some buffer
-    public static final double AUTON_TIME_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
+    public static final double AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
+    public static final double AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + 1;
     public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 1.6;
     public static final double AUTON_TIME_TO_INTAKE_BALL = 1.75;
     public static final double AUTON_THREE_BALL_DRIVE_TIME = 1.0;
