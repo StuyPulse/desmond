@@ -51,6 +51,7 @@ public class NetworkIO {
             }
             if (setup && in.available() > 0) {
                 mostRecentOut = in.readInt();
+                System.out.println("CVout: " + mostRecentOut);
                 sendMessage("blerp");
             }
         } catch (Exception e) {

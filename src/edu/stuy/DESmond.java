@@ -11,7 +11,7 @@ public class DESmond extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    //CV cv; // TODO: uncomment when CV works
+    CV cv; // TODO: uncomment when CV works
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
@@ -22,7 +22,7 @@ public class DESmond extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        //cv = CV.getInstance(); // TODO: uncomment when CV works
+        cv = CV.getInstance(); // TODO: uncomment when CV works
         resetAll();
 
         // SendableChooser for auton
@@ -68,8 +68,8 @@ public class DESmond extends IterativeRobot {
     public void teleopPeriodic() {
         SmartDashboard.putNumber("Dan's - Goal Voltage", shooter.getGoalVoltage());
         SmartDashboard.putBoolean("Dan's - Goal Hot (Digital)?", shooter.isGoalHotDigital());
-        //SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
-        //SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
+        SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
+        SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
         SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
@@ -77,7 +77,7 @@ public class DESmond extends IterativeRobot {
         acquirer.manualGamepadControl(leftPad);
         shooter.manualGamepadControl(leftPad);
         drivetrain.tankDrive(rightPad);
-        //cv.setCameraLight(true);
+        cv.setCameraLight(true);
     }
 
     // This function is called periodically during test mode
@@ -89,6 +89,7 @@ public class DESmond extends IterativeRobot {
         shooter.reset();
         drivetrain.reset();
         acquirer.reset();
+        cv.setCameraLight(false);
         // NOTE: CV does not have a reset() method
     }
 }
