@@ -121,6 +121,7 @@ public class Autonomous {
         loadBallWhileMoving(Constants.AUTON_TIME_TO_LINE_UP_SHOT); // Reverse direction and pick up second ball
         driveBackwardToLineUpShot();
         Timer.delay(1.5);
+        readyShooter();
         extendAndShoot();
         driveBackwardForMobilityPoints();
     }
