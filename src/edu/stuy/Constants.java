@@ -42,15 +42,7 @@ public class Constants {
     public static final int GAMEPAD_LEFT_PORT = 2;
     public static final int GOAL_SENSOR_ANALOG_CHANNEL = 1; // 3 for rear (acquirer), 1 for front (shooter)
 
-    //CV constants
-    //Robot and Pi are different endian, so these are the values flipped
-    public static final int CV_I_DONT_KNOW = 0;
-    public static final int CV_TARGET_IS_HOT = 16777216;
-    public static final int CV_TARGET_IS_NOT_HOT = 33554432;
-    public static final int CV_TIMEOUT = 3000;
-    public static final int CV_SERVER_PORT = 12345;
-    public static final String CV_IP = "10.6.94.15";
-
+    // CV constants
     public static final int DAN_CAMERA_AUTON_DELAY = 200;
 
     // SHOOTER constants
