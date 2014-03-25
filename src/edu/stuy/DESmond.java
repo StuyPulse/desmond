@@ -8,10 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class DESmond extends IterativeRobot {
 
-    Shooter shooter;
     Drivetrain drivetrain;
-    Acquirer acquirer;
-    Blocker blocker;
     //CV cv; // TODO: uncomment when CV works
 
     Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
@@ -20,11 +17,7 @@ public class DESmond extends IterativeRobot {
     SendableChooser autonChooser;
 
     public void robotInit() {
-        shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
-        acquirer = Acquirer.getInstance();
-        blocker = Blocker.getInstance();
-        //cv = CV.getInstance(); // TODO: uncomment when CV works
         resetAll();
 
         // SendableChooser for auton
@@ -55,10 +48,8 @@ public class DESmond extends IterativeRobot {
         System.out.println("Selected auton #" + selection.intValue());
         Autonomous.auton(selection.intValue());
     }
-
-    // This function is called periodically during autonomous
+    
     public void autonomousPeriodic() {
-        //SmartDashboard.putBoolean("Goal hot?",cv.isGoalHot()); // TODO: uncomment when CV works
     }
 
     public void teleopInit() {
@@ -67,39 +58,16 @@ public class DESmond extends IterativeRobot {
 
     public void disabledInit() {
     }
-
-    // This function is called periodically during operator control
-    // TODO: uncomment some of these when CV/analog works
+   
     public void teleopPeriodic() {
-        SmartDashboard.putNumber("Dan's - Goal Voltage", shooter.getGoalVoltage());
-        SmartDashboard.putBoolean("Dan's - Goal Hot (Digital)?", shooter.isGoalHotDigital());
-        //SmartDashboard.putBoolean("Pi connected?", cv.isPiConnected());
-        //SmartDashboard.putBoolean("CV - Goal Hot?", cv.isGoalHot());
-        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEnc());
-        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
-        SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
-        //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
-        acquirer.manualGamepadControl(leftPad);
-        shooter.manualGamepadControl(leftPad, rightPad);
         drivetrain.tankDrive(rightPad);
-        if (blocker != null) {
-            blocker.manualGamepadControl(rightPad);
-        }
-        //cv.setCameraLight(true);
     }
-
-    // This function is called periodically during test mode
+    
     public void testPeriodic() {
         // TODO: To be added later
     }
 
     public void resetAll() {
-        shooter.reset();
         drivetrain.reset();
-        acquirer.reset();
-        if (blocker != null) {
-            blocker.reset();
-        }
-        // NOTE: CV does not have a reset() method
     }
 }

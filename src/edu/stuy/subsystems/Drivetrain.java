@@ -2,9 +2,7 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,21 +14,10 @@ public class Drivetrain {
     private RobotDrive drivetrain;
     PIDController forwardController;
     PIDController backwardController;
-    private Encoder encoderRight;
-    private Encoder encoderLeft;
 
     private Drivetrain() {
         drivetrain = new RobotDrive(Constants.LEFT_MOTOR_CHANNEL, Constants.RIGHT_MOTOR_CHANNEL);
         drivetrain.setSafetyEnabled(false);
-
-        encoderRight = new Encoder(Constants.ENCODER_CHANNEL_RIGHT_A, Constants.ENCODER_CHANNEL_RIGHT_B);
-        encoderRight.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
-        encoderLeft = new Encoder(Constants.ENCODER_CHANNEL_LEFT_A, Constants.ENCODER_CHANNEL_LEFT_B);
-        encoderLeft.setDistancePerPulse(Constants.ENCODER_DISTANCE_PER_PULSE);
-        encoderRight.start();
-        encoderLeft.start();
-        encoderRight.reset();
-        encoderLeft.reset();
     }
 
     public static Drivetrain getInstance() {
@@ -58,24 +45,6 @@ public class Drivetrain {
 
     public void reset() {
         tankDrive(0.0, 0.0);
-    }
-
-    // We must invert the left encoder's value
-    public double getLeftEnc() {
-        return -encoderLeft.getDistance();
-    }
-
-    public double getRightEnc() {
-        return encoderRight.getDistance();
-    }
-
-    public void resetEncoders() {
-        encoderRight.reset();
-        encoderLeft.reset();
-    }
-
-    public double getAvgDistance() {
-        return (getLeftEnc() + getRightEnc()) / 2;
     }
 
     public void dashboardPIDUpdate() {
