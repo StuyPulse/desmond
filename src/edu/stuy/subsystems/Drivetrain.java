@@ -1,6 +1,7 @@
 package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
+import edu.stuy.Autonomous;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -39,6 +40,18 @@ public class Drivetrain {
         }
         if (gamepad.getLeftBumper()) {
             left *= 0.9;
+        }
+        if (gamepad.getBottomButton()) {
+            Autonomous.driveForward(1);
+        }
+        if (gamepad.getRightButton()) {
+            Autonomous.driveForward(2);
+        }
+        if (gamepad.getLeftButton()) {
+            Autonomous.driveForward(3);
+        }
+        if (gamepad.getTopButton()) {
+            Autonomous.driveForward(4);
         }
         tankDrive(left, right);
     }
