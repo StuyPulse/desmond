@@ -16,13 +16,13 @@ public class Shooter {
     private DigitalInput catapultRetractedSwitch;
     private Talon chooChoo;
     private long startTime = System.currentTimeMillis();
-    private AnalogChannel goalSensorAnalog; // Dan's magic CV
-    private DigitalInput goalSensorDigital;
+    //private AnalogChannel goalSensorAnalog; // Dan's magic CV
+    //private DigitalInput goalSensorDigital;
     private Relay cameraReticleSwitch; // For the light alternation
 
     private Shooter() {
-        goalSensorAnalog = new AnalogChannel(Constants.GOAL_SENSOR_ANALOG_CHANNEL);
-        goalSensorDigital = new DigitalInput(Constants.GOAL_SENSOR_DIGITAL_CHANNEL);
+        //goalSensorAnalog = new AnalogChannel(Constants.GOAL_SENSOR_ANALOG_CHANNEL);
+        //goalSensorDigital = new DigitalInput(Constants.GOAL_SENSOR_DIGITAL_CHANNEL);
         chooChoo = new Talon(Constants.SHOOTER_CHANNEL);
         catapultRetractedSwitch = new DigitalInput(Constants.CATAPULT_RETRACTED_SWITCH_CHANNEL);
         cameraReticleSwitch = new Relay(Constants.CAMERA_RETICLE_SWITCH);
@@ -98,7 +98,8 @@ public class Shooter {
     }
 
     public double getGoalVoltage() {
-        return goalSensorAnalog.getAverageVoltage();
+//        return goalSensorAnalog.getAverageVoltage();
+        return 0.0;
     }
 
     public boolean isGoalHotAnalog() {
@@ -106,7 +107,8 @@ public class Shooter {
     }
 
     public boolean isGoalHotDigital() {
-        return goalSensorDigital.get();
+//        return goalSensorDigital.get();
+        return false;
     }
 
     public void manualGamepadControl(Gamepad operatorPad, Gamepad driverPad) {

@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.Timer;
 public class CV {
 
     private static CV instance;
-    private Relay cameraLight;
+    //private Relay cameraLight;
     private DigitalInput cvGoalSensor;
 
     public CV() {
-        cameraLight = new Relay(Constants.CAMERA_RETICLE_SWITCH);
+        //cameraLight = new Relay(Constants.CAMERA_RETICLE_SWITCH);
         System.out.println("CV constructor start");
         cvGoalSensor = new DigitalInput(Constants.GOAL_SENSOR_DIGITAL_CHANNEL);
         System.out.println("CV constructor end");
@@ -28,7 +28,7 @@ public class CV {
     public boolean isGoalHot() {
         return cvGoalSensor.get();
     }
-
+/*
     public boolean getLightValue() {
         if (cameraLight.get() == Relay.Value.kOff) {
             return false;
@@ -44,5 +44,5 @@ public class CV {
         } else { // Turn camera light off 
             cameraLight.set(Relay.Value.kOff);
         }
-    }
+    }*/
 }

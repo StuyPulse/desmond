@@ -83,7 +83,7 @@ public class DESmond extends IterativeRobot {
         if (blocker != null) {
             blocker.manualGamepadControl(rightPad);
         }
-        cv.setCameraLight(true);
+        //cv.setCameraLight(true);
     }
 
     // This function is called periodically during test mode
