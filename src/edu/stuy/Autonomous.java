@@ -50,6 +50,9 @@ public class Autonomous {
             case 40: // Shooter faces goal
                 auton40(); // Just drive backward
                 break;
+            case 41: // Shooter faces goal
+                auton41(); // Just drive backward twice as far
+                break;
         }
     }
 
@@ -135,11 +138,6 @@ public class Autonomous {
         lowShoot();
     }
 
-    // Auton for just moving forward to get mobility points
-    public static void auton40() {
-        driveBackwardForMobilityPoints();
-    }
-
     public static void auton33() {
         extendAndShoot();
         readyShooter();
@@ -165,6 +163,17 @@ public class Autonomous {
 		loadNextBall();
 		Shooter.getInstance().fireBall();
 		driveBackwardForMobilityPoints();
+    }
+
+    // Auton for just moving forward to get mobility points
+    public static void auton40() {
+        driveBackwardForMobilityPoints();
+    }
+
+    // Auton for moving doubly far if we're donating the ball for 2-ball auton
+    public static void auton41() {
+        driveBackwardForMobilityPoints();
+        driveBackwardForMobilityPoints();
     }
 
     // Wait for CV to say goal is hot and then shoot
