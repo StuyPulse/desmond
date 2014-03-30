@@ -43,6 +43,10 @@ public class Acquirer {
         roller.set(-1);
     }
 
+    public void intakeHalfSpeed() {
+        roller.set(-0.5);
+    }
+
     public void ejectBall() {
         roller.set(1);
     }

@@ -43,6 +43,9 @@ public class Autonomous {
             case 33: // Shooter faces goal
                 auton33(); // Dumb fire high goal - 3 ball
                 break;
+            case 34: // Shooter faces goal
+                auton34(); // Dumb fire high goal - 2 ball, drag
+                break;
 
             case 40: // Shooter faces goal
                 auton40(); // Just drive backward
@@ -150,6 +153,18 @@ public class Autonomous {
         rotateDownToClearShooter();
         readyAndShoot();
         driveBackwardForMobilityPoints();
+    }
+
+	// two ball auton where the second ball is dragged with the acquirer
+    public static void auton34() {
+		Acquirer.getInstance().rotateDown();
+		Acquirer.getInstance().intakeHalfSpeed();
+		driveBackwardToLineUpShot();
+		Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with shot
+		fireBallAndRetract();
+		loadNextBall();
+		fireBall();
+		driveBackwardForMobilityPoints();
     }
 
     // Wait for CV to say goal is hot and then shoot
