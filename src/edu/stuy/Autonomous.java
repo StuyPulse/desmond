@@ -161,9 +161,9 @@ public class Autonomous {
 		Acquirer.getInstance().intakeHalfSpeed();
 		driveBackwardToLineUpShot();
 		Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with shot
-		fireBallAndRetract();
+		Shooter.getInstance().fireBallAndRetract();
 		loadNextBall();
-		fireBall();
+		Shooter.getInstance().fireBall();
 		driveBackwardForMobilityPoints();
     }
 
