@@ -120,7 +120,7 @@ public class Autonomous {
     // Auton set for dumb firing
     public static void auton30() {
         driveBackwardToLineUpShot();
-        extendAndShoot();
+        extendAndSettleAndShoot();
         driveBackwardForMobilityPoints();
         readyShooter();
     }
@@ -128,12 +128,12 @@ public class Autonomous {
     // One ball is shot hot, another is not
     public static void auton31() {
         driveBackwardToLineUpShot();
-        extendAndShoot();
+        extendAndSettleAndShoot();
         loadBallWhileMoving(Constants.AUTON_TIME_TO_LINE_UP_SHOT); // Reverse direction and pick up second ball
         driveBackwardToLineUpShot();
         Timer.delay(1.5);
         readyShooter();
-        extendAndShoot();
+        extendAndSettleAndShoot();
         driveBackwardForMobilityPoints();
     }
 
@@ -144,7 +144,7 @@ public class Autonomous {
     }
 
     public static void auton33() {
-        extendAndShoot();
+        extendAndSettleAndShoot();
         readyShooter();
         loadNextBall();
         driveBackwardToLineUpShot();
@@ -164,8 +164,10 @@ public class Autonomous {
 	Acquirer.getInstance().intakeHalfSpeed();
 	driveBackwardToLineUpShot();
 	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with shot
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBallAndRetract();
 	loadNextBall();
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBall();
 	driveBackwardForMobilityPoints();
     }
@@ -216,6 +218,13 @@ public class Autonomous {
     public static void extendAndShoot() {
         Acquirer.getInstance().rotateDown();
         Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
+        readyAndShoot();
+    }
+    
+    public static void extendAndSettleAndShoot() {
+        Acquirer.getInstance().rotateDown();
+        Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
         readyAndShoot();
     }
 
