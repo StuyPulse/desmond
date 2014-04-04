@@ -5,6 +5,7 @@ import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Acquirer {
 
@@ -62,10 +63,13 @@ public class Acquirer {
     public void manualGamepadControl(Gamepad gamepad) {
         // Acquirer frame controls
         if (gamepad.getDPadDown()) {
+            SmartDashboard.putString("acquirer state", "ejecting");
             ejectBall();
         } else if (gamepad.getDPadUp()) {
+            SmartDashboard.putString("acquirer state", "intaking");
             intakeBall();
         } else {
+            SmartDashboard.putString("acquirer state", "stopping");
             stopRoller();
         }
 

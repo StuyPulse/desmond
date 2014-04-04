@@ -161,14 +161,17 @@ public class Autonomous {
 	// two ball auton where the second ball is dragged with the acquirer
     public static void auton34() {
 	Acquirer.getInstance().rotateDown();
+        Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
 	Acquirer.getInstance().intakeHalfSpeed();
 	driveBackwardToLineUpShot();
-	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with shot
-        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
-	Shooter.getInstance().fireBallAndRetract();
-	loadNextBall();
+	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with 
         Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBall();
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
+        readyShooter();
+	loadNextBall();
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
+	Shooter.getInstance().fireBallAndRetract();
 	driveBackwardForMobilityPoints();
     }
 
