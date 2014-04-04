@@ -63,11 +63,13 @@ public class Autonomous {
 
     // Auton set that relies on CV
     public static void auton10() {
+        Acquirer.getInstance().rotateDown();
         shootIfHotCV();
         driveBackwardForMobilityPoints();
     }
 
     public static void auton11() {
+        Acquirer.getInstance().rotateDown();
         shootIfHotCV();
         readyShooter();
         loadNextBall();
@@ -87,6 +89,7 @@ public class Autonomous {
     // Auton set for using Analog light sensor instead of CV
     public static void auton20() {
         Shooter.getInstance().enableCameraLight();
+        Acquirer.getInstance().rotateDown();
         delayForDanCam();
         shootIfHotAnalog();
         driveBackwardForMobilityPoints();
@@ -94,6 +97,7 @@ public class Autonomous {
 
     public static void auton21() {
         Shooter.getInstance().enableCameraLight();
+        Acquirer.getInstance().rotateDown();
         delayForDanCam();
         shootIfHotAnalog();
         readyShooter();
@@ -105,6 +109,7 @@ public class Autonomous {
 
     public static void auton22() {
         Shooter.getInstance().enableCameraLight();
+        Acquirer.getInstance().rotateDown();
         if (!Shooter.getInstance().isGoalHotDigital()) {
             Timer.delay(Constants.AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
         }
@@ -179,10 +184,10 @@ public class Autonomous {
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
         if (CV.getInstance().isGoalHot()) {
-            extendAndShoot();
+            readyAndShoot();
         } else {
             Timer.delay(Constants.AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL);
-            extendAndShoot();
+            readyAndShoot();
         }
     }
 
