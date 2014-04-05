@@ -163,7 +163,7 @@ public class Autonomous {
 	Acquirer.getInstance().rotateDown();
         Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
 	Acquirer.getInstance().intakeHalfSpeed();
-	driveBackwardToLineUpShot();
+	driveBackwardAndDragToLineUpShot();
 	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with 
         Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBall();
@@ -251,6 +251,10 @@ public class Autonomous {
 
     public static void driveBackwardToLineUpShot() {
         driveBackward(Constants.AUTON_TIME_TO_LINE_UP_SHOT);
+    }
+
+    public static void driveBackwardAndDragToLineUpShot() {
+        driveBackward(Constants.AUTON_TIME_TO_LINE_UP_DRAG_SHOT);
     }
 
     public static void driveForwardToUnlineUpShot() {
