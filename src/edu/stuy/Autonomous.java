@@ -171,7 +171,8 @@ public class Autonomous {
         readyShooter();
 	loadNextBall();
         Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
-	Shooter.getInstance().fireBallAndRetract();
+	Shooter.getInstance().fireBallPastBackdrive();
+        Shooter.getInstance().initiateWinch();
 	driveBackwardForMobilityPoints();
     }
 
