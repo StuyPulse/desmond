@@ -51,6 +51,13 @@ public class Shooter {
         initiateWinch();
     }
 
+    public void fireBallPastBackdrive() {
+        chooChoo.set(-1.0);
+        long startTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() - startTime < Constants.SHOOTER_BACKDRIVE_TIME);
+        fireBall();
+    }
+
     public void retractWinch() {
         if (!isFullyRetracted() && (System.currentTimeMillis() - startTime) < Constants.SHOOTER_RETRACT_TIMEOUT) {
             chooChoo.set(-1.0); // This MUST be negative!

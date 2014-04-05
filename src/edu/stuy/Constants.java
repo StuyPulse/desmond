@@ -58,6 +58,7 @@ public class Constants {
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
     public static final double SHOOTER_DELAY_FOR_BALL_SETTLE = 1.5;
+    public static final double SHOOTER_BACKDRIVE_TIME = 0.3; // this is a guess
     public static final long SHOOTER_FIRE_TIMEOUT = 2000;
 
     //RELAY outputs
