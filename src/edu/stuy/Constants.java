@@ -67,7 +67,7 @@ public class Constants {
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
     public static final double AUTON_TIME_TO_DRIVE_18_FEET = 2.25;
     public static final double AUTON_TIME_TO_LINE_UP_SHOT = 0.75;
-    public static final double AUTON_TIME_TO_LINE_UP_DRAG_SHOT = 1.10;
+    public static final double AUTON_TIME_TO_LINE_UP_DRAG_SHOT = 1.00;
     // Makes the delay factor in the time needed to drive + some buffer
     public static final double AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
     public static final double AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + 1;
