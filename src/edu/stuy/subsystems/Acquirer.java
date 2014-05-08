@@ -62,10 +62,10 @@ public class Acquirer {
 
     public void manualGamepadControl(Gamepad gamepad) {
         // Acquirer frame controls
-        if (gamepad.getDPadDown()) {
+        if (gamepad.getLeftBumper()) {
             SmartDashboard.putString("acquirer state", "ejecting");
             ejectBall();
-        } else if (gamepad.getDPadUp()) {
+        } else if (gamepad.getLeftTrigger()) {
             SmartDashboard.putString("acquirer state", "intaking");
             intakeBall();
         } else {
@@ -74,9 +74,9 @@ public class Acquirer {
         }
 
         // Acquirer roller controls
-        if (gamepad.getTopButton()) {
+        if (gamepad.getRightBumper()) {
             rotateDown();
-        } else if (gamepad.getLeftButton()) {
+        } else if (gamepad.getRightTrigger()) {
             rotateUp();
         }
     }
