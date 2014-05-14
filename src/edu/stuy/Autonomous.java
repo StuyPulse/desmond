@@ -225,6 +225,11 @@ public class Autonomous {
         readyAndShoot();
     }
     
+    public static void close() {
+        Acquirer.getInstance().rotateUp();
+        Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
+    }
+
     public static void extendAndSettleAndShoot() {
         Acquirer.getInstance().rotateDown();
         Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
