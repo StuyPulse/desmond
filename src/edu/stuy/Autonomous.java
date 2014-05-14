@@ -295,7 +295,7 @@ public class Autonomous {
         boolean finishedTraveling = false;
         while (!finishedTraveling) {
             double inchesTraveled = Math.abs(Drivetrain.getInstance().getLeftEnc() - initialLocus);
-            finishedTraveling = inchesTraveled > inchesToTravel;
+            finishedTraveling = inchesTraveled >= inchesToTravel;
             Drivetrain.getInstance().tankDrive(0.1, 0.1);
         }
         Drivetrain.getInstance().tankDrive(0.0, 0.0);
