@@ -157,7 +157,7 @@ public class Autonomous {
         Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
 	Acquirer.getInstance().intakeHalfSpeed();
 	driveBackwardAndDragToLineUpShot();
-	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with 
+	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with
         Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBall();
         Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
