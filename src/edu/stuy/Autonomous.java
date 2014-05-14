@@ -53,6 +53,13 @@ public class Autonomous {
             case 41: // Shooter faces goal
                 auton41(); // Just drive backward twice as far
                 break;
+
+            case 50: // Shooter faces goal
+                auton50(); // Encoder fire high goal - 1 ball
+                break;
+            case 51: // Shooter faces goal
+                auton51(); // Encoder fire high goal - 2 ball, drag
+                break;
         }
     }
 
@@ -178,6 +185,33 @@ public class Autonomous {
         driveBackwardForMobilityPoints();
         driveBackwardForMobilityPoints();
     }
+
+    // Auton set that relies on the encoders
+    public static void auton50() {
+        driveBackwardToSweetSpotUsingEncoders();
+        extendAndSettleAndShoot();
+        readyShooter();
+    }
+
+    // two ball auton where the second ball is dragged with the acquirer
+    public static void auton51() {
+	Acquirer.getInstance().rotateDown();
+        Timer.delay(Constants.AUTON_TIME_TO_EXTEND_ACQUIRER);
+	Acquirer.getInstance().intakeHalfSpeed();
+	driveBackwardToSweetSpotUsingEncoders();
+	Acquirer.getInstance().stopRoller(); // prevent second ball from interfering with
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
+	Shooter.getInstance().fireBall();
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_FIRE);
+        readyShooter();
+	loadNextBall();
+        Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
+	Shooter.getInstance().fireBallPastBackdrive();
+        Shooter.getInstance().initiateWinch();
+    }
+
+
+
 
     // Wait for CV to say goal is hot and then shoot
     public static void shootIfHotCV() {
