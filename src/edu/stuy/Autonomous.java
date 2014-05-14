@@ -65,7 +65,6 @@ public class Autonomous {
     public static void auton10() {
         Acquirer.getInstance().rotateDown();
         shootIfHotCV();
-        driveBackwardForMobilityPoints();
     }
 
     public static void auton11() {
@@ -75,7 +74,6 @@ public class Autonomous {
         loadNextBall();
         driveBackwardToLineUpShot();
         readyAndShoot();
-        driveBackwardForMobilityPoints();
     }
 
     public static void auton12() {
@@ -92,7 +90,6 @@ public class Autonomous {
         Acquirer.getInstance().rotateDown();
         delayForDanCam();
         shootIfHotAnalog();
-        driveBackwardForMobilityPoints();
     }
 
     public static void auton21() {
@@ -104,7 +101,6 @@ public class Autonomous {
         loadNextBall();
         driveBackwardToLineUpShot();
         readyAndShoot();
-        driveBackwardForMobilityPoints();
     }
 
     public static void auton22() {
@@ -121,7 +117,6 @@ public class Autonomous {
     public static void auton30() {
         driveBackwardToLineUpShot();
         extendAndSettleAndShoot();
-        driveBackwardForMobilityPoints();
         readyShooter();
     }
 
@@ -134,7 +129,6 @@ public class Autonomous {
         Timer.delay(1.5);
         readyShooter();
         extendAndSettleAndShoot();
-        driveBackwardForMobilityPoints();
     }
 
     // One point auton with dumb fire while acquirer is up
@@ -155,7 +149,6 @@ public class Autonomous {
         driveBackward(Constants.AUTON_THREE_BALL_DRIVE_TIME + Constants.AUTON_TIME_TO_LINE_UP_SHOT);
         rotateDownToClearShooter();
         readyAndShoot();
-        driveBackwardForMobilityPoints();
     }
 
 	// two ball auton where the second ball is dragged with the acquirer
@@ -173,7 +166,6 @@ public class Autonomous {
         Timer.delay(Constants.SHOOTER_DELAY_FOR_BALL_SETTLE);
 	Shooter.getInstance().fireBallPastBackdrive();
         Shooter.getInstance().initiateWinch();
-	driveBackwardForMobilityPoints();
     }
 
     // Auton for just moving forward to get mobility points
