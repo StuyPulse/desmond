@@ -324,6 +324,7 @@ public class Autonomous {
         Acquirer.getInstance().rotateDown();
         Acquirer.getInstance().intakeBall();
         Timer.delay(Constants.AUTON_TIME_TO_INTAKE_BALL); // TODO: Delay should be tuned
+        close();
         Acquirer.getInstance().stopRoller();
     }
 
