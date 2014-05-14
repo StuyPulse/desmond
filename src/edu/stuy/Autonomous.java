@@ -255,6 +255,18 @@ public class Autonomous {
         driveBackward(Constants.AUTON_TIME_TO_LINE_UP_DRAG_SHOT);
     }
 
+    public static void driveBackwardToSweetSpotUsingEncoders() {
+        double inchesToTravel = Constants.AUTON_FEET_TO_SWEET_SPOT * 12;
+        double initialLocus = Drivetrain.getInstance().getLeftEnc();
+        boolean finishedTraveling = false;
+        while (!finishedTraveling) {
+            double inchesTraveled = Math.abs(Drivetrain.getInstance().getLeftEnc() - initialLocus);
+            finishedTraveling = inchesTraveled > inchesToTravel;
+            Drivetrain.getInstance().tankDrive(0.1, 0.1);
+        }
+        Drivetrain.getInstance().tankDrive(0.0, 0.0);
+    }
+
     public static void driveForwardToUnlineUpShot() {
         driveForward(Constants.AUTON_TIME_TO_LINE_UP_SHOT);
     }
