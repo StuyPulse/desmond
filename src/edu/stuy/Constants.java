@@ -57,7 +57,7 @@ public class Constants {
     public static final double SHOOTER_GOAL_SENSOR_VOLTAGE = 3.3; // TODO: To be changed later
     public static final long SHOOTER_RETRACT_TIMEOUT = 5000; // Failsafe if limit switch fails
     public static final double SHOOTER_DELAY_FOR_FIRE = 0.5;
-    public static final double SHOOTER_DELAY_FOR_BALL_SETTLE = 1.5;
+    public static final double SHOOTER_DELAY_FOR_BALL_SETTLE = 0.5;
     public static final long SHOOTER_FIRE_TIMEOUT = 2000;
 
     //RELAY outputs
@@ -66,13 +66,13 @@ public class Constants {
     // AUTON constants
     public static final double AUTON_DELAY_BETWEEN_SHOOT_AND_DRIVE = 0.5;
     public static final double AUTON_TIME_TO_DRIVE_18_FEET = 2.25;
-    public static final double AUTON_TIME_TO_LINE_UP_SHOT = 0.75;
-    public static final double AUTON_TIME_TO_LINE_UP_DRAG_SHOT = 1.00;
+    public static final double AUTON_TIME_TO_LINE_UP_SHOT = 2.25;
+    public static final double AUTON_TIME_TO_LINE_UP_DRAG_SHOT = 2.3;
     // Makes the delay factor in the time needed to drive + some buffer
     public static final double AUTON_TIME_FOR_CV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + .5;
     public static final double AUTON_TIME_FOR_DV_TO_WAIT_FOR_SWITCH_TO_HOT_GOAL = 5 - AUTON_TIME_TO_DRIVE_18_FEET + 1;
     public static final double AUTON_TIME_TO_EXTEND_ACQUIRER = 1.6;
     public static final double AUTON_TIME_TO_INTAKE_BALL = 1.75;
     public static final double AUTON_THREE_BALL_DRIVE_TIME = 1.0;
-
+    public static final double AUTON_FEET_TO_SWEET_SPOT = 10;
 }
