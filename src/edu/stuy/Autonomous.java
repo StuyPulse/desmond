@@ -10,7 +10,10 @@ public class Autonomous {
             case 00:
                 auton00(); // Do nothing
                 break;
-
+            case 01:
+                auton01(); // Open acquirer
+                break;
+                
             case 10: // Shooter faces goal
                 auton10(); // CV- one ball, drive forward
                 break;
@@ -66,6 +69,11 @@ public class Autonomous {
     // Empty auton for testing purposes
     public static void auton00() {
         // Do nothing
+    }
+    
+    // Open acquirer
+    public static void auton01() {
+        Acquirer.getInstance().rotateDown();
     }
 
     // Auton set that relies on CV
