@@ -30,6 +30,7 @@ public class DESmond extends IterativeRobot {
         // SendableChooser for auton
         autonChooser = new SendableChooser();
         autonChooser.addObject("00 - Do nothing",                               Integer.valueOf(00));
+        autonChooser.addObject("01 - Open acquirer",                            Integer.valueOf(01));
 
         autonChooser.addObject("10 - CV one ball and drive forward",            Integer.valueOf(10));
         autonChooser.addObject("11 - CV two ball and drive forward",            Integer.valueOf(11));
