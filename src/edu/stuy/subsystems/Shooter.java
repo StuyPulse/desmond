@@ -129,8 +129,8 @@ public class Shooter {
         }
 
         if (gamepad.getDPadDown()) {
-            chooChoo.set(.5); 
-        } else if (gamepad.getDPadDown() && !retracting) {
+            chooChoo.set(-0.25); 
+        } else if (!gamepad.getDPadDown() && !retracting) {
             chooChoo.set(0);
         }
 
@@ -141,7 +141,6 @@ public class Shooter {
         if (reticleToggling && !reticleWasToggled) {
             toggleReticle();
         }
-
         // if there is a retract request
         if (retracting) {
             retractWinch();
