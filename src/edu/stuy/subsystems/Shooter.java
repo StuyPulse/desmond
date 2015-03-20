@@ -128,12 +128,6 @@ public class Shooter {
             stopWinch();
         }
 
-        if (gamepad.getRightY() > 0) {
-            chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
-        } else if (gamepad.getRightY() <= 0 && !retracting) {
-            chooChoo.set(0);
-        }
-
         reticleWasToggled = reticleToggling;
         reticleToggling = gamepad.getSelectButton();
 
