@@ -47,12 +47,7 @@ public class Drivetrain {
     public void tankDrive(Gamepad gamepad) {
         double right = gamepad.getRightY();
         double left = gamepad.getLeftY();
-        if (gamepad.getRightBumper()) {
-            right *= 0.9;
-        }
-        if (gamepad.getLeftBumper()) {
-            left *= 0.9;
-        }
+        
         tankDrive(left, right);
     }
 

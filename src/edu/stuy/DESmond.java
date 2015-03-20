@@ -11,11 +11,9 @@ public class DESmond extends IterativeRobot {
     Shooter shooter;
     Drivetrain drivetrain;
     Acquirer acquirer;
-    Blocker blocker;
     //CV cv; // TODO: uncomment when CV works
 
-    Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
-    Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
+    Gamepad gamepad = new Gamepad(Constants.GAMEPAD_PORT);
 
     SendableChooser autonChooser;
 
@@ -23,7 +21,6 @@ public class DESmond extends IterativeRobot {
         shooter = Shooter.getInstance();
         drivetrain = Drivetrain.getInstance();
         acquirer = Acquirer.getInstance();
-        blocker = Blocker.getInstance();
         //cv = CV.getInstance(); // TODO: uncomment when CV works
         resetAll();
 
@@ -82,12 +79,9 @@ public class DESmond extends IterativeRobot {
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
         //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
-        acquirer.manualGamepadControl(leftPad);
-        shooter.manualGamepadControl(leftPad, rightPad);
-        drivetrain.tankDrive(rightPad);
-        if (blocker != null) {
-            blocker.manualGamepadControl(rightPad);
-        }
+        acquirer.manualGamepadControl(gamepad);
+        shooter.manualGamepadControl(gamepad);
+        drivetrain.tankDrive(gamepad);
         //cv.setCameraLight(true);
     }
 
@@ -100,9 +94,6 @@ public class DESmond extends IterativeRobot {
         shooter.reset();
         drivetrain.reset();
         acquirer.reset();
-        if (blocker != null) {
-            blocker.reset();
-        }
         // NOTE: CV does not have a reset() method
     }
 }

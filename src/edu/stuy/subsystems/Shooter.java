@@ -118,24 +118,24 @@ public class Shooter {
         return goalSensorDigital.get();
     }
 
-    public void manualGamepadControl(Gamepad operatorPad, Gamepad driverPad) {
-        if (operatorPad.getDPadDown() || operatorPad.getDPadUp() || operatorPad.getDPadLeft() || operatorPad.getDPadRight()) { // Any of the (left) directional keys retracts the catapult
+    public void manualGamepadControl(Gamepad gamepad) {
+        if (gamepad.getDPadDown() || gamepad.getDPadUp() || gamepad.getDPadLeft() || gamepad.getDPadRight()) { // Any of the (left) directional keys retracts the catapult
             initiateWinch();
         }
-        if (operatorPad.getBottomButton() || operatorPad.getTopButton() || operatorPad.getLeftButton() || operatorPad.getRightButton()) { // Any of the (right) buttons fire the catapult
+        if (gamepad.getBottomButton() || gamepad.getTopButton() || gamepad.getLeftButton() || gamepad.getRightButton()) { // Any of the (right) buttons fire the catapult
             fireBall();
-        } else if (operatorPad.getStartButton() || operatorPad.getSelectButton()) {
+        } else if (gamepad.getStartButton()) {
             stopWinch();
         }
 
-        if (operatorPad.getRightY() > 0) {
-            chooChoo.set(-operatorPad.getRightY()); // The analog stick Y increases as it is pulled downwards
-        } else if (operatorPad.getRightY() <= 0 && !retracting) {
+        if (gamepad.getRightY() > 0) {
+            chooChoo.set(-gamepad.getRightY()); // The analog stick Y increases as it is pulled downwards
+        } else if (gamepad.getRightY() <= 0 && !retracting) {
             chooChoo.set(0);
         }
 
         reticleWasToggled = reticleToggling;
-        reticleToggling = driverPad.getSelectButton();
+        reticleToggling = gamepad.getSelectButton();
 
         // if there is a reticle toggle request
         if (reticleToggling && !reticleWasToggled) {

@@ -38,8 +38,7 @@ public class Constants {
     public static final double DVAL_D = .01; // TODO: TO BE CHANGED
 
     /* ANALOG INPUT */
-    public static final int GAMEPAD_RIGHT_PORT = 1;
-    public static final int GAMEPAD_LEFT_PORT = 2;
+    public static final int GAMEPAD_PORT = 1;
     public static final int GOAL_SENSOR_ANALOG_CHANNEL = 1; // 3 for rear (acquirer), 1 for front (shooter)
 
     //CV constants
