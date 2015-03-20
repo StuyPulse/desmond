@@ -119,10 +119,10 @@ public class Shooter {
     }
 
     public void manualGamepadControl(Gamepad gamepad) {
-        if (gamepad.getDPadDown() || gamepad.getDPadUp() || gamepad.getDPadLeft() || gamepad.getDPadRight()) { // Any of the (left) directional keys retracts the catapult
+        if (gamepad.getBottomButton()) { // The A button retracts the catapult
             initiateWinch();
         }
-        if (gamepad.getBottomButton() || gamepad.getTopButton() || gamepad.getLeftButton() || gamepad.getRightButton()) { // Any of the (right) buttons fire the catapult
+        if (gamepad.getLeftButton()) { // The X button fires the catapult
             fireBall();
         } else if (gamepad.getStartButton()) {
             stopWinch();
