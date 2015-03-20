@@ -128,6 +128,12 @@ public class Shooter {
             stopWinch();
         }
 
+        if (gamepad.getDPadDown()) {
+            chooChoo.set(.5); 
+        } else if (gamepad.getDPadDown() && !retracting) {
+            chooChoo.set(0);
+        }
+
         reticleWasToggled = reticleToggling;
         reticleToggling = gamepad.getSelectButton();
 
