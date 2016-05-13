@@ -2,6 +2,7 @@ package edu.stuy.subsystems;
 
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Blocker {
@@ -41,6 +42,15 @@ public class Blocker {
         if (gamepad.getRightBumper()) {
             bringUp();
         } else if (gamepad.getLeftBumper()) {
+            bringDown();
+        }
+    }
+    
+    public void manualJoystickControl(Joystick joystick) {
+        //TODO: SET BUTTONS YOU BEAUTIFUL POTATO
+        if (joystick.getTrigger()) {
+            bringUp();
+        } else if (joystick.getBumper()) {
             bringDown();
         }
     }

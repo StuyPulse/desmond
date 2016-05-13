@@ -3,6 +3,7 @@ package edu.stuy.subsystems;
 import edu.stuy.Constants;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -42,6 +43,10 @@ public class Drivetrain {
 
     public void tankDrive(double leftValue, double rightValue) {
         drivetrain.tankDrive(leftValue, rightValue);
+    }
+    
+    public void arcadeDrive(Joystick joystick) {
+        drivetrain.arcadeDrive(joystick);
     }
 
     public void tankDrive(Gamepad gamepad) {

@@ -3,6 +3,7 @@ package edu.stuy;
 import edu.stuy.subsystems.*;
 import edu.stuy.util.Gamepad;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -14,8 +15,10 @@ public class DESmond extends IterativeRobot {
     Blocker blocker;
     //CV cv; // TODO: uncomment when CV works
 
-    Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
-    Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
+    //Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
+    //Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
+    Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
+    
 
     SendableChooser autonChooser;
 
@@ -82,11 +85,13 @@ public class DESmond extends IterativeRobot {
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEnc());
         SmartDashboard.putBoolean("Ready to shoot?", shooter.isFullyRetracted());
         //SmartDashboard.putBoolean("Camera Light - On?", cv.getLightValue());
-        acquirer.manualGamepadControl(leftPad);
-        shooter.manualGamepadControl(leftPad, rightPad);
-        drivetrain.tankDrive(rightPad);
+        //acquirer.manualGamepadControl(leftPad);
+        //shooter.manualGamepadControl(leftPad, rightPad);
+        //drivetrain.tankDrive(rightPad);
+        drivetrain.arcadeDrive(joystick);
         if (blocker != null) {
-            blocker.manualGamepadControl(rightPad);
+            //blocker.manualGamepadControl(rightPad);
+            blocker.manualJoystickControl(joystick);
         }
         //cv.setCameraLight(true);
     }
