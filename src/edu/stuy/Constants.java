@@ -40,7 +40,8 @@ public class Constants {
     /* ANALOG INPUT */
     //public static final int GAMEPAD_RIGHT_PORT = 1;
     //public static final int GAMEPAD_LEFT_PORT = 2;
-    public static final int JOYSTICK_PORT = -1;
+    public static final int JOYSTICK_X_PORT = -1;
+    public static final int JOYSTICK_Y_PORT = -1;
     //TODO: GIVE THIS A PORT YOU POTATO
     public static final int GOAL_SENSOR_ANALOG_CHANNEL = 1; // 3 for rear (acquirer), 1 for front (shooter)
 

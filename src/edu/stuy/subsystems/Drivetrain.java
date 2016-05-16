@@ -45,8 +45,8 @@ public class Drivetrain {
         drivetrain.tankDrive(leftValue, rightValue);
     }
     
-    public void arcadeDrive(Joystick joystick) {
-        drivetrain.arcadeDrive(joystick);
+    public void arcadeDrive(double moveValue, double rotateValue) {
+        drivetrain.arcadeDrive(moveValue, rotateValue);
     }
 
     public void tankDrive(Gamepad gamepad) {

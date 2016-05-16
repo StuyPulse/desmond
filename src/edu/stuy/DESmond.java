@@ -17,7 +17,8 @@ public class DESmond extends IterativeRobot {
 
     //Gamepad rightPad = new Gamepad(Constants.GAMEPAD_RIGHT_PORT);
     //Gamepad leftPad = new Gamepad(Constants.GAMEPAD_LEFT_PORT);
-    Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
+    Joystick joystick_x = new Joystick(Constants.JOYSTICK_X_PORT);
+    Joystick joystick_y = new Joystick(Constants.JOYSTICK_Y_PORT);
     
 
     SendableChooser autonChooser;
@@ -88,10 +89,10 @@ public class DESmond extends IterativeRobot {
         //acquirer.manualGamepadControl(leftPad);
         //shooter.manualGamepadControl(leftPad, rightPad);
         //drivetrain.tankDrive(rightPad);
-        drivetrain.arcadeDrive(joystick);
+        drivetrain.arcadeDrive(joystick_y.getY(),joystick_x.getX());
         if (blocker != null) {
             //blocker.manualGamepadControl(rightPad);
-            blocker.manualJoystickControl(joystick);
+            blocker.manualJoystickControl(joystick_y);
         }
         //cv.setCameraLight(true);
     }
