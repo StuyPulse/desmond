@@ -2,11 +2,12 @@ package edu.stuy;
 
 import edu.stuy.subsystems.*;
 import edu.stuy.util.Gamepad;
+import edu.stuy.util.ThreeLaws;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
-public class DESmond extends IterativeRobot {
+public class DESmond extends IterativeRobot implements ThreeLaws {
 
     Shooter shooter;
     Drivetrain drivetrain;
@@ -104,5 +105,14 @@ public class DESmond extends IterativeRobot {
             blocker.reset();
         }
         // NOTE: CV does not have a reset() method
+    }
+
+    public void doNoHarm() {
+    }
+
+    public void obeyOrders() {
+    }
+
+    public void protectSelf() {
     }
 }
